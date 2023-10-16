@@ -1,0 +1,34 @@
+/* index.css */
+
+
+/* Importa los estilos de Tailwind CSS base */
+
+@import 'tailwindcss/base';
+
+/* Importa los estilos de Tailwind CSS de los componentes */
+
+@import 'tailwindcss/components';
+
+/* Importa los estilos de Tailwind CSS de las utilidades */
+
+@import 'tailwindcss/utilities';
+
+/* Resto de tu CSS personalizado o reglas CSS adicionales si es necesario */
+
+@import 'bootstrap/dist/css/bootstrap.min.css';
+main {
+    width: 100%;
+}
+
+
+/* index.css */
+
+.app-container {
+    background-color: #dddddd;
+    /* Aquí define tu color de fondo deseado */
+    /* Otros estilos globales de la aplicación */
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    /* ... */
+}

@@ -1,0 +1,26 @@
+.fav {
+    min-height: 100vh;
+    margin-bottom: -100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+
+}
+
+.two-column-container {
+    /* Estilos para la lista de tarjetas, como se mencionó en respuestas anteriores */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 100px;
+    /* Ajusta el ancho del contenedor de tarjetas según tus necesidades */
+}
+
+button{
+    border-radius: 30px;
+}
+
+/* Estilos para las tarjetas, si es necesario */

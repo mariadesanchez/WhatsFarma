@@ -1,0 +1,354 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+.env
+.vercel
+ ../../.DS_Store
+        ../../DB/
+        ../../DT/
+        ../../Ecommerce-Backup/
+        ../.DS_Store
+        ../Copia de Front/
+        ../Front(NO)/
+        .eslintrc.cjs
+        .gitignore
+        README.md
+        index.html
+        package-lock.json
+        package.json
+        postcss.config.js
+        public/
+        src/
+        vercel.json
+        vite.config.js
+        ../Jorge/
+        ../../Empresa/.idea/
+        ../../FRONTII/FormChekbox/
+        ../../FRONTII/RULETA/
+        ../../FRONTII/ToDo-App-finalizada/.idea/
+        ../../FRONTII/VALIDACION DE FORMULARIOS/
+        ../../FRONTII/ejercicio-formulario-js/
+        ../../FRONTII/https:/
+        ../../Farm+/
+        ../../FarmApp/
+        ../../FormWebToWhatsapp/
+        ../../Front 3/ Primer Parcial FrontIII/
+        ../../Front 3/CarritoF/
+        ../../Front 3/CarritoJuli/
+        ../../Front 3/Context/
+        ../../Front 3/Copia de Repaso Primer Parcial July/
+        ../../Front 3/Examenes/
+        ../../Front 3/F3-Final/
+        ../../Front 3/Fetch Axios/
+        ../../Front 3/Form/
+        ../../Front 3/Giawait/
+        ../../Front 3/Meet/
+        ../../Front 3/Parcial Resuelto July/
+        ../../Front 3/PrimerPacrialJuly/
+        ../../Front 3/React Router/
+        ../../Front 3/React1/
+        ../../Front 3/React2/
+        ../../Front 3/StylesJuly/
+        ../../Front 3/c5-repaso-parcial-main/
+        ../../Front 3/ctd-fe3-2023-mesa-6-main/
+        ../../Front 3/fe3-final (agregar reducer)/
+        ../../Front 3/fe3-final 2/
+        ../../Front 3/fe3-final 3/
+        ../../Front 3/fe3-final-2/
+        ../../Front 3/fe3-final/
+        ../../Front 3/fe3-finalCra/
+        ../../Front 3/finalfrontend3-main/
+        ../../Front 3/mesa5-master/
+        ../../Front 3/notas-alumnos/
+        ../../Front 3/notas/
+        ../../Front 3/preFinalJuly/
+        ../../Front 3/primer-parcial-front3/
+        ../../Front 3/react context/
+        ../../Front 3/repasoJuly/
+        ../../Front 3/theme context/
+        ../../Front 3/useContext Language/
+        ../../Front 3/useEffect/
+        ../../Front 3/useReducer/
+        ../../Front 3/useState/
+        ../../Front 3/vite-project/
+        ../../Front/
+        ../../Giawait/
+        ../../Goool App/
+        ../../INFRAII/
+        ../../LaravelShoppingcart/
+        ../../Login-and-register-con-firebase/
+        ../../POO/CLASES-OBJETOS/cuentaBancariaMartin/.idea/
+        ../../POO/Calefaccion/.idea/
+        ../../POO/Chofer/.idea/
+        ../../POO/Clase 11S G3 Banco/.idea/
+        ../../POO/Clase 11S Hugo/.idea/
+        ../../POO/Colecciones/DH-Recorriendo-Colecciones/.idea/
+        ../../POO/Colecciones/DH-Relaciones1aMuchos/.idea/
+        ../../POO/DH-CrearAgregarEliminarBuscar-Sobre-Colecciones/.idea/
+        ../../POO/DH-Herencia/.idea/
+        ../../POO/Empresa 2/.idea/
+        ../../POO/Empresa/.idea/
+        ../../POO/Excepciones Propias/Pacientes 2/.idea/
+        ../../POO/FINALES-POO 2022/FinalAnaDiVito(10)/DiVitoAnaEF/.idea/
+        ../../POO/FINALES-POO 2022/FinalLuckyOk/Empresa/.idea/
+        ../../POO/FINALES-POO 2022/Pizzeria/.idea/
+        ../../POO/FINALES-POO 2022/PreFinalInstituto/DH-Clase-23-7/.idea/
+        ../../POO/IMPRESORA(PROFE LU)/.idea/
+        ../../POO/MARTIN/Calefaccion/.idea/
+        ../../POO/MARTIN/cuentaBancariaMartin/.idea/
+        ../../POO/MESAS DE TRABAJO/Clase 4 ejercicio 2/.idea/
+        ../../POO/MESAS DE TRABAJO/Clase 7 G6/.idea/
+        ../../POO/MESAS DE TRABAJO/Clase03-2/.idea/
+        ../../POO/MESAS DE TRABAJO/Clase03-3/.idea/
+        ../../POO/MESAS DE TRABAJO/Clase04/.idea/
+        ../../POO/MESAS DE TRABAJO/Clase4/.idea/
+        ../../POO/MESAS DE TRABAJO/ClaseC2A/.idea/
+        ../../POO/MESAS DE TRABAJO/Proy1-2/.idea/
+        ../../POO/MESAS DE TRABAJO/Proy1-3/.idea/
+        ../../POO/MESAS DE TRABAJO/Proy1-4/.idea/
+        ../../POO/MESAS DE TRABAJO/Proy1-5/.idea/
+        ../../POO/MESAS DE TRABAJO/Proy1-6/.idea/
+        ../../POO/MESAS DE TRABAJO/Ventas/.idea/
+        ../../POO/MESAS DE TRABAJO/_08-01-3.1-mt/.idea/
+        ../../POO/MESAS DE TRABAJO/_08-08.1-mt/.idea/
+        ../../POO/MESAS DE TRABAJO/_08-11-mt/.idea/
+        ../../POO/MESAS DE TRABAJO/caballo/.idea/
+        ../../POO/MESAS DE TRABAJO/clase8822/.idea/
+        ../../POO/MESAS DE TRABAJO/ejerciciosC3A/.idea/
+        ../../POO/MESAS DE TRABAJO/veterinaria/.idea/
+        ../../POO/PARTEII/CODIGO YA RESUELTO DE PG/DH-Excepciones/.idea/
+        ../../POO/PARTEII/CODIGO YA RESUELTO DE PG/DH-Excepciones/out/
+        ../../POO/PARTEII/CODIGO YA RESUELTO DE PG/DH-Excepciones/src/
+        ../../POO/PARTEII/CODIGO YA RESUELTO DE PG/DH-ExcepcionesPropias/.DS_Store
+        ../../POO/PARTEII/CODIGO YA RESUELTO DE PG/DH-ExcepcionesPropias/.idea/
+        ../../POO/PARTEII/CODIGO YA RESUELTO DE PG/DH-ExcepcionesPropias/src/
+        ../../POO/PARTEII/CODIGO YA RESUELTO DE PG/DH-LanzarExcepciones/.idea/
+        ../../POO/PARTEII/CODIGO YA RESUELTO DE PG/DH-LanzarExcepciones/src/
+        ../../POO/PARTEII/CODIGO YA RESUELTO DE PG/DH-Operaciones-Sobre-Colecciones/.idea/
+        ../../POO/PARTEII/CODIGO YA RESUELTO DE PG/DH-Operaciones-Sobre-Colecciones/src/
+        ../../POO/PARTEII/CODIGO YA RESUELTO DE PG/DH-Recorriendo-Colecciones/.idea/
+        ../../POO/PARTEII/CODIGO YA RESUELTO DE PG/DH-Recorriendo-Colecciones/src/
+        ../../POO/PARTEII/CODIGO YA RESUELTO DE PG/DH-Relaciones1aMuchos/.idea/
+        ../../POO/PARTEII/CODIGO YA RESUELTO DE PG/DH-Relaciones1aMuchos/src/
+        ../../POO/PARTEII/COLECCIONES/.DS_Store
+        ../../POO/PARTEII/COLECCIONES/ColeccionesPuertos.drawio
+        ../../POO/PARTEII/COLECCIONES/EquiposJugadores/.DS_Store
+        ../../POO/PARTEII/COLECCIONES/EquiposJugadores/.idea/
+        ../../POO/PARTEII/COLECCIONES/EquiposJugadores/src/
+        ../../POO/PARTEII/COLECCIONES/PuertosContenedores/.idea/
+        ../../POO/PARTEII/COLECCIONES/PuertosContenedores/src/
+        ../../POO/PARTEII/COLECCIONES/~$ercicio Colecciones Alumnos.docx
+        ../../POO/PARTEII/CUESTIONARIOS/
+        ../../POO/PARTEII/EXCEPTION TRY CATCH/.DS_Store
+        ../../POO/PARTEII/EXCEPTION TRY CATCH/Pacientes/.DS_Store
+        ../../POO/PARTEII/EXCEPTION TRY CATCH/Pacientes/.idea/
+        ../../POO/PARTEII/EXCEPTION TRY CATCH/Pacientes/src/
+        ../../POO/PARTEII/LinkGoogleSlides
+        ../../POO/PARTEII/OBSERVE/.DS_Store
+        ../../POO/PARTEII/OBSERVE/.idea/.gitignore
+        ../../POO/PARTEII/OBSERVE/.idea/misc.xml
+        ../../POO/PARTEII/OBSERVE/.idea/modules.xml
+        ../../POO/PARTEII/OBSERVE/.idea/vcs.xml
+        ../../POO/PARTEII/OBSERVE/.idea/workspace.xml
+        ../../POO/PARTEII/OBSERVE/Clase 25(Usuario-Seguidor)/.DS_Store
+        ../../POO/PARTEII/OBSERVE/Clase 25(Usuario-Seguidor)/.idea/
+        ../../POO/PARTEII/OBSERVE/Clase 25(Usuario-Seguidor)/out/
+        ../../POO/PARTEII/OBSERVE/Clase 25(Usuario-Seguidor)/src/
+        ../../POO/PARTEII/OBSERVE/EjemploObserver/.DS_Store
+        ../../POO/PARTEII/OBSERVE/EjemploObserver/.idea/
+        ../../POO/PARTEII/OBSERVE/EjemploObserver/src/
+        ../../POO/PARTEII/OBSERVE/RedSocial/.DS_Store
+        ../../POO/PARTEII/OBSERVE/RedSocial/.idea/
+        ../../POO/PARTEII/OBSERVE/RedSocial/RedSocial.drawio
+        ../../POO/PARTEII/OBSERVE/RedSocial/src/
+        ../../POO/PARTEII/OBSERVE/Subasta Museo/.DS_Store
+        ../../POO/PARTEII/OBSERVE/Subasta Museo/SubastaMuseo/.idea/
+        ../../POO/PARTEII/OBSERVE/Subasta Museo/SubastaMuseo/src/
+        ../../POO/PARTEII/OBSERVE/Subasta Museo/subasta.drawio
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/ clase 21 Service/.DS_Store"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/ clase 21 Service/.idea/"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/ clase 21 Service/src/"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/.DS_Store"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/Barcos(Final)/.DS_Store"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/Barcos(Final)/.idea/"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/Barcos(Final)/src/"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/CarritoLuckyState/.DS_Store"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/CarritoLuckyState/.idea/"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/CarritoLuckyState/out/"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/CarritoLuckyState/src/"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/Clase 19/.DS_Store"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/Clase 19/.idea/"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/Clase 19/src/"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/Clase 22 Combo/.DS_Store"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/Clase 22 Combo/.idea/"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/Clase 22 Combo/src/"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/Clase FactoryEmpresaEmpleado/.DS_Store"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/Clase FactoryEmpresaEmpleado/.idea/"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/Clase FactoryEmpresaEmpleado/src/"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/Composite/"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/FactoryMethod/.DS_Store"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/FactoryMethod/EjemploFactoryMethod19/.DS_Store"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/FactoryMethod/EjemploFactoryMethod19/.idea/"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/FactoryMethod/EjemploFactoryMethod19/DH-Factory-Singleton.zip"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/FactoryMethod/EjemploFactoryMethod19/src/"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/MunicipalidadImpuestos(Final)/"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/PruductoFactory/"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/State(carrito de compras)/.DS_Store"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/State(carrito de compras)/Ejercicio carrito de compras UML State.pdf"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/State(carrito de compras)/Tesla/.DS_Store"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/State(carrito de compras)/Tesla/.idea/"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/State(carrito de compras)/Tesla/src/"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/UMLCarrito.drawio"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/clase 20 Carrito/.DS_Store"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/clase 20 Carrito/.idea/"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/clase 20 Carrito/out/"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/clase 20 Carrito/src/"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/clase 23 Academia/.DS_Store"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/clase 23 Academia/.idea/"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/clase 23 Academia/out/"
+        "../../POO/PARTEII/PATRONES DE DISE\303\221OS/clase 23 Academia/src/"
+        ../../POO/PARTEII/STRATEGY/.DS_Store
+        ../../POO/PARTEII/STRATEGY/Clase 26 vacunacion/.DS_Store
+        ../../POO/PARTEII/STRATEGY/Clase 26 vacunacion/.idea/
+        ../../POO/PARTEII/STRATEGY/Clase 26 vacunacion/src/
+        ../../POO/PARTEII/STRATEGY/Tienda/.DS_Store
+        ../../POO/PARTEII/STRATEGY/Tienda/.idea/
+        ../../POO/PARTEII/STRATEGY/Tienda/src/
+        ../../POO/PARTEII/STRATEGY/clase 26-2/.DS_Store
+        "../../POO/PARTEII/STRATEGY/clase 26-2/Ejercicio Mesas Recorrido patr\303\263n Strategy.docx"
+        ../../POO/PARTEII/STRATEGY/clase 26-2/Mapa/.DS_Store
+        ../../POO/PARTEII/STRATEGY/clase 26-2/Mapa/.idea/
+        ../../POO/PARTEII/STRATEGY/clase 26-2/Mapa/src/
+        ../../POO/PARTEII/STRATEGY/clase 26-2/SeperChofer/.DS_Store
+        ../../POO/PARTEII/STRATEGY/clase 26-2/SeperChofer/.idea/
+        ../../POO/PARTEII/STRATEGY/clase 26-2/SeperChofer/src/
+        ../../POO/PARTEII/TEORIA/
+        ../../POO/PRE PARCIAL-I/.DS_Store
+        ../../POO/PRE PARCIAL-I/Clase 14 - Simulacro/.DS_Store
+        ../../POO/PRE PARCIAL-I/Clase 14 - Simulacro/.idea/
+        ../../POO/PRE PARCIAL-I/Clase 14 - Simulacro/src/
+        ../../POO/PidraPapelTijera/.DS_Store
+        ../../POO/PidraPapelTijera/.idea/
+        ../../POO/PidraPapelTijera/src/
+        ../../POO/Pizzeria 2/.idea/
+        ../../POO/Pizzeria 2/src/
+        ../../POO/PrimerParcial 1sep 2022/.DS_Store
+        ../../POO/PrimerParcial 1sep 2022/PrimerParcial/.DS_Store
+        ../../POO/PrimerParcial 1sep 2022/PrimerParcial/.idea/
+        ../../POO/PrimerParcial 1sep 2022/PrimerParcial/src/
+        ../../POO/ProyectoConstruccion
+        ../../POO/Prueba.txt
+        ../../POO/RedSocial.drawio
+        ../../POO/RedSocial.zip
+        ../../POO/Subasta.drawio
+        ../../POO/SubastaMuseo.zip
+        ../../POO/TEORIA/
+        ../../POO/UMLCarrito.drawio
+        ../../POO/UMLCarrito.drawio.png
+        ../../POO/UPCN CARATULA 12 OCT 2022.pdf
+        ../../POO/calefaccionCiudad.drawio
+        ../../POO/cuestionarios/
+        ../../Paper Zero/
+        ../../Phyton/
+        ../../Primer Parcial/
+        ../../Proyecto Integrador 2/
+        ../../Psicotropicos 2023.xlsx
+        ../../Puntero-Videos-Workshop.pdf
+        ../../Python Lola/
+        ../../RECETAS IOMA LUCKY/
+        ../../RESUMEN UPCN ABRIL 2023.pdf
+        ../../RecetAr 2.zip
+        ../../RecetAr 2/
+        ../../RecetAr.zip
+        ../../RecetAr/
+        ../../Resumenes UPCN 12 OCT 2022.pdf
+        ../../Resumenes UPCN 15 Junio 2023.pdf
+        ../../Resumenes UPCN marzo 2023.pdf
+        ../../Resumenes-UPCN 13 ENERO 2023.pdf
+        ../../Resumenes.pdf
+        ../../ResumenesEmergencia.pdf
+        ../../Script/
+        ../../Semana7enuso/
+        "../../Sin t\303\255tulo.mov"
+        ../../TESTING/
+        ../../TFIconGlobalExceptioHandler.zip
+        ../../TailLucky/
+        ../../Tailwind/
+        ../../UPCN 13 ENERO 2023.pdf
+        ../../UPCN 16 Nov 2022.pdf
+        ../../UPCN resumen 16 NOV2022.pdf
+        ../../UX UI/
+        ../../VIDEOS/
+        ../../VideoEcommerce-mercado-pago.mov
+        ../../WhatsApp Image 2023-09-07 at 19.27.06 2.jpeg
+        ../../XML/
+        ../../Zoom/
+        ../../audio1329555231.m4a
+        ../../barcode/
+        ../../c3-vite-project/
+        ../../capturas desktop/
+        ../../caratulaemergencia.pdf
+        ../../codigoBarras/
+        ../../comandos Linux/
+        ../../dermaglosAguaMicelar.jpg.webp
+        ../../digital-ocean/
+        ../../ecomercePFacade.drawio
+        ../../ecommerce-mercado-pago/
+        ../../epastillero/
+        ../../equipo-03-main/
+        ../../fe3-final 3/
+        ../../firebase-auth-app-master-1/
+        ../../firebase-auth-app-master/
+        ../../firebase-auth-app/
+        ../../formulario-whatsapp/
+        ../../formularioAPIwhatsapp/
+        ../../images/
+        ../../imperativa/
+        ../../indexXml.html
+        ../../ioma-meppes/
+        ../../lucky-lola-rochi.jpg
+        ../../mdb5-free-react/
+        ../../meppes-main/
+        ../../meppes2023/
+        ../../meppesUno/
+        ../../messi.jpeg
+        ../../project/
+        ../../prueba/
+        ../../react-demo/
+        ../../react-login-register-with-firebase/
+        ../../recording.conf
+        ../../scriptemilio.sh
+        ../../source
+        ../../tailwind-css-tutorial/
+        ../../tailwind-elements-react/
+        ../../tailwind-elements/
+        ../../tiger.jpeg
+        ../../useReducer-main/
+        ../../vagrant/
+        ../../vagrantfile
+        ../../vm-vagrant/
+        ../../whatsfarma Old/
+        ../../whatsfarma/
+        ../../whatsfarma2023/
