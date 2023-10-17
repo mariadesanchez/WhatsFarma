@@ -215,8 +215,8 @@ import UserAvatar from "../UserAvatar";
     return (
       <div id ='FavNoFav' key={product.id} className="relative overflow-hidden bg-gray-200 rounded shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
         <img
-            className="w-32 h-32 rounded-lg object-cover"
-          src={product.image}
+        className="w-full h-auto rounded-lg object-cover"
+           src={product.image}
           alt=""
         />
         <div className="flex flex-col justify-center items-center p-6">
