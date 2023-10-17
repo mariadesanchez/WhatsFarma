@@ -18,13 +18,13 @@ import whatsfarma2 from '../../../src/images/whatsfarma2.jpg';
 const MyCarousel = () => {
 
   const carouselStyle = {
-    height: '600px',
+    height: '300px',
     // Ajusta la altura según tus necesidades
   };
  
 
 const searchStyle = {
-  width: '40%',
+  width: '60%',
   marginTop: '50px',
 };
 
