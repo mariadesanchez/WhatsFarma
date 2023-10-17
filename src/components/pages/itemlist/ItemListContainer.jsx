@@ -187,20 +187,20 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
       <button
         className="bg-blue-500 text-white p-2 rounded"
         onClick={toggleModal}
-        style={{marginBottom:'20px'}}
+        style={{marginTop:'20px'}}
       >
         {modalIsOpen ? "Cerrar Categorías" : "Abrir Categorías"}
       </button>
 
       {modalIsOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 text-white"
-          onClick={toggleModal} // Cerrar el modal cuando se hace clic fuera de él
-        >
-          <div 
-            className="lg:col-span-1 p-4 w-64 h-48 rounded-lg shadow-lg"
-            style={{ marginTop: '1rem', position: 'absolute', top: 0, left: '120px', zIndex: '100',width:'200px',height:'500px'}}
-          >
+         <div
+         className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-70 text-black"
+         onClick={toggleModal} // Cerrar el modal cuando se hace clic fuera de él
+       >
+         <div
+           className="p-4 w-300 h-600 rounded-lg bg-gray-300 shadow-lg"
+           style={{ marginTop: '1rem', position: 'absolute', top: 0, marginLeft: '100px', zIndex: '100' }}
+         >
             <h2 className="text-2xl">CATEGORIAS:</h2>
             <IconButton onClick={handleDeleteAllCategories}>
               <DeleteForeverIcon color="primary" />
@@ -226,7 +226,8 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
           </div>
         </div>
       )}
-    </div><div id='categoriasCards' className="flex justify-center" style={{ marginTop: '100px', position: 'relative' }}>
+    </div>
+    <div id='categoriasCards' className="flex justify-center" style={{ marginTop: '100px', position: 'relative' }}>
 
         <div id="cards" className="lg:col-span-1" style={{ display: 'inline-block' }}>
 
