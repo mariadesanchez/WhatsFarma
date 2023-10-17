@@ -9,4 +9,6 @@
     padding: -10;
     /* Elimina relleno (padding) si lo hubiera */
     /* Otros estilos personalizados que desees agregar */
+    margin-bottom: 0;
+    padding-bottom: 0;
 }

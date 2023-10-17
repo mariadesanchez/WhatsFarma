@@ -1,5 +1,5 @@
 .imagen {
-    max-width: 100%;
+    max-width: 50%;
     /* Las imágenes no serán más anchas que su contenedor */
     height: auto;
     /* La altura se ajusta automáticamente para mantener la proporción original */
