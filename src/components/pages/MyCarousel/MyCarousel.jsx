@@ -11,7 +11,7 @@ import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 import { Dialog, DialogTitle, DialogContent,Button } from "@mui/material";
 
-import whatsfarma2 from '../../../src/images/whatsfarma2.jpg';
+import whatsfarma2 from '../../../../src/images/whatsfarma2.jpg';
 // import logo from '../../../src/images/logo.png';
 
 

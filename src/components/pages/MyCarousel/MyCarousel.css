@@ -4,11 +4,9 @@
     width: 100%;
     height: 250px;
     /* Establece la altura para ocupar toda la pantalla verticalmente */
-    margin: -10;
+    /* margin: -20; */
     /* Elimina márgenes */
-    padding: -10;
+    /* padding: -20; */
     /* Elimina relleno (padding) si lo hubiera */
     /* Otros estilos personalizados que desees agregar */
-    margin-bottom: 0;
-    padding-bottom: 0;
 }
