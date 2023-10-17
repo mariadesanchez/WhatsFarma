@@ -226,7 +226,7 @@ import UserAvatar from "../UserAvatar";
           <h5 style={{ fontSize: '14px', lineHeight: '1.3' }}>
             {product.title}
           </h5>
-          <h3 style={{ fontSize: '12px', lineHeight: '1.2' }}>
+          <h3 style={{ fontSize: '18px',bold, lineHeight: '1.2' }}>
             $ {product.unit_price}
           </h3>
           <h4 style={{ fontSize: '12px', lineHeight: '1.2' }}>
@@ -281,7 +281,7 @@ import UserAvatar from "../UserAvatar";
       <h5 style={{ fontSize: '14px', lineHeight: '1.3' }}>
         {product.title}
       </h5>
-      <h3 style={{ fontSize: '12px', lineHeight: '1.2' }}>
+      <h3 style={{ fontSize: '18px', bold, lineHeight: '1.2' }}>
         $ {product.unit_price}
       </h3>
       <h4 style={{ fontSize: '12px', lineHeight: '1.2' }}>
