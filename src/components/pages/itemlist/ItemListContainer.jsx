@@ -177,35 +177,59 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
     // Realiza la acción que deseas ejecutar, en este caso, la llamada a productDispatch
     productDispatch({ type: 'CATEGORIAS_SELECCIONADAS', payload: [] });
   };
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+const openModal = () => {
+  setModalIsOpen(true);
+};
+
+const closeModal = () => {
+  setModalIsOpen(false);
+};
+
   return (
     
     <div id='categoriasCards' className="flex justify-center" style={{ marginTop: '100px', position: 'relative' }}>
-  <div id="categorias" className="lg:col-span-1" style={{ marginTop: '1rem', position: 'absolute', top: 0, left: '120px',zIndex:'100' }}>
-    <h2 className="text-2xl">CATEGORIAS:</h2>
-    <IconButton onClick={handleDeleteAllCategories}>
-      <DeleteForeverIcon color="primary" />
-    </IconButton>
-   
+ 
+ <button
+  className="bg-blue-500 text-white p-2 rounded"
+  onClick={openModal}
+>
+  Abrir Categorías
+</button>
 
-    {categorias.map((categoria) => (
-      <div key={categoria.id}>
-        <label className="text-2xl">
-          <input
-            style={{
-              width: '20px',
-              height: '20px',
-            }}
-            type="checkbox"
-            value={categoria.id}
-            checked={productState.categoriasSeleccionadas.some(c => c.id === categoria.id)}
-            onChange={() => handleCheckboxChange(categoria.id, categoria.title)}
-          />
-          {categoria.title}
-        </label>
-      </div>
-    ))}
-  </div>
+ 
+{modalIsOpen && (
+  <><div id="categorias" className="lg:col-span-1" style={{ marginTop: '1rem', position: 'absolute', top: 0, left: '120px', zIndex: '100' }}>
+          <h2 className="text-2xl">CATEGORIAS:</h2>
+          <IconButton onClick={handleDeleteAllCategories}>
+            <DeleteForeverIcon color="primary" />
+          </IconButton>
 
+
+          {categorias.map((categoria) => (
+            <div key={categoria.id}>
+              <label className="text-2xl">
+                <input
+                  style={{
+                    width: '20px',
+                    height: '20px',
+                  }}
+                  type="checkbox"
+                  value={categoria.id}
+                  checked={productState.categoriasSeleccionadas.some(c => c.id === categoria.id)}
+                  onChange={() => handleCheckboxChange(categoria.id, categoria.title)} />
+                {categoria.title}
+              </label>
+            </div>
+          ))}
+        </div><button
+          className="absolute top-0 right-0 m-4 text-xl cursor-pointer"
+          onClick={closeModal}
+        >
+            Cerrar
+          </button></>
+)}
   <div id="cards" className="lg:col-span-1" style={{ display: 'inline-block' }}>
     
     
