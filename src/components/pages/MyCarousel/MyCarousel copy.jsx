@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Asegúrate de importar el CSS de Bootstrap
+import Carousel from 'react-bootstrap/Carousel';
 import {  useState, useEffect } from "react";
 import { db } from "../../../firebaseConfig";
 import {getDocs, collection} from "firebase/firestore";
@@ -10,6 +11,7 @@ import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 import { Dialog, DialogTitle, DialogContent,Button } from "@mui/material";
 
+import whatsfarma2 from '../../../../src/images/whatsfarma2.jpg';
 // import logo from '../../../src/images/logo.png';
 
 
@@ -19,7 +21,7 @@ const MyCarousel = () => {
  
 
 const searchStyle = {
-  width: '50%',
+  width: '100%',
   marginTop: '50px',
 };
 
@@ -74,7 +76,38 @@ const [searchTerm, setSearchTerm] = useState('');
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = productosFiltrados.slice(indexOfFirstProduct, indexOfLastProduct);
   return (
-    <>
+    <><Carousel>
+      <Carousel.Item>
+        <img 
+          className="d-block w-100"
+          // src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
+          src={whatsfarma2}
+          alt="First slide" />
+        <Carousel.Caption>
+          {/* <h3>Descripción 1</h3> */}
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          // src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp"
+          src={whatsfarma2}
+          alt="Second slide" />
+        <Carousel.Caption>
+          {/* <h3>Descripción 2</h3> */}
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img 
+          className="d-block w-100"
+          // src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"
+          src={whatsfarma2}
+          alt="Third slide" />
+        <Carousel.Caption>
+          {/* <h3>Descripción 3</h3> */}
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
   
  
     <div className="d-flex justify-content-center align-items-center">
@@ -115,60 +148,60 @@ const [searchTerm, setSearchTerm] = useState('');
       </div>
 
 
-
-      <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4" style={{ gridAutoRows: "auto" }}>
-
+      <div>
+      <div className="flex flex-col items-center">
+      <ul className="list-none m-0 flex flex-wrap justify-center">  
             {
             currentProducts.map((product) => (
-              <div key={product.id} className="mb-6 mr-6">
-             <Link to={`/itemDetail/${product.id}`}style={{ textDecoration: 'none', color: 'inherit' }}>
+              <li key={product.id} className="mb-6 mr-6">
+
                <div className="relative overflow-hidden bg-gray-200 rounded shadow-xl transform transition-transform hover:scale-105">
                   <img
-                          className="w-full h-200 rounded-lg object-cover"
-                          src={product.image}
+                    className="w-full md:w-96 h-80 md:h-96 rounded-lg object-cover md:!rounded-none md:!rounded-l-lg"
+                    src={product.image}
                     alt="" />
                   <div className="flex flex-col justify-center items-center p-6">
-                          <h5 style={{ fontSize: '14px', lineHeight: '1.3' }}>
-                            {product.title}
-                          </h5>
-                          <h3 style={{ fontSize: '18px', lineHeight: '1.2', fontWeight: 'bold' }}>
-                            $ {product.unit_price}
-                          </h3>
-                          <h4 style={{ fontSize: '12px', lineHeight: '1.2', fontWeight: 'bold', color: 'green' }}>
-                            Stock: {product.stock}
-                          </h4>
+                    <h5 className="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
+                      {product.title}
+                    </h5>
+                    <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                      Precio: {product.unit_price}
+                    </p>
+                    <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                      Stock: {product.stock}
+                    </p>
+                    <Link to={`/itemDetail/${product.id}`}>Ver detalle</Link>
                   </div>
                 </div>
-                </Link>
-
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
           <div>
-    <ButtonGroup>
-  <Button
-    variant="contained"
-    onClick={() => setCurrentPage(currentPage - 1)}
-    disabled={currentPage === 0}
-  >
-    <SkipPreviousIcon />
-  </Button>
-  <Button
-    disabled
-    style={{ fontSize: '2em', color: 'black' }}
-    variant="outlined"
-  >
-    {currentPage + 1}
-  </Button>
-  <Button
-    variant="contained"
-    onClick={() => setCurrentPage(currentPage + 1)}
-    disabled={indexOfLastProduct >= productosFiltrados.length}
-  >
-    <SkipNextIcon />
-  </Button>
-</ButtonGroup>
+           
+          <ButtonGroup>
+      <Button
+        variant="contained"
+        onClick={() => setCurrentPage(currentPage - 1)}
+        disabled={currentPage === 0}
+      >
+        <SkipPreviousIcon />
+      </Button>
+      <Button
+        disabled
+        style={{ fontSize: '2em', color: 'black' }}
+        variant="outlined"
+      >
+        {currentPage + 1}
+      </Button>
+      <Button
+        variant="contained"
+        onClick={() => setCurrentPage(currentPage + 1)}
+        disabled={indexOfLastProduct >= productosFiltrados.length}
+      >
+        <SkipNextIcon />
+      </Button>
+    </ButtonGroup>
+   
           </div>
           {showModal && (
       <Dialog open={showModal} onClose={handleCloseModal} style={{width:'100%'}}>
@@ -186,7 +219,7 @@ const [searchTerm, setSearchTerm] = useState('');
      </Dialog>
           )}
         </div>
-      </>
+      </div></>
 
 
   
