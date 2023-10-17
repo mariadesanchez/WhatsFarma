@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 /* eslint-disable no-undef */
 /* eslint-disable react-hooks/exhaustive-deps */
 
@@ -195,7 +196,7 @@ const ItemListContainer= () => {
             onChange={handleSeleccionarTodasChange} />
           Todas
         </label>
-
+        <UserAvatar name="JS" /> 
         {categorias.map((categoria) => (
           <div key={categoria.id}>
             <label style={{ fontSize: '30px' }}>

@@ -15,6 +15,7 @@ import { usecontextGlobal } from '../../../context/GlobalContext'
 import {  IconButton } from "@mui/material";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
+import UserAvatar from "../UserAvatar";
   const ItemListContainer= () => {
   const {productState, productDispatch} = usecontextGlobal()
   const {user} = useContext(AuthContext)
@@ -219,7 +220,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
   <div id="cards" className="lg:col-span-1" style={{ display: 'inline-block' }}>
     <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12">
       <div className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        
+      {/* <UserAvatar name="JS" />  */}
       { productosPorCategorias.length == 0 &&
   productosFavNoFav.map((product) => {
     return (

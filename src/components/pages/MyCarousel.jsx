@@ -10,9 +10,9 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 import { Dialog, DialogTitle, DialogContent,Button } from "@mui/material";
-import whatsfarma1 from '../../../src/images/whatsfarma1.jpg';
+
 import whatsfarma2 from '../../../src/images/whatsfarma2.jpg';
-import logo from '../../../src/images/logo.png';
+// import logo from '../../../src/images/logo.png';
 
 
 const MyCarousel = () => {
@@ -111,11 +111,12 @@ const [searchTerm, setSearchTerm] = useState('');
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
-    
-    
+  
+ 
     <div className="d-flex justify-content-center align-items-center">
         <div className="mb-3" style={searchStyle}>
           <div className="relative mb-4 flex w-full flex-wrap items-stretch"style={{ height: '60px',backgroundColor:'white'}}>
+       
             <input
               style={{ height: '60px',backgroundColor:'red'}}
              
@@ -203,7 +204,7 @@ const [searchTerm, setSearchTerm] = useState('');
         <SkipNextIcon />
       </Button>
     </ButtonGroup>
-
+   
           </div>
           {showModal && (
       <Dialog open={showModal} onClose={handleCloseModal} style={{width:'100%'}}>

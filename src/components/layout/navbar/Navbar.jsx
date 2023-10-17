@@ -19,23 +19,11 @@ import { menuItems } from "../../../router/navigation";
 import { logout } from "../../../firebaseConfig";
 import { AuthContext } from "../../../context/AuthContext";
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import logo from '../../../../src/images/logo.png'
-
-
+import UserAvatar from '../../../components/pages/UserAvatar'
 const drawerWidth = 200;
 
 function Navbar(props) {
-  const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleCategoryMenuClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleCategoryMenuClose = () => {
-    setAnchorEl(null);
-  };
-
-  const isCategoryMenuOpen = Boolean(anchorEl);
   const { logoutContext, user } = useContext(AuthContext);
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -110,19 +98,18 @@ function Navbar(props) {
       <AppBar
         position="fixed"
         sx={{
-          width: "100%",height:'100px'
+          width: "100%",
         }}
       >
         <Toolbar
           sx={{ gap: "20px", display: "flex", justifyContent: "space-between" }}
         >
           <Link to="/" style={{ color: "whitesmoke" }}>
-          <img 
-          style={{height:'98px'}}
-          src={logo}
-          />
+      
+         <div>
+    
+    </div>
           </Link>
-          
           <IconButton
             color="secondary.primary"
             aria-label="open drawer"
@@ -131,7 +118,6 @@ function Navbar(props) {
           >
             <MenuIcon color="secondary.primary" />
           </IconButton>
-          
         </Toolbar>
       </AppBar>
       <Box component="nav" aria-label="mailbox folders">
