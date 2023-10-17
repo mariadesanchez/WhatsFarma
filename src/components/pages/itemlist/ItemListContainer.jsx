@@ -219,7 +219,7 @@ import UserAvatar from "../UserAvatar";
 
   <div id="cards" className="lg:col-span-1" style={{ display: 'inline-block' }}>
     <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12">
-      <div className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"style={{ width: "170px", height: "440px" }}>
       {/* <UserAvatar name="JS" />  */}
       { productosPorCategorias.length == 0 &&
   productosFavNoFav.map((product) => {
