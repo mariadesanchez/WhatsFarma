@@ -179,13 +179,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
   };
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-const openModal = () => {
-  setModalIsOpen(true);
-};
 
-const closeModal = () => {
-  setModalIsOpen(false);
-};
 const toggleModal = () => {
   setModalIsOpen(!modalIsOpen);
 };
@@ -223,12 +217,7 @@ const toggleModal = () => {
                     onChange={() => handleCheckboxChange(categoria.id, categoria.title)} />
                   {categoria.title}
                 </label>
-                <button
-                  className="absolute top-0 right-0 m-4 text-xl cursor-pointer"
-                  onClick={closeModal}
-                >
-                  Cerrar
-                </button>
+               
               </div>
             ))}
           </div></>
