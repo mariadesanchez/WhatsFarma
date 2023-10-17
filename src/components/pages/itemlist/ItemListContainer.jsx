@@ -15,6 +15,7 @@ import { AuthContext } from "../../../context/AuthContext"
 import { usecontextGlobal } from '../../../context/GlobalContext'
 import {  IconButton } from "@mui/material";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import Modal from 'react-modal';
 
 import UserAvatar from "../UserAvatar";
   const ItemListContainer= () => {
@@ -27,6 +28,16 @@ import UserAvatar from "../UserAvatar";
   const [categorias, setCategorias] = useState([]);
   const [productosPorCategorias,setProductosPorCategorias]=useState([])
   const [seleccionarTodas, setSeleccionarTodas] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+const openModal = () => {
+  setModalIsOpen(true);
+};
+
+const closeModal = () => {
+  setModalIsOpen(false);
+};
+
 
   // traer todos los favoritos de este usuario por su email
 
@@ -179,150 +190,149 @@ import UserAvatar from "../UserAvatar";
   };
   return (
     
-    <div id='categoriasCards' className="flex justify-center" style={{ marginTop: '100px', position: 'relative' }}>
-  <div id="categorias" className="lg:col-span-1" style={{ marginTop: '1rem', position: 'absolute', top: 0, left: '120px',zIndex:'100' }}>
-    <h2 className="text-2xl">CATEGORIAS:</h2>
-    <IconButton onClick={handleDeleteAllCategories}>
-      <DeleteForeverIcon color="primary" />
-    </IconButton>
-   
+    <><div id='categoriasCards' className="flex justify-center" style={{ marginTop: '100px', position: 'relative' }}>
+      <button onClick={openModal}>Abrir Categorías</button>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Categorías Modal"
+      ></Modal>
+      <div id="categorias" className="lg:col-span-1" style={{ marginTop: '1rem', position: 'absolute', top: 0, left: '120px', zIndex: '100' }}>
+        <h2 className="text-2xl">CATEGORIAS:</h2>
+        <IconButton onClick={handleDeleteAllCategories}>
+          <DeleteForeverIcon color="primary" />
+        </IconButton>
 
-    {categorias.map((categoria) => (
-      <div key={categoria.id}>
-        <label className="text-2xl">
-          <input
-            style={{
-              width: '20px',
-              height: '20px',
-            }}
-            type="checkbox"
-            value={categoria.id}
-            checked={productState.categoriasSeleccionadas.some(c => c.id === categoria.id)}
-            onChange={() => handleCheckboxChange(categoria.id, categoria.title)}
-          />
-          {categoria.title}
-        </label>
+
+        {categorias.map((categoria) => (
+          <div key={categoria.id}>
+            <label className="text-2xl">
+              <input
+                style={{
+                  width: '20px',
+                  height: '20px',
+                }}
+                type="checkbox"
+                value={categoria.id}
+                checked={productState.categoriasSeleccionadas.some(c => c.id === categoria.id)}
+                onChange={() => handleCheckboxChange(categoria.id, categoria.title)} />
+              {categoria.title}
+            </label>
+          </div>
+        ))}
       </div>
-    ))}
-  </div>
+    <Modal/><div id="cards" className="lg:col-span-1" style={{ display: 'inline-block' }}>
 
-  <div id="cards" className="lg:col-span-1" style={{ display: 'inline-block' }}>
-    
-    
-    <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12">
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4" style={{ gridAutoRows: "auto" }}>
 
-      { productosPorCategorias.length == 0 &&
-  productosFavNoFav.map((product) => {
-    return (
-      <Link to={`/itemDetail/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-      <div id='FavNoFav' key={product.id} className="relative overflow-hidden bg-gray-200 rounded shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
-        <img
-            className="w-full h-200 rounded-lg object-cover"
+        <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4" style={{ gridAutoRows: "auto" }}>
 
-          src={product.image}
-          alt=""
-        />
-        <div className="flex flex-col justify-center items-center p-6">
-          <h5 style={{ fontSize: '14px', lineHeight: '1.3' }}>
-            {product.title}
-          </h5>
-          <h3 style={{ fontSize: '18px',lineHeight: '1.2', fontWeight: 'bold' }}>
-            $ {product.unit_price}
-          </h3>
-          <h4 style={{ fontSize: '12px', lineHeight: '1.2', fontWeight: 'bold',color:'green' }}>
-            Stock: {product.stock}
-          </h4>
-          <button
-            type="button"
-            id="toggleButton"
-            onClick={() => actualizarFavoritos(product.id)}
-            href="#"
-            className="absolute top-2 right-2 rounded bg-primary w-auto h-auto p-1 text-base font-medium uppercase leading-normal text-white shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 focus:bg-primary-600 focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary dark:shadow-md dark:hover:shadow-2xl dark:focus:shadow-2xl dark:ring-primary"
-            data-te-ripple-init
-            data-te-ripple-color="light"
-          >
-            {product.fav ?
-              (
-                <>
-                  <img src={corazon} id={product.id} style={{ width: '20px', height: '20px', display: 'none' }} />
-                  <img src={corazonRojo} id={product.id + 1} style={{ width: '20px', height: '20px', display: 'block' }} />
-                </>
-              )
-              :
-              (
-                <>
-                  <img src={corazon} id={product.id} style={{ width: '20px', height: '20px', display: 'block' }} />
-                  <img src={corazonRojo} id={product.id + 1} style={{ width: '20px', height: '20px', display: 'none' }} />
-                </>
-              )
-            }
-          </button>
+            {productosPorCategorias.length == 0 &&
+              productosFavNoFav.map((product) => {
+                return (
+                  <Link to={`/itemDetail/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <div id='FavNoFav' key={product.id} className="relative overflow-hidden bg-gray-200 rounded shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+                      <img
+                        className="w-full h-200 rounded-lg object-cover"
+
+                        src={product.image}
+                        alt="" />
+                      <div className="flex flex-col justify-center items-center p-6">
+                        <h5 style={{ fontSize: '14px', lineHeight: '1.3' }}>
+                          {product.title}
+                        </h5>
+                        <h3 style={{ fontSize: '18px', lineHeight: '1.2', fontWeight: 'bold' }}>
+                          $ {product.unit_price}
+                        </h3>
+                        <h4 style={{ fontSize: '12px', lineHeight: '1.2', fontWeight: 'bold', color: 'green' }}>
+                          Stock: {product.stock}
+                        </h4>
+                        <button
+                          type="button"
+                          id="toggleButton"
+                          onClick={() => actualizarFavoritos(product.id)}
+                          href="#"
+                          className="absolute top-2 right-2 rounded bg-primary w-auto h-auto p-1 text-base font-medium uppercase leading-normal text-white shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 focus:bg-primary-600 focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary dark:shadow-md dark:hover:shadow-2xl dark:focus:shadow-2xl dark:ring-primary"
+                          data-te-ripple-init
+                          data-te-ripple-color="light"
+                        >
+                          {product.fav ?
+                            (
+                              <>
+                                <img src={corazon} id={product.id} style={{ width: '20px', height: '20px', display: 'none' }} />
+                                <img src={corazonRojo} id={product.id + 1} style={{ width: '20px', height: '20px', display: 'block' }} />
+                              </>
+                            )
+                            :
+                            (
+                              <>
+                                <img src={corazon} id={product.id} style={{ width: '20px', height: '20px', display: 'block' }} />
+                                <img src={corazonRojo} id={product.id + 1} style={{ width: '20px', height: '20px', display: 'none' }} />
+                              </>
+                            )}
+                        </button>
+                      </div>
+                    </div>
+                  </Link>
+
+                );
+              })}
+
+
+
+            {(productState.categoriasSeleccionadas.length > 0) &&
+              productosPorCategorias.map((product) => {
+                return (
+                  <Link to={`/itemDetail/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+
+                    <div id='FavNoFav' key={product.id} className="relative overflow-hidden bg-gray-200 rounded shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+                      <img
+                        className="w-full h-200 rounded-lg object-cover"
+                        src={product.image}
+                        alt="" />
+                      <div className="flex flex-col justify-center items-center p-6">
+                        <h5 style={{ fontSize: '14px', lineHeight: '1.3' }}>
+                          {product.title}
+                        </h5>
+                        <h3 style={{ fontSize: '18px', lineHeight: '1.2', fontWeight: 'bold' }}>
+                          $ {product.unit_price}
+                        </h3>
+                        <h4 style={{ fontSize: '12px', lineHeight: '1.2', fontWeight: 'bold', color: 'green' }}>
+                          Stock: {product.stock}
+                        </h4>
+                        <button
+                          type="button"
+                          id="toggleButton"
+                          onClick={() => actualizarFavoritos(product.id)}
+                          href="#"
+                          className="absolute top-2 right-2 rounded bg-primary w-auto h-auto p-1 text-base font-medium uppercase leading-normal text-white shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 focus:bg-primary-600 focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary dark:shadow-md dark:hover:shadow-2xl dark:focus:shadow-2xl dark:ring-primary"
+                          data-te-ripple-init
+                          data-te-ripple-color="light"
+                        >
+                          {product.fav ?
+                            (
+                              <>
+                                <img src={corazon} id={product.id} style={{ width: '20px', height: '20px', display: 'none' }} />
+                                <img src={corazonRojo} id={product.id + 1} style={{ width: '20px', height: '20px', display: 'block' }} />
+                              </>
+                            )
+                            :
+                            (
+                              <>
+                                <img src={corazon} id={product.id} style={{ width: '20px', height: '20px', display: 'block' }} />
+                                <img src={corazonRojo} id={product.id + 1} style={{ width: '20px', height: '20px', display: 'none' }} />
+                              </>
+                            )}
+                        </button>
+                      </div>
+                    </div>
+                  </Link>
+
+                );
+              })}
+          </div>
         </div>
-      </div>
-    </Link>
-    
-    );
-  })
-}
-        
-        
-        
-        {(productState.categoriasSeleccionadas.length > 0) &&
-          productosPorCategorias.map((product) => {
-            return (
-              <Link to={`/itemDetail/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-  
-  <div id='FavNoFav' key={product.id} className="relative overflow-hidden bg-gray-200 rounded shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
-    <img
-        className="w-full h-200 rounded-lg object-cover"
-      src={product.image}
-      alt=""
-    />
-    <div className="flex flex-col justify-center items-center p-6">
-      <h5 style={{ fontSize: '14px', lineHeight: '1.3' }}>
-        {product.title}
-      </h5>
-      <h3 style={{ fontSize: '18px',lineHeight: '1.2', fontWeight: 'bold' }}>
-        $ {product.unit_price}
-      </h3>
-      <h4 style={{ fontSize: '12px', lineHeight: '1.2', fontWeight: 'bold',color:'green' }}>
-        Stock: {product.stock}
-      </h4>
-      <button
-        type="button"
-        id="toggleButton"
-        onClick={() => actualizarFavoritos(product.id)}
-        href="#"
-        className="absolute top-2 right-2 rounded bg-primary w-auto h-auto p-1 text-base font-medium uppercase leading-normal text-white shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 focus:bg-primary-600 focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary dark:shadow-md dark:hover:shadow-2xl dark:focus:shadow-2xl dark:ring-primary"
-        data-te-ripple-init
-        data-te-ripple-color="light"
-      >
-        {product.fav ?
-          (
-            <>
-              <img src={corazon} id={product.id} style={{ width: '20px', height: '20px', display: 'none' }} />
-              <img src={corazonRojo} id={product.id + 1} style={{ width: '20px', height: '20px', display: 'block' }} />
-            </>
-          )
-          :
-          (
-            <>
-              <img src={corazon} id={product.id} style={{ width: '20px', height: '20px', display: 'block' }} />
-              <img src={corazonRojo} id={product.id + 1} style={{ width: '20px', height: '20px', display: 'none' }} />
-            </>
-          )
-        }
-      </button>
-    </div>
-  </div>
-</Link>
-
-            );
-          })}
-      </div>
-    </div>
-  </div>
+      </div></>
 </div>
 
     );
