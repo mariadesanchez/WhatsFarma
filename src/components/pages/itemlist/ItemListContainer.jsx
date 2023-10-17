@@ -235,22 +235,22 @@ import UserAvatar from "../UserAvatar";
             id="toggleButton"
             onClick={() => actualizarFavoritos(product.id)}
             href="#"
-            className="inline-block rounded bg-primary px-8 py-3 text-base font-medium uppercase leading-normal text-white shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 focus:bg-primary-600 focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary dark:shadow-md dark:hover:shadow-2xl dark:focus:shadow-2xl dark:ring-primary"
+            className="inline-block rounded bg-primary w-auto h-auto  px-8 py-3 text-base font-medium uppercase leading-normal text-white shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 focus:bg-primary-600 focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary dark:shadow-md dark:hover:shadow-2xl dark:focus:shadow-2xl dark:ring-primary"
             data-te-ripple-init
             data-te-ripple-color="light"
           >
             {product.fav ?
               (
                 <>
-                  <img src={corazon} id={product.id} style={{ width: '40px', height: '40px', display: 'none' }} />
-                  <img src={corazonRojo} id={product.id + 1} style={{ width: '40px', height: '40px', display: 'block' }} />
+                  <img src={corazon} id={product.id} style={{ width: '20px', height: '20px', display: 'none' }} />
+                  <img src={corazonRojo} id={product.id + 1} style={{ width: '20px', height: '20px', display: 'block' }} />
                 </>
               )
               :
               (
                 <>
-                  <img src={corazon} id={product.id} style={{ width: '40px', height: '40px', display: 'block' }} />
-                  <img src={corazonRojo} id={product.id + 1} style={{ width: '40px', height: '40px', display: 'none' }} />
+                  <img src={corazon} id={product.id} style={{ width: '20px', height: '20px', display: 'block' }} />
+                  <img src={corazonRojo} id={product.id + 1} style={{ width: '20px', height: '20px', display: 'none' }} />
                 </>
               )
             }
@@ -288,22 +288,22 @@ import UserAvatar from "../UserAvatar";
                     id="toggleButton"
                     onClick={() => actualizarFavoritos(product.id)}
                     href="#"
-                    className="inline-block rounded bg-primary px-8 py-3 text-base font-medium uppercase leading-normal text-white shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 focus:bg-primary-600 focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary dark:shadow-md dark:hover:shadow-2xl dark:focus:shadow-2xl dark:ring-primary"
+                    className="inline-block rounded bg-primary w-auto h-auto  px-8 py-3 text-base font-medium uppercase leading-normal text-white shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 focus:bg-primary-600 focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary dark:shadow-md dark:hover:shadow-2xl dark:focus:shadow-2xl dark:ring-primary"
                     data-te-ripple-init
                     data-te-ripple-color="light"
                   >
                     {product.fav ?
                       (
                         <>
-                          <img src={corazon} id={product.id} style={{ width: '40px', height: '40px', display: 'none' }} />
-                          <img src={corazonRojo} id={product.id + 1} style={{ width: '40px', height: '40px', display: 'block' }} />
+                          <img src={corazon} id={product.id} style={{ width: '20px', height: '20px', display: 'none' }} />
+                          <img src={corazonRojo} id={product.id + 1} style={{ width: '20px', height: '20px', display: 'block' }} />
                         </>
                       )
                       :
                       (
                         <>
-                          <img src={corazon} id={product.id} style={{ width: '40px', height: '40px', display: 'block' }} />
-                          <img src={corazonRojo} id={product.id + 1} style={{ width: '40px', height: '40px', display: 'none' }} />
+                          <img src={corazon} id={product.id} style={{ width: '20px', height: '20px', display: 'block' }} />
+                          <img src={corazonRojo} id={product.id + 1} style={{ width: '20px', height: '20px', display: 'none' }} />
                         </>
                       )
                     }
