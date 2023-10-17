@@ -235,7 +235,7 @@ import UserAvatar from "../UserAvatar";
             id="toggleButton"
             onClick={() => actualizarFavoritos(product.id)}
             href="#"
-            // className="inline-block rounded bg-primary w-auto h-auto  px-8 py-3 text-base font-medium uppercase leading-normal text-white shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 focus:bg-primary-600 focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary dark:shadow-md dark:hover:shadow-2xl dark:focus:shadow-2xl dark:ring-primary"
+            className="absolute top-2 right-2 rounded bg-primary w-auto h-auto p-1 text-base font-medium uppercase leading-normal text-white shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 focus:bg-primary-600 focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary dark:shadow-md dark:hover:shadow-2xl dark:focus:shadow-2xl dark:ring-primary"
             data-te-ripple-init
             data-te-ripple-color="light"
           >
@@ -284,14 +284,14 @@ import UserAvatar from "../UserAvatar";
                   </p>
                   <Link to={`/itemDetail/${product.id}`}>Ver detalle</Link>
                   <button
-                    type="button"
-                    id="toggleButton"
-                    onClick={() => actualizarFavoritos(product.id)}
-                    href="#"
-                    // className="inline-block rounded bg-primary w-auto h-auto  px-8 py-3 text-base font-medium uppercase leading-normal text-white shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 focus:bg-primary-600 focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary dark:shadow-md dark:hover:shadow-2xl dark:focus:shadow-2xl dark:ring-primary"
-                    data-te-ripple-init
-                    data-te-ripple-color="light"
-                  >
+            type="button"
+            id="toggleButton"
+            onClick={() => actualizarFavoritos(product.id)}
+            href="#"
+            className="absolute top-2 right-2 rounded bg-primary w-auto h-auto p-1 text-base font-medium uppercase leading-normal text-white shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 focus:bg-primary-600 focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary dark:shadow-md dark:hover:shadow-2xl dark:focus:shadow-2xl dark:ring-primary"
+            data-te-ripple-init
+            data-te-ripple-color="light"
+          >
                     {product.fav ?
                       (
                         <>
