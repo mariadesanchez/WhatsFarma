@@ -193,7 +193,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
       {modalIsOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 text-white"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 text-white"style={{width:'200px',height:'500px'}}
           onClick={toggleModal} // Cerrar el modal cuando se hace clic fuera de él
         >
           <div
