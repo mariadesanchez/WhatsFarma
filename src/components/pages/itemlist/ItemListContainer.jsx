@@ -199,7 +199,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
          >
            <div
              className="p-4 w-300 h-600 rounded-lg bg-gray-300 shadow-lg"
-             style={{ position: 'absolute', top: '50px', marginLeft: '20px', zIndex: '100' }}
+             style={{ position: 'absolute', top: '200px', marginLeft: '30px', zIndex: '100' }}
            >
             <h2 className="text-2xl">CATEGORIAS:</h2>
             <IconButton onClick={handleDeleteAllCategories}>
