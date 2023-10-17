@@ -215,7 +215,7 @@ import UserAvatar from "../UserAvatar";
       { productosPorCategorias.length == 0 &&
   productosFavNoFav.map((product) => {
     return (
-      <Link to={`/itemDetail/${product.id}`}>
+      <Link to={`/itemDetail/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
       <div id ='FavNoFav' key={product.id} className="relative overflow-hidden bg-gray-200 rounded shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
         <img
         className="w-full h-auto rounded-lg object-cover"
@@ -223,13 +223,13 @@ import UserAvatar from "../UserAvatar";
           alt=""
         />
         <div className="flex flex-col justify-center items-center p-6">
-          <h5 className="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
+          <h5>
             {product.title}
           </h5>
-          <h3 className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+          <h3 >
           $ {product.unit_price}
           </h3>
-          <h4 className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+          <h4 >
             Stock: {product.stock}
           </h4>
          
@@ -270,7 +270,7 @@ import UserAvatar from "../UserAvatar";
         {(productState.categoriasSeleccionadas.length > 0) &&
           productosPorCategorias.map((product) => {
             return (
-              <Link to={`/itemDetail/${product.id}`}>
+              <Link to={`/itemDetail/${product.id}`}style={{ textDecoration: 'none', color: 'inherit' }}>
 
               <div key={product.id} className="relative overflow-hidden bg-gray-200 rounded shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
                 <img
@@ -279,13 +279,13 @@ import UserAvatar from "../UserAvatar";
                   alt=""
                 />
                 <div className="flex flex-col justify-center items-center p-6">
-                  <h5 className="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
+                  <h5 >
                     {product.title}
                   </h5>
-                  <h3 className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                  <h3>
                   $ {product.unit_price}
                   </h3>
-                  <h4 className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                  <h4>
                     Stock: {product.stock}
                   </h4>
                   <button
