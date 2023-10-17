@@ -179,7 +179,7 @@ import UserAvatar from "../UserAvatar";
   return (
     
     <div id='categoriasCards' className="flex justify-center" style={{ marginTop: '100px', position: 'relative' }}>
-  <div id="categorias" className="lg:col-span-1" style={{ marginTop: '1rem', position: 'absolute', top: 0, left: '120px' }}>
+  <div id="categorias" className="lg:col-span-1" style={{ marginTop: '1rem', position: 'absolute', top: 0, left: '120px',zIndex:'100' }}>
     <h2 className="text-2xl">CATEGORIAS:</h2>
     <IconButton onClick={handleDeleteAllCategories}>
       <DeleteForeverIcon color="primary" />
