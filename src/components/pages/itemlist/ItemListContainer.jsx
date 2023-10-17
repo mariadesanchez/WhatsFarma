@@ -193,6 +193,11 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 </button>
 
 {modalIsOpen && (
+    <div
+    className="fixed inset-0 z-50 flex items-center justify-center"
+    onClick={toggleModal} // Cerrar el modal cuando se hace clic fuera de él
+  >
+    <div className="bg-gray-800 text-black p-4 rounded-lg shadow-lg"></div>
   <div id="categorias" className="lg:col-span-1" style={{ marginTop: '1rem', position: 'absolute', top: 0, left: '120px',zIndex:'100' }}>
     <h2 className="text-2xl">CATEGORIAS:</h2>
     <IconButton onClick={handleDeleteAllCategories}>
@@ -218,6 +223,8 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
       </div>
     ))}
   </div>
+  </div>
+  
 )}
   <div id="cards" className="lg:col-span-1" style={{ display: 'inline-block' }}>
     
