@@ -193,14 +193,14 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
       </button>
 
       {modalIsOpen && (
-         <div
-         className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-70 text-black"
-         onClick={toggleModal} // Cerrar el modal cuando se hace clic fuera de él
-       >
-         <div
-           className="p-4 w-300 h-600 rounded-lg bg-gray-300 shadow-lg"
-           style={{ marginTop: '1rem', position: 'absolute', top: 0, marginLeft: '100px', zIndex: '100' }}
+           <div
+           className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-70 text-black"
+           onClick={toggleModal} // Cerrar el modal cuando se hace clic fuera de él
          >
+           <div
+             className="p-4 w-300 h-600 rounded-lg bg-gray-300 shadow-lg"
+             style={{ position: 'absolute', top: '50px', marginLeft: '100px', zIndex: '100' }}
+           >
             <h2 className="text-2xl">CATEGORIAS:</h2>
             <IconButton onClick={handleDeleteAllCategories}>
               <DeleteForeverIcon color="primary" />
