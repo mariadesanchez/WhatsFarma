@@ -206,12 +206,13 @@ import UserAvatar from "../UserAvatar";
     ))}
   </div>
 
-  <div id="cards" className="lg:col-span-1" style={{ display: 'inline-block', gridAutoRows: "auto" }} >
+  <div id="cards" className="lg:col-span-1" style={{ display: 'inline-block' }}>
     
     
-    <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12" style={{ gridAutoRows: "auto" }}>
-   <div id="cards" className="lg:col-span-1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '1rem', gridAutoRows: 'auto' }}>
-  {productosPorCategorias.length === 0 &&
+    <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4" style={{ gridAutoRows: "auto" }}>
+
+      { productosPorCategorias.length == 0 &&
   productosFavNoFav.map((product) => {
     return (
       <Link to={`/itemDetail/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -271,8 +272,8 @@ import UserAvatar from "../UserAvatar";
           productosPorCategorias.map((product) => {
             return (
               <Link to={`/itemDetail/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-
-  <div id='FavNoFav' key={product.id} className="relative overflow-hidden bg-gray-200 rounded shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300" style={{ gridAutoRows: "auto" }}>
+  
+  <div id='FavNoFav' key={product.id} className="relative overflow-hidden bg-gray-200 rounded shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
     <img
         className="w-full h-200 rounded-lg object-cover"
       src={product.image}
