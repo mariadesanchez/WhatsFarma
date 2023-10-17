@@ -210,7 +210,7 @@ import UserAvatar from "../UserAvatar";
     
     
     <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4" style={{ height:'800px' }}>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4" style={{ gridAutoRows: "auto" }}>
 
       { productosPorCategorias.length == 0 &&
   productosFavNoFav.map((product) => {
@@ -272,7 +272,8 @@ import UserAvatar from "../UserAvatar";
           productosPorCategorias.map((product) => {
             return (
               <Link to={`/itemDetail/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-  <div id='FavNoFav' key={product.id} className="relative overflow-hidden bg-gray-200 rounded shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+
+  <div id='FavNoFav' key={product.id} className="relative overflow-hidden bg-gray-200 rounded shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300" style={{ gridAutoRows: "auto" }}>
     <img
         className="w-full h-200 rounded-lg object-cover"
       src={product.image}
