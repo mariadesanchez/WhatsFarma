@@ -179,7 +179,13 @@ import UserAvatar from "../UserAvatar";
   return (
     
     <div id='categoriasCards' className="flex justify-center" style={{ marginTop: '100px', position: 'relative' }}>
-  <div id="categorias" className="lg:col-span-1" style={{ marginTop: '1rem', position: 'absolute', top: 0, left: '120px',zIndex:'100' }}>
+
+
+  <div id="cards" className="lg:col-span-1" style={{ display: 'inline-block' }}>
+    <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12">
+      {/* <UserAvatar name="JS" />  */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+      <div id="categorias" className="lg:col-span-1" style={{ marginTop: '1rem', position: 'absolute', top: 0, left: '120px',zIndex:'100' }}>
     <h2 className="text-2xl">CATEGORIAS:</h2>
     <IconButton onClick={handleDeleteAllCategories}>
       <DeleteForeverIcon color="primary" />
@@ -216,12 +222,6 @@ import UserAvatar from "../UserAvatar";
       </div>
     ))}
   </div>
-
-  <div id="cards" className="lg:col-span-1" style={{ display: 'inline-block' }}>
-    <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12">
-      {/* <UserAvatar name="JS" />  */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-      {/* <UserAvatar name="JS" />  */}
       { productosPorCategorias.length == 0 &&
   productosFavNoFav.map((product) => {
     return (
