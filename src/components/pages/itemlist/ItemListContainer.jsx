@@ -218,7 +218,8 @@ import UserAvatar from "../UserAvatar";
       <Link to={`/itemDetail/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
       <div id='FavNoFav' key={product.id} className="relative overflow-hidden bg-gray-200 rounded shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
         <img
-          className="w-full h-auto rounded-lg object-cover"
+            className="w-full h-200 rounded-lg object-cover"
+
           src={product.image}
           alt=""
         />
@@ -273,7 +274,7 @@ import UserAvatar from "../UserAvatar";
               <Link to={`/itemDetail/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
   <div id='FavNoFav' key={product.id} className="relative overflow-hidden bg-gray-200 rounded shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
     <img
-      className="w-full h-auto rounded-lg object-cover"
+        className="w-full h-200 rounded-lg object-cover"
       src={product.image}
       alt=""
     />
