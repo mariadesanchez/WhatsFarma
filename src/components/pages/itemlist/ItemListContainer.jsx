@@ -230,7 +230,7 @@ import UserAvatar from "../UserAvatar";
           <h3 style={{ fontSize: '18px',lineHeight: '1.2', fontWeight: 'bold' }}>
             $ {product.unit_price}
           </h3>
-          <h4 style={{ fontSize: '12px', lineHeight: '1.2', fontWeight: 'bold',color:green }}>
+          <h4 style={{ fontSize: '12px', lineHeight: '1.2', fontWeight: 'bold',color:'green' }}>
             Stock: {product.stock}
           </h4>
           <button
@@ -285,7 +285,7 @@ import UserAvatar from "../UserAvatar";
       <h3 style={{ fontSize: '18px',lineHeight: '1.2', fontWeight: 'bold' }}>
         $ {product.unit_price}
       </h3>
-      <h4 style={{ fontSize: '12px', lineHeight: '1.2', fontWeight: 'bold',color:green }}>
+      <h4 style={{ fontSize: '12px', lineHeight: '1.2', fontWeight: 'bold',color:'green' }}>
         Stock: {product.stock}
       </h4>
       <button
