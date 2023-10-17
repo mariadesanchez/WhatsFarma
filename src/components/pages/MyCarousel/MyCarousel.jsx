@@ -3,7 +3,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Asegúrate de importar el CSS de Bootstrap
 import Carousel from 'react-bootstrap/Carousel';
 import {  useState, useEffect } from "react";
-import { db } from "../../firebaseConfig";
+import { db } from "../../../firebaseConfig";
 import {getDocs, collection} from "firebase/firestore";
 import { Link } from "react-router-dom";
 import ButtonGroup from '@mui/material/ButtonGroup';
@@ -17,14 +17,11 @@ import whatsfarma2 from '../../../src/images/whatsfarma2.jpg';
 
 const MyCarousel = () => {
 
-  const carouselStyle = {
-    height: '300px',
-    // Ajusta la altura según tus necesidades
-  };
+ 
  
 
 const searchStyle = {
-  width: '60%',
+  width: '100%',
   marginTop: '50px',
 };
 
@@ -81,7 +78,7 @@ const [searchTerm, setSearchTerm] = useState('');
   return (
     <><Carousel>
       <Carousel.Item>
-        <img style={carouselStyle}
+        <img 
           className="d-block w-100"
           // src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
           src={whatsfarma2}
@@ -91,7 +88,7 @@ const [searchTerm, setSearchTerm] = useState('');
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img style={carouselStyle}
+        <img
           className="d-block w-100"
           // src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp"
           src={whatsfarma2}
@@ -101,7 +98,7 @@ const [searchTerm, setSearchTerm] = useState('');
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img style={carouselStyle}
+        <img 
           className="d-block w-100"
           // src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"
           src={whatsfarma2}
