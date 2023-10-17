@@ -179,13 +179,13 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
   };
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-// const openModal = () => {
-//   setModalIsOpen(true);
-// };
+const openModal = () => {
+  setModalIsOpen(true);
+};
 
-// const closeModal = () => {
-//   setModalIsOpen(false);
-// };
+const closeModal = () => {
+  setModalIsOpen(false);
+};
 const toggleModal = () => {
   setModalIsOpen(!modalIsOpen);
 };
