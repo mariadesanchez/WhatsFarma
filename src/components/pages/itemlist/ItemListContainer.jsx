@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable react/jsx-no-undef */
 /* eslint-disable no-undef */
 /* eslint-disable react-hooks/exhaustive-deps */
@@ -206,13 +207,15 @@ import UserAvatar from "../UserAvatar";
   </div>
 
   <div id="cards" className="lg:col-span-1" style={{ display: 'inline-block' }}>
+    
+    
     <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12">
-      {/* <UserAvatar name="JS" />  */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4" style={{ height:'800px' }}>
-      {/* <UserAvatar name="JS" />  */}
+
       { productosPorCategorias.length == 0 &&
   productosFavNoFav.map((product) => {
     return (
+      <Link to={`/itemDetail/${product.id}`}>
       <div id ='FavNoFav' key={product.id} className="relative overflow-hidden bg-gray-200 rounded shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
         <img
         className="w-full h-auto rounded-lg object-cover"
@@ -223,13 +226,13 @@ import UserAvatar from "../UserAvatar";
           <h5 className="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
             {product.title}
           </h5>
-          <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-            Precio: {product.unit_price}
-          </p>
-          <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+          <h3 className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+          $ {product.unit_price}
+          </h3>
+          <h4 className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
             Stock: {product.stock}
-          </p>
-          <Link to={`/itemDetail/${product.id}`}>Ver detalle</Link>
+          </h4>
+         
           <button
             type="button"
             id="toggleButton"
@@ -257,6 +260,7 @@ import UserAvatar from "../UserAvatar";
           </button>
         </div>
       </div>
+      </Link>
     );
   })
 }
@@ -266,6 +270,8 @@ import UserAvatar from "../UserAvatar";
         {(productState.categoriasSeleccionadas.length > 0) &&
           productosPorCategorias.map((product) => {
             return (
+              <Link to={`/itemDetail/${product.id}`}>
+
               <div key={product.id} className="relative overflow-hidden bg-gray-200 rounded shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
                 <img
                   className="w-full md:w-96 h-80 md:h-96 rounded-lg object-cover"
@@ -276,13 +282,12 @@ import UserAvatar from "../UserAvatar";
                   <h5 className="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
                     {product.title}
                   </h5>
-                  <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-                    Precio: {product.unit_price}
-                  </p>
-                  <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                  <h3 className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                  $ {product.unit_price}
+                  </h3>
+                  <h4 className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
                     Stock: {product.stock}
-                  </p>
-                  <Link to={`/itemDetail/${product.id}`}>Ver detalle</Link>
+                  </h4>
                   <button
             type="button"
             id="toggleButton"
@@ -310,6 +315,7 @@ import UserAvatar from "../UserAvatar";
                   </button>
                 </div>
               </div>
+              </Link>
             );
           })}
       </div>
