@@ -1,36 +1,38 @@
-{modalIsOpen && (
-  <div
-    className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 text-black"
-    onClick={toggleModal} // Cerrar el modal cuando se hace clic fuera de él
-  >
-    <div
-      className="lg:col-span-1 p-4 rounded-lg shadow-lg"
-      style={{ marginTop: '1rem', position: 'absolute', top: 0, left: '120px', zIndex: '100' }}
-    >
-      <h2 className="text-2xl">CATEGORIAS:</h2>
-      <IconButton onClick={handleDeleteAllCategories}>
-        <DeleteForeverIcon color="primary" />
-      </IconButton>
+import React from 'react';
 
-      {categorias.map((categoria) => (
-        <div key={categoria.id}>
-          <label className="text-2xl">
-            <input
-              style={{
-                width: '20px',
-                height: '20px',
-              }}
-              type="checkbox"
-              value={categoria.id}
-              checked={productState.categoriasSeleccionadas.some(c => c.id === categoria.id)}
-              onChange={() => handleCheckboxChange(categoria.id, categoria.title)}
-            />
-            {categoria.title}
-          </label>
+function ItemListContainer() {
+  return (
+    <>
+      {/* Tu código JSX existente del componente ItemListContainer */}
+      <div id='categoriasCards' className="flex flex-col md:flex-row" style={{ marginTop: '100px', position: 'relative' }}>
+        {/* ...otros elementos y lógica de tu componente... */}
+      </div>
+
+      {/* Sección de la cartera que proporcionaste */}
+      <section id="portfolio" className="portfolio">
+        <div className="container">
+          <div className="section-title">
+            <h2>Portfolio</h2>
+            <h3>Check our <span>Portfolio</span></h3>
+            <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p>
+          </div>
+          <div className="row">
+            <div className="col-lg-12 d-flex justify-content-center">
+              <ul id="portfolio-flters">
+                <li data-filter="*" className="filter-active">All</li>
+                <li data-filter=".filter-app">App</li>
+                <li data-filter=".filter-card">Card</li>
+                <li data-filter=".filter-web">Web</li>
+              </ul>
+            </div>
+          </div>
+          <div className="row portfolio-container">
+            {/* Aquí debes incluir tus elementos de cartera */}
+          </div>
         </div>
-      )}
-    </div>
-  </div>
-)}
+      </section>
+    </>
+  );
+}
 
-
+export default ItemListContainer;

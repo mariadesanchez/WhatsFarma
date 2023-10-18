@@ -145,6 +145,7 @@ const [searchTerm, setSearchTerm] = useState('');
               </div>
             ))}
           </div>
+ 
           <div>
     <ButtonGroup>
   <Button
@@ -194,4 +195,5 @@ const [searchTerm, setSearchTerm] = useState('');
 };
 
 export default MyCarousel;
+
 
