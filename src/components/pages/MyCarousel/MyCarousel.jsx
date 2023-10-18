@@ -19,7 +19,7 @@ const MyCarousel = () => {
  
 
 const searchStyle = {
-  width: '50%',
+  width: '80%',
   marginTop: '50px',
 };
 
