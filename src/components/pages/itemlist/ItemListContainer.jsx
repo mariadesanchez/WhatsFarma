@@ -262,13 +262,14 @@ import MyCategories from "../MyCategories/MyCategories";
               {(productState.categoriasSeleccionadas.length > 0) &&
                 productosPorCategorias.map((product) => {
                   return (
-                    <Link to={`/itemDetail/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                       <div id='FavNoFav' key={product.id} className="relative overflow-hidden bg-gray-200 rounded shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
                         <img
                           className="w-full h-200 rounded-lg object-cover"
                           src={product.image}
                           alt="" />
                         <div className="flex flex-col justify-center items-center p-6">
+                        <Link to={`/itemDetail/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+
                           <h5 style={{ fontSize: '14px', lineHeight: '1.3' }}>
                             {product.title}
                           </h5>
@@ -278,6 +279,7 @@ import MyCategories from "../MyCategories/MyCategories";
                           <h4 style={{ fontSize: '12px', lineHeight: '1.2', fontWeight: 'bold', color: 'green' }}>
                             Stock: {product.stock}
                           </h4>
+                          </Link>
                           <button
                             type="button"
                             id="toggleButton"
@@ -304,7 +306,7 @@ import MyCategories from "../MyCategories/MyCategories";
                           </button>
                         </div>
                       </div>
-                    </Link>
+                   
 
                   );
                 })}
