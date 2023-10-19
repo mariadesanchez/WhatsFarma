@@ -146,7 +146,8 @@ const [searchTerm, setSearchTerm] = useState('');
             ))}
           </div>
  
-          <div>
+          <div className="d-flex justify-content-center">
+
     <ButtonGroup>
   <Button
     variant="contained"

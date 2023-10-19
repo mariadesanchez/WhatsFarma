@@ -2,7 +2,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import StoreIcon from '@mui/icons-material/Store';
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import ShopIcon from '@mui/icons-material/Shop';
-import { FavoriteBorder } from '@mui/icons-material';
+import { FavoriteBorder, FindInPage } from '@mui/icons-material';
 export const menuItems = [
 
 
@@ -36,21 +36,34 @@ export const menuItems = [
         title: "Mis Favoritos",
         Icon: FavoriteBorder
     }
+
+
 ];
 export const menuItemsDetail = [
 
 
-    {
-        id: "products",
-        path: "/shop",
-        title: "Tienda",
-        Icon: StoreIcon
-    },
-    {
-        id: "cart",
-        path: "/cart",
-        title: "Carrito",
-        Icon: ShoppingCartCheckoutIcon
-    }
+        {
+            id: "products",
+            path: "/shop",
+            title: "Tienda",
+            Icon: StoreIcon
+        },
+        {
+            id: "cart",
+            path: "/cart",
+            title: "Carrito",
+            Icon: ShoppingCartCheckoutIcon
+        }
 
-]
+    ]
+    // export const menuItemsCategoria = [
+
+//         {
+// id: "favcategoriasoritos",
+// path: "/categorias",
+//         title: "Categorias",
+//         Icon: FindInPage,
+//     }
+
+
+// ]
