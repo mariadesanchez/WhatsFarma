@@ -13,12 +13,34 @@ import { usecontextGlobal } from '../../../context/GlobalContext'
 const MyCategories = () => {
   const {productState, productDispatch} = usecontextGlobal()
   const [currentPage, setCurrentPage] = useState(0);
-  const categoriasPerPage = 6;
+  // const categoriasPerPage = 6;
   const [maxCardHeight, setMaxCardHeight] = useState(0);
   const [productos, setProductos] = useState([]);
   const [categorias, setCategorias] = useState([]);
   const [productosPorCategorias,setProductosPorCategorias]=useState([])
-  
+  const [categoriasPerPage, setCategoriasPerPage] = useState(6); // Valor por defecto para pantallas grandes
+
+  useEffect(() => {
+    const updateCategoriasPerPage = () => {
+      // Actualiza categoriasPerPage según el tamaño de la pantalla
+      if (window.innerWidth >= 1200) {
+        setCategoriasPerPage(6); // Pantallas grandes
+      } else if (window.innerWidth >= 768) {
+        setCategoriasPerPage(4); // Pantallas medianas
+      } else {
+        setCategoriasPerPage(2); // Pantallas pequeñas
+      }
+    };
+    window.addEventListener('resize', updateCategoriasPerPage);
+
+    // Llama a la función para establecer el valor inicial
+    updateCategoriasPerPage();
+
+    return () => {
+      // Limpia el oyente del cambio de tamaño al desmontar el componente
+      window.removeEventListener('resize', updateCategoriasPerPage);
+    };
+  }, []);
  // traer todos los productos
  useEffect(() => {
   let refCollection = collection(db, "products");
@@ -101,7 +123,7 @@ useEffect(() => {
     <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12">
       <ButtonGroup>
         <div className="d-flex justify-content-center mt-4" >
-          <Button style={{ width: '100px', height: '100px', marginRight: '30px',borderRadius:'50px' }}
+          <Button style={{ width: '50px', height: '50px', marginRight: '30px',borderRadius:'50px' }}
             variant="contained"
             onClick={() => setCurrentPage(currentPage + 1)}
             disabled={indexOfLastCategoria >= categorias.length}
@@ -115,7 +137,7 @@ useEffect(() => {
        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4" >
         
         {currentCategorias.map((categoria) => (
-           <div key={categoria.id} className="mb-6 mr-6" style={{ width: '250px',marginLeft:'20px' }}>
+           <div key={categoria.id} className="mb-6 mr-6" style={{ width: '150px',marginLeft:'20px' }}>
            <div
              className="categoria-card"
              style={{ height: maxCardHeight + 'px' }}
@@ -133,7 +155,7 @@ useEffect(() => {
       src={categoria.image}
      
       alt=""
-      style={{ borderRadius: '80px',width:'150px',height:'150px' }}
+      style={{ borderRadius: '80px',width:'80px',height:'80px' }}
     />
 
           <input
@@ -161,7 +183,7 @@ useEffect(() => {
         </div>
         </div>
         <div className="d-flex justify-content-center mt-4" style={{ width: '200px', height: '200px' }}>
-        <Button style={{ width: '100px', height: '100px',borderRadius:'50px' }}
+        <Button style={{ width: '50px', height: '50px',borderRadius:'50px' }}
             variant="contained"
             onClick={() => setCurrentPage(currentPage - 1)}
             disabled={currentPage === 0}
