@@ -76,7 +76,7 @@ const [searchTerm, setSearchTerm] = useState('');
   return (
     <>
   
- 
+ {currentPage==0&&
     <div className="d-flex justify-content-center align-items-center">
         <div className="mb-3" style={searchStyle}>
           <div className="relative mb-4 flex w-full flex-wrap items-stretch"style={{ height: '60px',backgroundColor:'white'}}>
@@ -114,7 +114,7 @@ const [searchTerm, setSearchTerm] = useState('');
         </div>
       </div>
 
-
+ }
 
       <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12" >
      
