@@ -13,8 +13,7 @@ import { usecontextGlobal } from '../../../context/GlobalContext'
 const MyCategories = () => {
   const {productState, productDispatch} = usecontextGlobal()
   const [currentPage, setCurrentPage] = useState(0);
-  // const categoriasPerPage = 6;
-  const [maxCardHeight, setMaxCardHeight] = useState(0);
+  // const [maxCardHeight, setMaxCardHeight] = useState(0);
   const [productos, setProductos] = useState([]);
   const [categorias, setCategorias] = useState([]);
   const [productosPorCategorias,setProductosPorCategorias]=useState([])
@@ -102,25 +101,25 @@ useEffect(() => {
 
 
 
-  useEffect(() => {
-    // Calcula la altura máxima de las tarjetas
-    const cardElements = document.querySelectorAll('.categoria-card');
-    let maxHeight = 0;
+  // useEffect(() => {
+  //   // Calcula la altura máxima de las tarjetas
+  //   const cardElements = document.querySelectorAll('.categoria-card');
+  //   let maxHeight = 0;
 
-    cardElements.forEach((card) => {
-      const cardHeight = card.getBoundingClientRect().height;
-      maxHeight = Math.max(maxHeight, cardHeight);
-    });
+  //   cardElements.forEach((card) => {
+  //     const cardHeight = card.getBoundingClientRect().height;
+  //     maxHeight = Math.max(maxHeight, cardHeight);
+  //   });
 
-    setMaxCardHeight(maxHeight);
-  }, [categorias]);
+  //   setMaxCardHeight(maxHeight);
+  // }, [categorias]);
 
   const indexOfLastCategoria = (currentPage + 1) * categoriasPerPage;
   const indexOfFirstCategoria = indexOfLastCategoria - categoriasPerPage;
   const currentCategorias = categorias.slice(indexOfFirstCategoria, indexOfLastCategoria);
 
   return (
-    <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12">
+    <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12" style={{marginTop:'100px'}}>
       <ButtonGroup>
         <div className="d-flex justify-content-center mt-4" >
           <Button style={{ width: '50px', height: '50px', marginRight: '30px',borderRadius:'50px' }}
@@ -133,14 +132,15 @@ useEffect(() => {
         </div>
         {/* <div id='todas'  style={{ borderRadius: '100px',width:'150px',height:'100px',backgroundColor:'red' }}></div> */}
 
-        <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12" >
-       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4" >
+        <div  className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12" >
+       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4"  >
         
         {currentCategorias.map((categoria) => (
            <div key={categoria.id} className="mb-6 mr-6" style={{ width: '150px',marginLeft:'20px' }}>
            <div
-             className="categoria-card"
-             style={{ height: maxCardHeight + 'px' }}
+          
+            //  className="categoria-card"
+            //  style={{ height: maxCardHeight + 'px' }}
            >
               <div
         style={{
@@ -150,7 +150,8 @@ useEffect(() => {
           overflow: 'hidden',
           backgroundColor: '#f2f2f2', // Fondo de carga
         }}
-      >  </div> <img
+      >  </div>
+       <img
       className="w-full h-200 rounded-lg object-cover"
       src={categoria.image}
      
