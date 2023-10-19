@@ -41,6 +41,6 @@
     /* Ocupa 6 columnas a partir de la tercera */
     grid-row: span 6;
     /* Ocupa 6 filas */
-    background-color: #e74c3c;
+    /* background-color: #e74c3c; */
     /* Color de fondo para la columna derecha */
 }
