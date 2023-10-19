@@ -190,15 +190,26 @@ import MyCategories from "../MyCategories/MyCategories";
     ))}
   </div>
 </div> */}
-<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',marginTop:'50px' }}>
-  <div id="categorias">
-  <MyCategories/>
-
-   
+<div style={{
+  height:'200px',
+  zIndex:'100',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginTop: '150px',
+  position: 'fixed',
+  top: '0',
+  left: '0',
+  right: '0',
+  backgroundColor: '#dddddd' // Aquí puedes ajustar la opacidad (0.8)
+}}>  <div id="categorias">
+    <MyCategories/>
   </div>
 </div>
 
-      <div className="column-derecha"> 
+
+      <div className="column-derecha" style={{marginTop:'250px'}}> 
       <div id='categoriasCards' className="flex justify-center" style={{ marginTop: '100px', position: 'relative' }}>
       <div id="cards" className="lg:col-span-1" style={{ display: 'inline-block' }}>
           <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12">

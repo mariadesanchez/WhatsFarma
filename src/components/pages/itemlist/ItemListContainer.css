@@ -26,16 +26,6 @@
     margin-top: 100px;
 }
 
-.column-izquierda {
-    grid-column: 1 / span 2;
-    /* Ocupa 2 columnas a partir de la primera */
-    grid-row: span 6;
-    /* Ocupa 6 filas */
-    background-color: #3498db;
-    /* Color de fondo para la columna izquierda */
-    height: 600px;
-}
-
 .column-derecha {
     grid-column: 3 / span 6;
     /* Ocupa 6 columnas a partir de la tercera */
