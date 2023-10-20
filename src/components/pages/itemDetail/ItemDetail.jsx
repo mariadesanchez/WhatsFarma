@@ -57,26 +57,22 @@ const ItemDetail = () => {
   return (
   <div id = 'card'className="block rounded-lg h-100 x-20 bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
       <div className="d-flex justify-content-center">
-    <div id='carrito' className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+    <div id='carrito' style={{marginTop:'30px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
       <Link to={`/cart`}>
         <IconButton>
-          <ShoppingCartCheckoutIcon color="primary" style={{ width: '100px', height: '100px' }} />
+          <ShoppingCartCheckoutIcon color="primary" style={{ width: '50px', height: '50px' }} />
         </IconButton>
       </Link>
     </div>
-    <div id='tienda' className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+    <div id='tienda'style={{marginTop:'30px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
       <Link to={`/shop`}>
         <IconButton>
-          <ShopIcon color="primary" style={{ width: '100px', height: '100px' }} />
+          <ShopIcon color="primary" style={{ width: '50px', height: '50px' }} />
         </IconButton>
       </Link>
     </div>
   </div>
-  <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-    {product && (
-      <h1 className="text-5xl font-medium text-red-500 text-center">Total: ${product.unit_price * counter}</h1>
-    )}
-  </h5>
+ 
   <div>
   {product && (
   <img
@@ -86,9 +82,14 @@ const ItemDetail = () => {
               />
               )}
   </div>
-  <div id='titulo' className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50 text-center">
+  <div id='titulo' className="mb-2  font-medium leading-tight text-neutral-800 dark:text-neutral-50 text-center">
     {product && (
-      <h2 className="text-5xl font-medium">{product.title}</h2>
+      <h5 className=" font-medium">{product.title}</h5>
+    )}
+     {product && (
+       
+       
+      <h3 className=" font-medium"> ${product.unit_price * counter}</h3>
     )}
   </div>
   <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200 text-center">
@@ -101,7 +102,7 @@ const ItemDetail = () => {
         -
       </Button>
     </div>
-    <h2>{counter}</h2>
+    <h4>{counter}</h4>
     <div id='sumar'>
       <Button variant="contained" onClick={addOne}>
         +
@@ -110,7 +111,8 @@ const ItemDetail = () => {
 </div>
 <div id='agregar' className="flex items-center justify-center">
 
-    <Button onClick={onAdd} variant="contained" color="success" style={{ width: "380px",marginTop:'50px' }}>
+    <Button onClick={onAdd} className="absolute top-2 right-2 rounded bg-primary w-auto h-auto p-1 text-base font-medium uppercase leading-normal text-white shadow-md hover:shadow-2xl transition duration-300 focus:bg-primary-600 focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary dark:shadow-md dark:hover:shadow-2xl dark:focus:shadow-2xl dark:ring-primary"
+color="success" style={{ width: "380px",marginTop:'50px' }}>
       Agregar al carrito
     </Button>
   </div>

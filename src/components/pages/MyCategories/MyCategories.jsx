@@ -133,14 +133,13 @@ useEffect(() => {
         {/* <div id='todas'  style={{ borderRadius: '100px',width:'150px',height:'100px',backgroundColor:'red' }}></div> */}
 
         <div  className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12" >
+      
        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4"  >
-        
+
         {currentCategorias.map((categoria) => (
            <div key={categoria.id} className="mb-6 mr-6" style={{ width: '150px',marginLeft:'20px' }}>
            <div
-          
-            //  className="categoria-card"
-            //  style={{ height: maxCardHeight + 'px' }}
+         
            >
               <div
         style={{
@@ -172,11 +171,9 @@ useEffect(() => {
          
 
               
-{/* <div className="flex flex-col justify-center items-center p-6"> */}
         <h5 style={{ fontSize: '14px', lineHeight: '1.3' }}>
           {categoria.title}
         </h5>
-      {/* </div> */}
             </div>
           </div>
           
