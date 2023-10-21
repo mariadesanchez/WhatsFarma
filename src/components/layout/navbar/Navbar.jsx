@@ -114,7 +114,7 @@ function Navbar(props) {
         >
           <Link to="/" style={{ color: "whitesmoke" }}>
             <div>
-              <img src={logo} alt="Logo" style={{ width: "50px", height: "50px" }} />
+              <img src={logo} alt="Logo" />
             </div>
           </Link>
           <IconButton
