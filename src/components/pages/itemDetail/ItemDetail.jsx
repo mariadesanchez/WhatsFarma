@@ -74,13 +74,13 @@ const ItemDetail = () => {
         </IconButton>
       </Link>
     </div> */}
-     <div style={{marginTop:'30px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+     <div style={{marginTop:'30px',width:'30px',height:'30px',marginRight:'20px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
      <ShareOnFacebook url={`https://whats-farma.vercel.app/itemDetail/${id}`} />
     </div>
-    <div style={{marginTop:'30px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+    <div style={{marginTop:'30px',width:'30px',height:'30px',marginRight:'20px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
      <ShareOnInstagram url={`https://whats-farma.vercel.app/itemDetail/${id}`} />
     </div>
-    <div style={{marginTop:'30px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+    <div style={{marginTop:'30px',width:'30px',height:'30px',marginRight:'20px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
      <ShareOnWhatsapp url={`https://whats-farma.vercel.app/itemDetail/${id}`} />
     </div>
     
@@ -88,21 +88,22 @@ const ItemDetail = () => {
  
   <div>
   {product && (
-  <img
-  className="w-1/6 h-1/6 md:h-1/4 md:w-1/4 mx-auto rounded-full object-cover md:!rounded-none md:!rounded-l-lg"
-  src={product.image}
-                alt=""
-              />
-              )}
-  </div>
+    <img
+      className="w-1/12 h-1/12 md:h-1/8 md:w-1/8 mx-auto rounded-full object-cover md:!rounded-none md:!rounded-l-lg"
+      src={product.image}
+      alt=""
+    />
+  )}
+</div>
+
   <div id='titulo' className="mb-2  font-medium leading-tight text-neutral-800 dark:text-neutral-50 text-center">
     {product && (
-      <h5 className=" font-medium">{product.title}</h5>
+      <h7 className=" font-medium">{product.title}</h7>
     )}
      {product && (
        
        
-      <h3 className=" font-medium"> ${product.unit_price * counter}</h3>
+      <h5 className=" font-medium"> ${product.unit_price * counter}</h5>
     )}
   </div>
   <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200 text-center">
@@ -111,13 +112,13 @@ const ItemDetail = () => {
   </p>
   <div id='sumarRestar' className="flex items-center justify-center">
     <div id='restar'>
-      <Button variant="contained" onClick={subOne}>
+      <Button variant="contained" onClick={subOne} style={{width:'12px',height:'30px'}}>
         -
       </Button>
     </div>
     <h4>{counter}</h4>
     <div id='sumar'>
-      <Button variant="contained" onClick={addOne}>
+      <Button variant="contained" onClick={addOne} style={{width:'12px',height:'30px'}}>
         +
       </Button>
     </div>

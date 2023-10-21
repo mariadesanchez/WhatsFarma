@@ -97,32 +97,31 @@ function Navbar(props) {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar
-        position="fixed"
-        sx={{
-          width: "100%",
-          height:'100px'
-        }}
-      >
-        
-        <Toolbar
-          sx={{
-            gap: "20px",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-start", // Alinea el contenido en la parte superior
-          }}
-        >
+    position="fixed"
+    sx={{
+      width: "100%",
+      height: '100px',
+    }}
+  >
+    <Toolbar
+      sx={{
+        gap: "20px",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center", // Centrar verticalmente el contenido
+      }}
+    >
             <Link to="/" style={{ color: "whitesmoke" }}>
-        <div>
-          <img
-            src={logo}
-            alt="Logo"
-            style={{
-              maxHeight: "100%",
-              objectFit: "contain",
-            }}
-          />
-        </div>
+            <div>
+            <img
+              src={logo}
+              alt="Logo"
+              style={{
+                maxHeight: '80px', // Ajustar la altura según tu necesidad
+                maxWidth: 'auto', // Mantener la proporción de aspecto
+              }}
+            />
+          </div>
       </Link>
           <IconButton
             color="secondary.primary"
