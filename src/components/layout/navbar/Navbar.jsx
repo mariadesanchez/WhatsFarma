@@ -95,75 +95,61 @@ function Navbar(props) {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
+    <CssBaseline />
+    <AppBar
+      position="fixed"
+      sx={{
+        width: "100%",
+        height: '100px',
+      }}
+    >
+      <Toolbar
         sx={{
-          width: "100%",
-          height:'100px'
+          gap: "20px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center", // Centrar verticalmente el contenido
         }}
       >
-        
-        <Toolbar
-          sx={{
-            gap: "20px",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-start", // Alinea el contenido en la parte superior
-          }}
+        <Link to="/" style={{ color: "whitesmoke" }}>
+          <div>
+            <img
+              src={logo}
+              alt="Logo"
+              style={{
+                maxHeight: "100%",
+                objectFit: "contain",
+              }}
+            />
+          </div>
+        </Link>
+        <IconButton
+          color="secondary.primary"
+          aria-label="open drawer"
+          edge="start"
+          onClick={handleDrawerToggle}
         >
-          <Link to="/" style={{ color: "whitesmoke" }}>
-            <div>
-              <img src={logo} alt="Logo" />
-            </div>
-          </Link>
-          <IconButton
-            color="secondary.primary"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-          >
-            <MenuIcon color="secondary.primary" />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-      <Box component="nav" aria-label="mailbox folders">
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          anchor={"right"}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true,
-          }}
-          sx={{
-            display: { xs: "block" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-              backgroundColor: "#1976d2",
-            },
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </Box>
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          py: 4,
-          width: "100%",
-          minHeight: "100vh",
-          px: 2,
-        }}
-      >
-        <Toolbar />
-
-        <Outlet />
-      </Box>
+          <MenuIcon color="secondary.primary" />
+        </IconButton>
+      </Toolbar>
+    </AppBar>
+    <Box component="nav" aria-label="mailbox folders">
+      {/* Resto de tu código */}
     </Box>
+    <Box
+      component="main"
+      sx={{
+        flexGrow: 1,
+        py: 4,
+        width: "100%",
+        minHeight: "100vh",
+        px: 2,
+      }}
+    >
+      {/* Resto de tu código */}
+    </Box>
+  </Box>
+  
   );
 }
 
