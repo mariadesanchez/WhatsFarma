@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -19,6 +20,7 @@ import { menuItems } from "../../../router/navigation";
 import { logout } from "../../../firebaseConfig";
 import { AuthContext } from "../../../context/AuthContext";
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import logo from '../../../../src/images/logo.png';
 const drawerWidth = 200;
 
 function Navbar(props) {
@@ -101,14 +103,19 @@ function Navbar(props) {
           height:'100px'
         }}
       >
+        
         <Toolbar
-          sx={{ gap: "20px", display: "flex", justifyContent: "space-between" }}
+          sx={{
+            gap: "20px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-start", // Alinea el contenido en la parte superior
+          }}
         >
           <Link to="/" style={{ color: "whitesmoke" }}>
-      
-         <div>
-    
-    </div>
+            <div>
+              <img src={logo} alt="Logo" style={{ width: "50px", height: "50px" }} />
+            </div>
           </Link>
           <IconButton
             color="secondary.primary"

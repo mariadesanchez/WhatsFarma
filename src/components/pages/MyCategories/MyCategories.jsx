@@ -70,6 +70,9 @@ const MyCategories = () => {
 }, [categorias]);
 
 const handleCheckboxChange = (categoriaId, categoriaTitle) => {
+  if(categoriaTitle=='Todas'){
+    productDispatch({ type: 'CATEGORIAS_SELECCIONADAS', payload: [] });
+  }
   if (productState.categoriasSeleccionadas.some(categoria => categoria.id === categoriaId)) {
     // Si ya existe, elimina el elemento de categoriasSeleccionadas
     const nuevasCategoriasSeleccionadas = productState.categoriasSeleccionadas.filter(categoria => categoria.id !== categoriaId);
