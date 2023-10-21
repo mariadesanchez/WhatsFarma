@@ -112,11 +112,18 @@ function Navbar(props) {
             alignItems: "flex-start", // Alinea el contenido en la parte superior
           }}
         >
-          <Link to="/" style={{ color: "whitesmoke" }}>
-            <div>
-              <img src={logo} alt="Logo"  />
-            </div>
-          </Link>
+            <Link to="/" style={{ color: "whitesmoke" }}>
+        <div>
+          <img
+            src={logo}
+            alt="Logo"
+            style={{
+              maxHeight: "100%",
+              objectFit: "contain",
+            }}
+          />
+        </div>
+      </Link>
           <IconButton
             color="secondary.primary"
             aria-label="open drawer"
