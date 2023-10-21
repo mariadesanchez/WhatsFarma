@@ -137,7 +137,7 @@ useEffect(() => {
        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4"  >
 
         {currentCategorias.map((categoria) => (
-           <div key={categoria.id} className="mb-6 mr-6" style={{ width: '150px',marginLeft:'20px' }}>
+           <div key={categoria.id} className="mb-6 mr-6">
            <div
          
            >
@@ -155,7 +155,7 @@ useEffect(() => {
       src={categoria.image}
      
       alt=""
-      style={{ borderRadius: '80px',width:'80px',height:'80px' }}
+      style={{ borderRadius: '50px',width:'40px',height:'40px' }}
     />
 
           <input

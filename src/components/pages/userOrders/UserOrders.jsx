@@ -4,14 +4,9 @@ import { useState } from "react"
 import { db } from "../../../firebaseConfig"
 import {getDocs, collection, query, where} from "firebase/firestore"
 import { AuthContext } from "../../../context/AuthContext"
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import { usecontextGlobal } from '../../../context/GlobalContext'
+import { Button } from "@mui/material";
+
 
 
 const UserOrders = () => {
@@ -37,64 +32,46 @@ const UserOrders = () => {
 
 console.log(myOrders)
   return (
-    <div>
-       
-        <TableContainer component={Paper}>
-        { myOrders.map( order => {
-            return <div key={order.id}>
-              {
-                order?.items?.map( product => {
-            
-                  return <div key={product.id} >
-        <Table sx={{ minWidth: '650',maxWidth:'100%' }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-        
-              <TableCell align="left">Producto</TableCell>
-              <TableCell align="left">Cantidad</TableCell>
-              <TableCell align="left">Precio</TableCell>
-              <TableCell align="left">Costo de Envio</TableCell>
-              <TableCell align="left">Total</TableCell>
-              <TableCell align="left">Fecha</TableCell>
-              <TableCell align="left">imagen</TableCell>
-             
-            
-            </TableRow>
-          </TableHead>
-          
-         
-          <TableBody>
-         
-
-          <TableRow>
-        
-        <TableCell align="left">{product.title}</TableCell>
-        <TableCell align="left">{product.quantity}</TableCell>
-        <TableCell align="left">{product.unit_price}</TableCell>
-        <TableCell align="left">{order.subTotal}</TableCell>
-        <TableCell align="left">{order.total}</TableCell>
-        <TableCell align="left">{order.email}</TableCell>
-        <TableCell align="left"><img
-                    src={product.image}
-                    alt=""
-                    style={{ width: "120px", height: "120px" }}
-                  /></TableCell>
-     
-      
-      </TableRow>
-     
-      </TableBody>
-        
-        </Table>
+<div id='card' style={{ marginTop: '20px' }} className="block rounded-lg w-100 md:w-1/2 lg:w-1/3 mx-auto mx-4 bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+    {myOrders.map((order) => {
+      return (
+        <div key={order.id}>
+          {order?.items?.map((product) => {
+            return (
+              <div key={product.id} className="flex md:flex-row">
+            <div id='imagen' className="w-1/3 md:w-full text-center flex justify-center items-center">
+          <img
+           style={{ width: '20%', height: 'auto' }}
+           className="rounded-lg object-cover"
+           src={product.image}
+           alt=""
+          />
         </div>
-                })
-              }
-          
-            </div>
-          })
-        }
-      </TableContainer>
-    </div>
+
+           <div id='descripcion' className="w-1/3 md:w-full mb-2 font-medium leading-tight text-neutral-800 dark:text-neutral-50 text-center flex flex-col justify-center">
+                <h5 className="font-medium">{product.title}</h5>
+               <h3 className="font-medium">${product.unit_price}</h3>
+               <h5 className="font-medium">{product.quantity} unidad</h5>
+          </div>
+
+          <div id='puntuacion' className="w-1/3 md:w-full mb-2 font-medium leading-tight text-neutral-800 dark:text-neutral-50 text-center flex justify-center items-center">
+           <Button
+            className="rounded bg-primary w-auto h-auto p-1 text-base font-medium uppercase leading-normal text-white shadow-md hover:shadow-2xl transition duration-300 focus:bg-primary-600 focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary dark:shadow-md dark:hover:shadow-2xl dark:focus:shadow-2xl dark:ring-primary"
+            color="success"
+            style={{ width: '80%' }}
+           >
+          Puntuación
+          </Button>
+          </div>
+
+        </div>
+            );
+          })}
+        </div>
+      );
+    })}
+  </div>
+  
   )
 }
 

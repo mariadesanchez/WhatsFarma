@@ -8,6 +8,9 @@ import { Button, IconButton } from "@mui/material";
 import { CartContext } from "../../../context/CartContext";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import ShopIcon from '@mui/icons-material/Shop';
+import ShareOnFacebook from "../../pages/ShareOnFacebook";
+import ShareOnInstagram from "../../pages/ShareOnInstagram";
+import ShareOnWhatsapp from "../../pages/ShareOnWhatsapp";
 
 
 const ItemDetail = () => {
@@ -57,20 +60,30 @@ const ItemDetail = () => {
   return (
   <div id = 'card'className="block rounded-lg h-100 x-20 bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
       <div className="d-flex justify-content-center">
-    <div id='carrito' style={{marginTop:'30px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+    {/* <div id='carrito' style={{marginTop:'30px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
       <Link to={`/cart`}>
         <IconButton>
           <ShoppingCartCheckoutIcon color="primary" style={{ width: '50px', height: '50px' }} />
         </IconButton>
       </Link>
     </div>
-    <div id='tienda'style={{marginTop:'30px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+    <div style={{marginTop:'30px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
       <Link to={`/shop`}>
         <IconButton>
           <ShopIcon color="primary" style={{ width: '50px', height: '50px' }} />
         </IconButton>
       </Link>
+    </div> */}
+     <div style={{marginTop:'30px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+     <ShareOnFacebook url={`https://whats-farma.vercel.app/itemDetail/${id}`} />
     </div>
+    <div style={{marginTop:'30px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+     <ShareOnInstagram url={`https://whats-farma.vercel.app/itemDetail/${id}`} />
+    </div>
+    <div style={{marginTop:'30px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+     <ShareOnWhatsapp url={`https://whats-farma.vercel.app/itemDetail/${id}`} />
+    </div>
+    
   </div>
  
   <div>
