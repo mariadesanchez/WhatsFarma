@@ -111,7 +111,7 @@ const customButtonStyle = {
         color="primary"
         fullWidth
         onClick={handleFinalizarCompra}
-        style={{ height: '60px', width: '200px', marginTop: '10px', marginBottom:'10px' }}
+        style={{ height: '40px', width: '180px', marginTop: '10px', marginBottom:'10px' }}
       >
         Finalizar compra
       </Button>
@@ -119,7 +119,7 @@ const customButtonStyle = {
     <Grid item xs={12} md={6} lg={4}>
     <Button
           variant="contained"
-          style={{ backgroundColor: 'red', color: 'white', height: '60px', width: '200px', marginTop: '10px',marginBottom:'10px' }}
+          style={{ backgroundColor: 'red', color: 'white', height: '40px', width: '180px', marginTop: '10px',marginBottom:'10px' }}
           fullWidth
           onClick={handleOpenDialog}
         >
