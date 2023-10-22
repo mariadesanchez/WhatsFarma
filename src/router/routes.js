@@ -7,6 +7,7 @@ import ItemListContainer from "../components/pages/itemlist/ItemListContainer";
 import UserOrders from "../components/pages/userOrders/UserOrders";
 import Favs from "../components/pages/Favs/Favs";
 import Categoria from "../components/pages/categoria/Categoria";
+import CheckoutLink from "../components/pages/checkout/CheckoutLink";
 
 
 export const routes = [{
@@ -48,6 +49,11 @@ export const routes = [{
         id: "categoria",
         path: "/categoria",
         Element: Categoria,
+    },
+    {
+        id: "link ",
+        path: "/link",
+        Element: CheckoutLink,
     }
 
 ];

@@ -8,9 +8,9 @@ import { Button, IconButton } from "@mui/material";
 import { CartContext } from "../../../context/CartContext";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import ShopIcon from '@mui/icons-material/Shop';
-import ShareOnFacebook from "../../pages/ShareOnFacebook";
-import ShareOnInstagram from "../../pages/ShareOnInstagram";
-import ShareOnWhatsapp from "../../pages/ShareOnWhatsapp";
+import ShareOnFacebook from "../ShareOnFacebook";
+import ShareOnInstagram from "../ShareOnInstagram";
+import ShareOnWhatsapp from "../ShareOnWhatsapp";
 
 
 const ItemDetail = () => {
@@ -74,13 +74,13 @@ const ItemDetail = () => {
         </IconButton>
       </Link>
     </div> */}
-     <div style={{marginTop:'30px',width:'30px',height:'30px',marginRight:'20px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+     <div style={{marginTop:'30px',width:'10px',height:'10px',marginRight:'40px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
      <ShareOnFacebook url={`https://whats-farma.vercel.app/itemDetail/${id}`} />
     </div>
-    <div style={{marginTop:'30px',width:'30px',height:'30px',marginRight:'20px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+    <div style={{marginTop:'30px',width:'10px',height:'10px',marginRight:'40px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
      <ShareOnInstagram url={`https://whats-farma.vercel.app/itemDetail/${id}`} />
     </div>
-    <div style={{marginTop:'30px',width:'30px',height:'30px',marginRight:'20px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+    <div style={{marginTop:'30px',width:'10px',height:'10px',marginRight:'40px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
      <ShareOnWhatsapp url={`https://whats-farma.vercel.app/itemDetail/${id}`} />
     </div>
     
@@ -88,7 +88,7 @@ const ItemDetail = () => {
  
   <div>
   {product && (
-    <img
+    <img style={{marginTop:'40px'}}
       className="w-1/12 h-1/12 md:h-1/8 md:w-1/8 mx-auto rounded-full object-cover md:!rounded-none md:!rounded-l-lg"
       src={product.image}
       alt=""
@@ -112,20 +112,20 @@ const ItemDetail = () => {
   </p>
   <div id='sumarRestar' className="flex items-center justify-center">
     <div id='restar'>
-      <Button variant="contained" onClick={subOne} style={{width:'12px',height:'30px'}}>
+      <Button variant="contained" onClick={subOne} style={{width:'8px',height:'15px'}}>
         -
       </Button>
     </div>
-    <h4>{counter}</h4>
+    <h7>{counter}</h7>
     <div id='sumar'>
-      <Button variant="contained" onClick={addOne} style={{width:'12px',height:'30px'}}>
+      <Button variant="contained" onClick={addOne} style={{width:'8px',height:'15px'}}>
         +
       </Button>
     </div>
 </div>
 <div id='agregar' className="flex items-center justify-center">
 
-    <Button onClick={onAdd} className="absolute top-2 right-2 rounded bg-primary w-auto h-auto p-1 text-base font-medium uppercase leading-normal text-white shadow-md hover:shadow-2xl transition duration-300 focus:bg-primary-600 focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary dark:shadow-md dark:hover:shadow-2xl dark:focus:shadow-2xl dark:ring-primary"
+    <Button onClick={onAdd} className="absolute rounded bg-primary w-auto h-auto p-1 text-base font-medium uppercase leading-normal text-white shadow-md hover:shadow-2xl transition duration-300 focus:bg-primary-600 focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary dark:shadow-md dark:hover:shadow-2xl dark:focus:shadow-2xl dark:ring-primary"
 color="success" style={{ width: "380px",marginTop:'50px' }}>
       Agregar al carrito
     </Button>

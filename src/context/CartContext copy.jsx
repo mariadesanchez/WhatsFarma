@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-undef */
 import { createContext, useState } from "react";
 
 export const CartContext = createContext();
@@ -24,10 +23,6 @@ const CartContextComponent = ({ children }) => {
         setCart([...cart, product ])
     }
   }
-  // const generateLink = ()=>{
-
-  // <Checkout/>
-  // }
 
   const getQuantityById = (id)=>{
     let product = cart.find( elemento => elemento.id === id)
