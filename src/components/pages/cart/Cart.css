@@ -1,0 +1,18 @@
+/* Estilos para pantallas medianas y grandes */
+
+@media (min-width: 768px) {
+    Button {
+        width: 12%;
+        /* Ancho del 12% para pantallas grandes y medianas */
+    }
+}
+
+
+/* Estilos para pantallas pequeñas */
+
+@media (max-width: 767px) {
+    Button {
+        width: 50%;
+        /* Ancho del 50% para pantallas pequeñas */
+    }
+}

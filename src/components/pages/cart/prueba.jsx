@@ -13,7 +13,6 @@ const Cart = () => {
   const [isConfirmationOpen, setConfirmationOpen] = useState(false);
 
   const navigate = useNavigate();
-  // eslint-disable-next-line no-unused-vars
   let total = getTotalPrice()
   const handleFinalizarCompra = () => {
     // Agrega aquí la lógica necesaria antes de redirigir
@@ -115,4 +114,4 @@ const closeConfirmation = () => {
 
 };
 
-export default Cart;
+export default Cart;  

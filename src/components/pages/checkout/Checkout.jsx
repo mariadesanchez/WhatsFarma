@@ -17,6 +17,7 @@ import {
 const Checkout = () => {
   const { cart, getTotalPrice, clearCart } = useContext(CartContext);
   const { user } = useContext(AuthContext);
+  
   initMercadoPago(import.meta.env.VITE_PUBLICKEY, {
     locale: "es-AR",
   });
@@ -77,8 +78,8 @@ const Checkout = () => {
     });
     try {
       let response = await axios.post(
-        // "http://localhost:8080/create_preference",
-        "https://whatsfarma-c2ydmkdwx-mariadesanchez.vercel.app/create_preference",
+        "http://localhost:8080/create_preference",
+        // "https://whatsfarma-c2ydmkdwx-mariadesanchez.vercel.app/create_preference",
         
     
         
