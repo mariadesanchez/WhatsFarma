@@ -21,16 +21,32 @@ import { logout } from "../../../firebaseConfig";
 import { AuthContext } from "../../../context/AuthContext";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import logo from '../../../../src/images/logo.png';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { CartContext } from "../../../context/CartContext";
+
 const drawerWidth = 200;
 
 function Navbar(props) {
-
+  const { cart } = useContext(CartContext);
   const { logoutContext, user } = useContext(AuthContext);
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
   const navigate = useNavigate();
   const rolAdmin = import.meta.env.VITE_ROL_ADMIN
+  const countStyles = {
+    background: 'red', // Fondo rojo
+    color: 'white', // Texto blanco
+    width: '25px', // Ancho
+    height: '25px', // Altura
+    borderRadius: '50%', // Forma de círculo
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  };
 
+  const cartIconStyles = {
+    fontSize: '30px', // Tamaño del icono, puedes ajustar el valor según tu preferencia
+  };
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -89,51 +105,69 @@ function Navbar(props) {
       </List>
     </div>
   );
-
+ 
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar
-    position="fixed"
-    sx={{
-      width: "100%",
-      height: '100px',
-    }}
-  >
-    <Toolbar
-      sx={{
-        gap: "20px",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center", // Centrar verticalmente el contenido
-      }}
-    >
-            <Link to="/" style={{ color: "whitesmoke" }}>
-            <div>
-            <img
-              src={logo}
-              alt="Logo"
-              style={{
-                maxHeight: '80px', // Ajustar la altura según tu necesidad
-                maxWidth: 'auto', // Mantener la proporción de aspecto
-              }}
-            />
-          </div>
-      </Link>
-          <IconButton
-            color="secondary.primary"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
+    <CssBaseline />
+    <AppBar
+          position="fixed"
+          sx={{
+            width: "100%",
+            height: '100px',
+          }}
+        >
+          <Toolbar
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
           >
-            <MenuIcon color="secondary.primary" />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-      <Box component="nav" aria-label="mailbox folders">
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <Link to="/" style={{ color: "whitesmoke" }}>
+                <div>
+                  <img
+                    src={logo}
+                    alt="Logo"
+                    style={{
+                      maxHeight: '80px',
+                      maxWidth: 'auto',
+                    }}
+                  />
+                </div>
+              </Link>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
+              <IconButton
+                color="secondary.primary"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+              >
+                <MenuIcon color="secondary.primary" />
+              </IconButton>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+
+              <div id='count' style={countStyles}>
+              {cart.length}
+              </div>
+              <div id='cart'>
+              <IconButton
+                color="secondary.primary"
+                aria-label="carrito"
+              >
+                <ShoppingCartIcon  style={cartIconStyles}/>
+              </IconButton>
+              </div>
+              </div>
+
+            </div>
+          </Toolbar>
+        </AppBar>
+    <Box component="nav" aria-label="mailbox folders">
         <Drawer
           container={container}
           variant="temporary"
@@ -168,8 +202,8 @@ function Navbar(props) {
         <Toolbar />
 
         <Outlet />
-      </Box>
-    </Box>
+  </Box>
+  </Box>
   );
 }
 

@@ -16,6 +16,7 @@ import { usecontextGlobal } from '../../../context/GlobalContext'
 // import {  IconButton } from "@mui/material";
 // import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import './ItemListContainer.css'
+import ItemDetail from "../itemDetail/ItemDetail";
 
 import MyCategories from "../MyCategories/MyCategories";
 
@@ -286,6 +287,7 @@ import MyCategories from "../MyCategories/MyCategories";
                       src={product.image}
                       alt=""
                     />
+                    <itemDetailLink/>
                     <div className="flex flex-col justify-center items-center p-6">
                       <Link to={`/itemDetail/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                         <h5 style={{ fontSize: '14px', lineHeight: '1.3' }}>

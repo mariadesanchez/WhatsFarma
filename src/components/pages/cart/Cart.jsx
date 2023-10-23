@@ -55,6 +55,7 @@ const customButtonStyle = {
 };
   return (
     <><div id='card' style={{ marginTop: '20px',paddingTop:'20px' }} className="block rounded-lg w-100 md:w-1/2 lg:w-1/3 mx-auto mx-4 bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+   
       {cart.map((product) => (
         <><div key={product.id} className="flex md:flex-row">
           <div id='imagen' className="w-1/3 md:w-full text-center flex justify-center items-center">
@@ -66,11 +67,12 @@ const customButtonStyle = {
           </div>
 
           <div id='descripcion' className="w-1/3 md:w-full mb-2 font-medium leading-tight text-neutral-800 dark:text-neutral-50 text-center flex flex-col justify-center">
+       
             <h7 className="font-medium">{product.title}</h7>
             <h7 className="font-medium">${product.unit_price}</h7>
             <h7 className="font-medium">{product.quantity} unidad</h7>
             <h7 className="font-medium" style={{ color: 'green' }}>${product.unit_price * product.quantity}</h7>
-
+            
           </div>
 
           <div id='puntuacion' className="w-1/3 md:w-full mb-2 font-medium leading-tight text-neutral-800 dark:text-neutral-50 text-center flex justify-center items-center">
@@ -106,24 +108,29 @@ const customButtonStyle = {
 }}>
   <Grid container spacing={2} justifyContent="center">
     <Grid item xs={12} md={6} lg={4}>
-      <Button
-        variant="contained"
-        color="primary"
-        fullWidth
-        onClick={handleFinalizarCompra}
-        style={{ height: '40px', width: '180px', marginTop: '10px', marginBottom:'10px',marginRight:'20px' }}
-      >
-        Finalizar compra
-      </Button>
-  
-    <Button
-          variant="contained"
-          style={{ backgroundColor: 'red', color: 'white', height: '40px', width: '180px', marginTop: '10px',marginBottom:'10px' }}
-          fullWidth
-          onClick={handleOpenDialog}
-        >
-          Limpiar carrito
-        </Button>
+
+      {cart.length >0 ?
+      <><Button
+                variant="contained"
+                color="primary"
+                fullWidth
+                onClick={handleFinalizarCompra}
+                style={{ height: '40px', width: '180px', marginTop: '10px', marginBottom: '10px', marginRight: '20px' }}
+              >
+                Finalizar compra
+              </Button><Button
+                variant="contained"
+                style={{ backgroundColor: 'red', color: 'white', height: '40px', width: '180px', marginTop: '10px', marginBottom: '10px' }}
+                fullWidth
+                onClick={handleOpenDialog}
+              >
+                  Limpiar carrito
+                </Button></>:
+                <p style={{ color: 'black', fontWeight: 'bold', fontSize: '18px' }}>
+                No Tienes Productos En El Carrito
+              </p>
+              
+                }
 
       {/* Cuadro de diálogo de confirmación */}
       <Dialog open={dialogOpen} onClose={handleCloseDialog}>
