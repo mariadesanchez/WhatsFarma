@@ -166,34 +166,7 @@ import MyCategories from "../MyCategories/MyCategories";
   };
   return (
     <><><div>
-    
-{/* Muestra las Categorias en la parte superior */}
-{/* <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-  <div id="categorias">
-    <h2 className="text-2xl">CATEGORIAS:</h2>
-    <IconButton onClick={handleDeleteAllCategories}>
-      <DeleteForeverIcon color="primary" />Todas
-    </IconButton>
 
-    {categorias.map((categoria) => (
-      <div key={categoria.id}>
-        <label className="text-2xl">
-          <input
-            style={{
-              width: '20px',
-              height: '20px',
-            }}
-            type="checkbox"
-            value={categoria.id}
-            checked={productState.categoriasSeleccionadas.some(c => c.id === categoria.id)}
-            onChange={() => handleCheckboxChange(categoria.id, categoria.title)}
-          />
-          {categoria.title}
-        </label>
-      </div>
-    ))}
-  </div>
-</div> */}
 <div style={{
   height:'100px',
   zIndex:'100',

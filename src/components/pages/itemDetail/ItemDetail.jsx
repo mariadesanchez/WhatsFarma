@@ -83,12 +83,22 @@ const ItemDetail = () => {
       </div>
 
       {product && (
-        <img style={{marginTop:'40px'}}
-          className="w-1/12 h-1/12 md:h-1/8 md:w-1/8 mx-auto rounded-full object-cover md:!rounded-none md:!rounded-l-lg"
-          src={product.image}
-          alt=""
-        />
+       <img
+       style={{
+         
+         marginTop: '40px',
+         width: '50%', // Asegura que la imagen ocupe el 100% del ancho disponible
+         height: 'auto', // Ajusta automáticamente la altura en función del ancho
+         maxWidth: '250px', // Establece un ancho máximo para la imagen (ajusta según tus necesidades)
+       }}
+       className="w-1/12 h-1/12 md:h-1/8 md:w-1/8 mx-auto rounded-full object-cover md:!rounded-none md:!rounded-l-lg"
+       src={product.image}
+       alt=""
+     />
       )}
+
+
+
 
       <div className="mb-2 font-medium leading-tight text-neutral-800 dark:text-neutral-50 text-center">
         {product && (
@@ -104,8 +114,8 @@ const ItemDetail = () => {
       </div>
 
       <Typography variant="body2" color="textSecondary" component="p" align="center">
-        {quantity && <h6>Ya tienes {quantity} en el carrito</h6>}
-        {product?.stock === quantity && <h6>Ya tienes el máximo en el carrito</h6>}
+        {quantity && <h5 style={{color:'green'}}>Ya tienes {quantity} en el carrito</h5>}
+        {product?.stock === quantity && <h5 style={{color:'red'}}>Ya tienes el máximo en el carrito</h5>}
       </Typography>
 
       <div className="flex items-center justify-center">

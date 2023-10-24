@@ -58,38 +58,42 @@ const customButtonStyle = {
     <><div id='card' style={{ marginTop: '20px',paddingTop:'20px' }} className="block rounded-lg w-100 md:w-1/2 lg:w-1/3 mx-auto mx-4 bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
    
       {cart.map((product) => (
-        <><div key={product.id} className="flex md:flex-row">
-          <div id='imagen' className="w-1/3 md:w-full text-center flex justify-center items-center">
-            <img
-              style={{ width: '20%', height: 'auto' }}
-              className="rounded-lg object-cover"
-              src={product.image}
-              alt="" />
-          </div>
-
-          <div id='descripcion' className="w-1/3 md:w-full mb-2 font-medium leading-tight text-neutral-800 dark:text-neutral-50 text-center flex flex-col justify-center">
-       
-            <h7 className="font-medium">{product.title}</h7>
-            <h7 className="font-medium">${product.unit_price}</h7>
-            <h7 className="font-medium">{product.quantity} unidad</h7>
-            <h7 className="font-medium" style={{ color: 'green' }}>${product.unit_price * product.quantity}</h7>
-            
-          </div>
-
-          <div id='puntuacion' className="w-1/3 md:w-full mb-2 font-medium leading-tight text-neutral-800 dark:text-neutral-50 text-center flex justify-center items-center">
-            <IconButton onClick={() => deleteById(product.id)}>
-              <DeleteForeverIcon color="primary" />
-            </IconButton>
-          </div>
-
-
-
-        </div><div
-            style={{
-              width: '100%',
-              height: '1.2px',
-              background: 'gray',
-            }} /></>
+       <>
+       <div key={product.id} className="flex md:flex-row">
+         <div id='imagen' className="w-1/3 md:w-full text-center flex justify-center items-center">
+           <img
+             width="30%"
+             height="auto"
+             style={{ maxWidth: '100%', maxHeight: '100%' }} // Agregar un tamaño máximo
+             className="rounded-lg object-cover"
+             src={product.image}
+             alt=""
+           />
+         </div>
+     
+         <div id='descripcion' className="w-1/3 md:w-full mb-2 font-medium leading-tight text-neutral-800 dark:text-neutral-50 text-center flex flex-col justify-center">
+           <h7 className="font-medium">{product.title}</h7>
+           <h7 className="font-medium">${product.unit_price}</h7>
+           <h7 className="font-medium">{product.quantity} unidad</h7>
+           <h7 className="font-medium" style={{ color: 'green' }}>${product.unit_price * product.quantity}</h7>
+         </div>
+     
+         <div id='puntuacion' className="w-1/3 md:w-full mb-2 font-medium leading-tight text-neutral-800 dark:text-neutral-50 text-center flex justify-center items-center">
+           <IconButton onClick={() => deleteById(product.id)}>
+             <DeleteForeverIcon color="primary" />
+           </IconButton>
+         </div>
+       </div>
+     
+       <div
+         style={{
+           width: '100%',
+           height: '1.2px',
+           background: 'gray',
+         }}
+       />
+     </>
+     
       ))}
 
 
