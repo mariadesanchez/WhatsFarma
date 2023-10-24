@@ -104,18 +104,6 @@ useEffect(() => {
 
 
 
-  // useEffect(() => {
-  //   // Calcula la altura máxima de las tarjetas
-  //   const cardElements = document.querySelectorAll('.categoria-card');
-  //   let maxHeight = 0;
-
-  //   cardElements.forEach((card) => {
-  //     const cardHeight = card.getBoundingClientRect().height;
-  //     maxHeight = Math.max(maxHeight, cardHeight);
-  //   });
-
-  //   setMaxCardHeight(maxHeight);
-  // }, [categorias]);
 
   const indexOfLastCategoria = (currentPage + 1) * categoriasPerPage;
   const indexOfFirstCategoria = indexOfLastCategoria - categoriasPerPage;
@@ -125,7 +113,7 @@ useEffect(() => {
     <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12" style={{marginTop:'100px'}}>
       <ButtonGroup>
         <div className="d-flex justify-content-center mt-4" >
-          <Button style={{ width: '50px', height: '50px', marginRight: '30px',borderRadius:'50px' }}
+          <Button style={{ width: '30px', height: '40px', marginRight: '30px',borderRadius:'50%' }}
             variant="contained"
             onClick={() => setCurrentPage(currentPage + 1)}
             disabled={indexOfLastCategoria >= categorias.length}
@@ -153,12 +141,12 @@ useEffect(() => {
           backgroundColor: '#f2f2f2', // Fondo de carga
         }}
       >  </div>
-       <img
-      className="w-full h-200 rounded-lg object-cover"
-      src={categoria.image}
+       <img 
+  className="w-full h-300 rounded-lg object-cover border-2 border-blue-500"
+  src={categoria.image}
      
       alt=""
-      style={{ borderRadius: '50px',width:'40px',height:'40px' }}
+      style={{ borderRadius: '50px',width:'60px',height:'60px' }}
     />
 
           <input
@@ -167,16 +155,18 @@ useEffect(() => {
               height: '20px',
             }}
             type="checkbox"
+            
             value={categoria.id}
             checked={productState.categoriasSeleccionadas.some(c => c.id === categoria.id)}
             onChange={() => handleCheckboxChange(categoria.id, categoria.title)}
           />
-         
-
-              
         <h5 style={{ fontSize: '14px', lineHeight: '1.3' }}>
           {categoria.title}
         </h5>
+
+
+
+        
             </div>
           </div>
           
@@ -184,7 +174,7 @@ useEffect(() => {
         </div>
         </div>
         <div className="d-flex justify-content-center mt-4" style={{ width: '200px', height: '200px' }}>
-        <Button style={{ width: '50px', height: '50px',borderRadius:'50px' }}
+        <Button style={{ width: '30px', height: '40px', marginRight: '30px',borderRadius:'50%' }}
             variant="contained"
             onClick={() => setCurrentPage(currentPage - 1)}
             disabled={currentPage === 0}
@@ -193,6 +183,9 @@ useEffect(() => {
           </Button>
         </div>
       </ButtonGroup>
+
+
+
     </div>
   );
 };

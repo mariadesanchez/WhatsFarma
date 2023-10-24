@@ -27,7 +27,7 @@ import { CartContext } from "../../../context/CartContext";
 const drawerWidth = 200;
 
 function Navbar(props) {
-  const { cart } = useContext(CartContext);
+  const { cart, getTotalPrice} = useContext(CartContext);
   const { logoutContext, user } = useContext(AuthContext);
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -119,6 +119,7 @@ function Navbar(props) {
             height: '100px',
           }}
         >
+         
           <Toolbar
             sx={{
               display: "flex",
@@ -149,18 +150,27 @@ function Navbar(props) {
               >
                 <MenuIcon color="secondary.primary" />
               </IconButton>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',marginTop:'10px' }}>
 
               <div id='count' style={countStyles}>
               {cart.length}
+           
               </div>
               <div id='cart'>
+              <Link to={`/cart`} style={{ textDecoration: 'none', color: 'inherit' }}>
+
               <IconButton
                 color="secondary.primary"
                 aria-label="carrito"
               >
                 <ShoppingCartIcon  style={cartIconStyles}/>
               </IconButton>
+            
+              </Link>
+              <div>
+              <p style={{ color: 'white', fontWeight: 'bold' }}>${getTotalPrice()}</p>
+
+              </div>
               </div>
               </div>
 

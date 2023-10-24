@@ -20,6 +20,8 @@ const ItemDetail = () => {
   const [product, setProduct] = useState(null);
   const [counter, setCounter] = useState(quantity || 1);
   const navigate = useNavigate();
+  const [mostrarMasProductos, setMostrarMasProductos] = useState(false);
+
 
   useEffect(() => {
     let refCollection = collection(db, "products");
@@ -55,25 +57,12 @@ const ItemDetail = () => {
       quantity: counter,
     };
     addToCart(obj);
+    setMostrarMasProductos(true)
   };
 
   return (
   <div id = 'card'className="block rounded-lg h-100 x-20 bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
       <div className="d-flex justify-content-center">
-    {/* <div id='carrito' style={{marginTop:'30px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-      <Link to={`/cart`}>
-        <IconButton>
-          <ShoppingCartCheckoutIcon color="primary" style={{ width: '50px', height: '50px' }} />
-        </IconButton>
-      </Link>
-    </div>
-    <div style={{marginTop:'30px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-      <Link to={`/shop`}>
-        <IconButton>
-          <ShopIcon color="primary" style={{ width: '50px', height: '50px' }} />
-        </IconButton>
-      </Link>
-    </div> */}
      <div style={{marginTop:'30px',width:'10px',height:'10px',marginRight:'40px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
      <ShareOnFacebook url={`https://whats-farma.vercel.app/itemDetail/${id}`} />
     </div>
@@ -123,13 +112,34 @@ const ItemDetail = () => {
       </Button>
     </div>
 </div>
-<div id='agregar' className="flex items-center justify-center">
+<div id="agregar" className="flex flex-col items-center justify-center">
+<div id="mas-productos" style={{ display: mostrarMasProductos ? 'block' : 'none', marginBottom: '10px', marginTop: '10px' }}>
 
-    <Button onClick={onAdd} className="absolute rounded bg-primary w-auto h-auto p-1 text-base font-medium uppercase leading-normal text-white shadow-md hover:shadow-2xl transition duration-300 focus:bg-primary-600 focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary dark:shadow-md dark:hover:shadow-2xl dark:focus:shadow-2xl dark:ring-primary"
-color="success" style={{ width: "380px",marginTop:'50px' }}>
+
+<Link to={`/shop`} style={{ textDecoration: 'none', color: 'inherit' }}>
+    <Button
+      className="absolute rounded bg-success w-auto h-auto p-1 text-base font-medium uppercase leading-normal text-white shadow-md hover:shadow-2xl transition duration-300 focus:bg-primary-600 focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary dark:shadow-md dark:hover:shadow-2xl dark:focus:shadow-2xl dark:ring-primary"
+      color="success"
+      style={{ width: "380px" }}
+    >
+      + Productos
+    </Button>
+    </Link>
+  </div>
+  <div>
+    <Button id ="agregar"
+      onClick={onAdd}
+      className="absolute rounded bg-primary w-auto h-auto p-1 text-base font-medium uppercase leading-normal text-white shadow-md hover:shadow-2xl transition duration-300 focus:bg-primary-600 focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary dark:shadow-md dark:hover:shadow-2xl dark:focus:shadow-2xl dark:ring-primary"
+      color="success"
+      style={{ width: "380px" }}
+    >
       Agregar al carrito
     </Button>
   </div>
+</div>
+
+
+
   </div>
 
 

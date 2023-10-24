@@ -16,7 +16,7 @@ import { usecontextGlobal } from '../../../context/GlobalContext'
 // import {  IconButton } from "@mui/material";
 // import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import './ItemListContainer.css'
-import ItemDetail from "../itemDetail/ItemDetail";
+// import ItemDetail from "../itemDetail/ItemDetail";
 
 import MyCategories from "../MyCategories/MyCategories";
 
@@ -77,6 +77,7 @@ import MyCategories from "../MyCategories/MyCategories";
       .catch((err) => console.log(err));
   }, [categorias]);
 
+  // eslint-disable-next-line no-unused-vars
   const handleCheckboxChange = (categoriaId, categoriaTitle) => {
     if (productState.categoriasSeleccionadas.some(categoria => categoria.id === categoriaId)) {
       // Si ya existe, elimina el elemento de categoriasSeleccionadas
@@ -157,6 +158,7 @@ import MyCategories from "../MyCategories/MyCategories";
       console.error('Error al actualizar favoritos:', error);
     }
   }
+  // eslint-disable-next-line no-unused-vars
   const handleDeleteAllCategories = () => {
     // Realiza la acción que deseas ejecutar, en este caso, la llamada a productDispatch
     productDispatch({ type: 'CATEGORIAS_SELECCIONADAS', payload: [] });
@@ -287,7 +289,7 @@ import MyCategories from "../MyCategories/MyCategories";
                       src={product.image}
                       alt=""
                     />
-                    <itemDetailLink/>
+                    {/* <itemDetailLink/> */}
                     <div className="flex flex-col justify-center items-center p-6">
                       <Link to={`/itemDetail/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                         <h5 style={{ fontSize: '14px', lineHeight: '1.3' }}>
