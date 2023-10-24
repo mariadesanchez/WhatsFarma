@@ -6,6 +6,7 @@ import { db } from "../../../firebaseConfig";
 import { getDoc, collection, doc } from "firebase/firestore";
 import { Button, IconButton,Dialog } from "@mui/material";
 import { CartContext } from "../../../context/CartContext";
+import Modal from 'react-modal'; // Importa react-modal
 
 
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
@@ -68,75 +69,75 @@ const ItemDetail = () => {
   };
 
   return (
-    <><div  className="block rounded-lg h-100 x-20 bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
-    
-    <div>  
-  <Button
-    id='mas'
-    onClick={openDialog}
-    style={{ borderRadius:'80px',width: "10px",marginTop: '50px',backgroundColor:'green',color:'white' }}
-  >
-    +
-  </Button>
-   </div>
+    <Card className="block rounded-lg h-100 mx-20 bg-white shadow-md dark:bg-neutral-700">
+    <CardContent>
+      <div className="flex justify-center">
+        <div className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+          <ShareOnFacebook url={`https://whats-farma.vercel.app/itemDetail/${id}`} />
+        </div>
+        <div className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+          <ShareOnInstagram url={`https://whats-farma.vercel.app/itemDetail/${id}`} />
+        </div>
+        <div className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+          <ShareOnWhatsapp url={`https://whats-farma.vercel.app/itemDetail/${id}`} />
+        </div>
+      </div>
 
-    </div>
+      {product && (
+        <img
+          className="w-1/12 h-1/12 md:h-1/8 md:w-1/8 mx-auto rounded-full object-cover md:!rounded-none md:!rounded-l-lg"
+          src={product.image}
+          alt=""
+        />
+      }
 
-
-   
-
-<Dialog open={isDialogOpen} onClose={closeDialog}>
-  
-<div id='agregar-carrito'>
-      <div style={{width:'150px',margin:'20px',borderRadius:'5px'}} className="mb-2  font-medium leading-tight text-neutral-800 dark:text-neutral-50 text-center">
-        
+      <div className="mb-2 font-medium leading-tight text-neutral-800 dark:text-neutral-50 text-center">
         {product && (
-          <h7 className=" font-medium">{product.title}</h7>
+          <h6 className="font-medium">{product.title}</h6>
         )}
         {product && (
-
-
-          <h5 className=" font-medium" style={{color:'green'}}> ${product.unit_price * counter}</h5>
+          <h5 className="font-medium"> ${product.unit_price * counter}</h5>
         )}
       </div>
+
       <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200 text-center">
         {quantity && <h6>Ya tienes {quantity} en el carrito</h6>}
         {product?.stock === quantity && <h6>Ya tienes el máximo en el carrito</h6>}
       </p>
-      <div id='sumarRestar' className="flex items-center justify-center">
 
-        <div id='restar'>
-          <Button variant="contained" onClick={subOne} style={{ width: '8px', height: '15px' }}>
+      <div className="flex items-center justify-center">
+        <div className="mr-4">
+          <Button variant="contained" onClick={subOne}>
             -
           </Button>
         </div>
-
-        <h7>{counter}</h7>
-        <div id='sumar'>
-          <Button variant="contained" onClick={addOne} style={{ width: '8px', height: '15px' }}>
+        <h6>{counter}</h6>
+        <div className="ml-4">
+          <Button variant="contained" onClick={addOne}>
             +
           </Button>
         </div>
-
       </div>
-      <div id='agregar' className="flex items-center justify-center">
 
-        <Button 
-          onClick={() => {
-            onAdd(); // Ejecuta la función onAdd
-            closeDialog(); // Cierra el Dialog
-          }}
-        className="absolute rounded bg-primary w-auto h-auto p-1 text-base font-medium uppercase leading-normal text-white shadow-md hover:shadow-2xl transition duration-300 focus:bg-primary-600 focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary dark:shadow-md dark:hover:shadow-2xl dark:focus:shadow-2xl dark:ring-primary"
-        color="success" style={{margin:'10px'}}>
-         Agregar
-        </Button>
+      <div className="flex flex-col items-center justify-center">
+        <div style={{ display: mostrarMasProductos ? 'block' : 'none', marginBottom: '10px', marginTop: '10px' }}>
+          <Link to={`/shop`} style={{ textDecoration: 'none', color: 'inherit' }}>
+            <ControlPointIcon style={{ color: 'green', fontSize: '1.5rem', fontWeight: 'bold' }} />
+          </Link>
+        </div>
+        <div>
+          <Button
+            onClick={onAdd}
+            className="rounded bg-primary w-auto h-auto p-2 text-base font-medium uppercase leading-normal text-white shadow-md hover:shadow-2xl transition duration-300 focus:bg-primary-600 focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary dark:shadow-md dark:hover:shadow-2xl dark:focus:shadow-2xl dark:ring-primary"
+            color="success"
+            style={{ width: "380px" }}
+          >
+            Agregar al carrito
+          </Button>
+        </div>
       </div>
-      </div> 
-  
-
-</Dialog>
-
-    </>
+    </CardContent>
+  </Card>
 
   );
 };

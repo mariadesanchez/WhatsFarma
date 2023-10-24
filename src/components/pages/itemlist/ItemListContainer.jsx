@@ -20,6 +20,7 @@ import './ItemListContainer.css'
 
 import MyCategories from "../MyCategories/MyCategories";
 
+
   const ItemListContainer= () => {
   const {productState, productDispatch} = usecontextGlobal()
   const {user} = useContext(AuthContext)
@@ -227,7 +228,7 @@ import MyCategories from "../MyCategories/MyCategories";
                 productosFavNoFav.map((product) => {
                   return (
                       <div id='FavNoFav' key={product.id} className="relative overflow-hidden bg-gray-200 rounded shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
-                        
+                         
                         <img
                           className="w-full h-200 rounded-lg object-cover"
 
@@ -326,7 +327,9 @@ import MyCategories from "../MyCategories/MyCategories";
                             </>
                           )}
                       </button>
+               
                     </div>
+                 
                   </div>
                   
                    

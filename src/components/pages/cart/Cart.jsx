@@ -2,10 +2,11 @@
 /* eslint-disable react/jsx-no-undef */
 import { useContext,useState } from "react";
 import { CartContext } from "../../../context/CartContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { IconButton,Dialog} from "@mui/material";
 // import Dialog from '@mui/material/Dialog';
 import Button from '@mui/material/Button';
+import ControlPointIcon from '@mui/icons-material/ControlPoint'; // Asegúrate de importar el icono correctamente
 
 import { Grid } from '@mui/material';
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
@@ -125,9 +126,19 @@ const customButtonStyle = {
                 onClick={handleOpenDialog}
               >
                   Limpiar carrito
-                </Button></>:
+                </Button>
+                <Link to={`/shop`} style={{ textDecoration: 'none', color: 'inherit' }}>
+
+                <ControlPointIcon style={{ color: 'green', fontSize: '1.5rem', fontWeight: 'bold', marginLeft: '20px' }} />
+                </Link>
+                </>:
                 <p style={{ color: 'black', fontWeight: 'bold', fontSize: '18px' }}>
                 No Tienes Productos En El Carrito
+                <Link to={`/shop`} style={{ textDecoration: 'none', color: 'inherit' }}>
+
+              <ControlPointIcon style={{ color: 'green', fontSize: '1.5rem', fontWeight: 'bold', marginLeft: '20px' }} />
+                </Link>
+              
               </p>
               
                 }
@@ -155,6 +166,7 @@ const customButtonStyle = {
             Aceptar
           </Button>
         </div>
+
       </div>
 
       </Dialog>

@@ -11,6 +11,12 @@ import ShopIcon from '@mui/icons-material/Shop';
 import ShareOnFacebook from "../ShareOnFacebook";
 import ShareOnInstagram from "../ShareOnInstagram";
 import ShareOnWhatsapp from "../ShareOnWhatsapp";
+import ControlPointIcon from '@mui/icons-material/ControlPoint';
+
+
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 
 
 const ItemDetail = () => {
@@ -61,86 +67,82 @@ const ItemDetail = () => {
   };
 
   return (
-  <div id = 'card'className="block rounded-lg h-100 x-20 bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
-      <div className="d-flex justify-content-center">
-     <div style={{marginTop:'30px',width:'10px',height:'10px',marginRight:'40px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+    <Card className="rounded-lg shadow-md">
+    <CardContent>
+      <div className="flex justify-center">
+      <div style={{marginTop:'30px',width:'10px',height:'10px',marginRight:'40px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
      <ShareOnFacebook url={`https://whats-farma.vercel.app/itemDetail/${id}`} />
     </div>
-    <div style={{marginTop:'30px',width:'10px',height:'10px',marginRight:'40px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+    {/* <div style={{marginTop:'30px',width:'10px',height:'10px',marginRight:'40px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
      <ShareOnInstagram url={`https://whats-farma.vercel.app/itemDetail/${id}`} />
-    </div>
+    </div> */}
     <div style={{marginTop:'30px',width:'10px',height:'10px',marginRight:'40px'}} className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
      <ShareOnWhatsapp url={`https://whats-farma.vercel.app/itemDetail/${id}`} />
     </div>
-    
-  </div>
- 
-  <div>
-  {product && (
-    <img style={{marginTop:'40px'}}
-      className="w-1/12 h-1/12 md:h-1/8 md:w-1/8 mx-auto rounded-full object-cover md:!rounded-none md:!rounded-l-lg"
-      src={product.image}
-      alt=""
-    />
-  )}
-</div>
 
-  <div id='titulo' className="mb-2  font-medium leading-tight text-neutral-800 dark:text-neutral-50 text-center">
-    {product && (
-      <h7 className=" font-medium">{product.title}</h7>
-    )}
-     {product && (
-       
-       
-      <h5 className=" font-medium"> ${product.unit_price * counter}</h5>
-    )}
-  </div>
-  <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200 text-center">
-    {quantity && <h6>Ya tienes {quantity} en el carrito</h6>}
-    {product?.stock === quantity && <h6>Ya tienes el máximo en el carrito</h6>}
-  </p>
-  <div id='sumarRestar' className="flex items-center justify-center">
-    <div id='restar'>
-      <Button variant="contained" onClick={subOne} style={{width:'8px',height:'15px'}}>
-        -
-      </Button>
-    </div>
-    <h7>{counter}</h7>
-    <div id='sumar'>
-      <Button variant="contained" onClick={addOne} style={{width:'8px',height:'15px'}}>
-        +
-      </Button>
-    </div>
-</div>
-<div id="agregar" className="flex flex-col items-center justify-center">
-<div id="mas-productos" style={{ display: mostrarMasProductos ? 'block' : 'none', marginBottom: '10px', marginTop: '10px' }}>
+      </div>
 
+      {product && (
+        <img style={{marginTop:'40px'}}
+          className="w-1/12 h-1/12 md:h-1/8 md:w-1/8 mx-auto rounded-full object-cover md:!rounded-none md:!rounded-l-lg"
+          src={product.image}
+          alt=""
+        />
+      )}
 
-<Link to={`/shop`} style={{ textDecoration: 'none', color: 'inherit' }}>
-    <Button
-      className="absolute rounded bg-success w-auto h-auto p-1 text-base font-medium uppercase leading-normal text-white shadow-md hover:shadow-2xl transition duration-300 focus:bg-primary-600 focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary dark:shadow-md dark:hover:shadow-2xl dark:focus:shadow-2xl dark:ring-primary"
-      color="success"
-      style={{ width: "380px" }}
-    >
-      + Productos
-    </Button>
-    </Link>
-  </div>
-  <div>
-    <Button id ="agregar"
-      onClick={onAdd}
-      className="absolute rounded bg-primary w-auto h-auto p-1 text-base font-medium uppercase leading-normal text-white shadow-md hover:shadow-2xl transition duration-300 focus:bg-primary-600 focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary dark:shadow-md dark:hover:shadow-2xl dark:focus:shadow-2xl dark:ring-primary"
-      color="success"
-      style={{ width: "380px" }}
-    >
-      Agregar al carrito
-    </Button>
-  </div>
-</div>
+      <div className="mb-2 font-medium leading-tight text-neutral-800 dark:text-neutral-50 text-center">
+        {product && (
+          <Typography variant="h8" component="div">
+            {product.title}
+          </Typography>
+        )}
+        {product && (
+          <Typography variant="h7" component="div">
+            ${product.unit_price * counter}
+          </Typography>
+        )}
+      </div>
 
+      <Typography variant="body2" color="textSecondary" component="p" align="center">
+        {quantity && <h6>Ya tienes {quantity} en el carrito</h6>}
+        {product?.stock === quantity && <h6>Ya tienes el máximo en el carrito</h6>}
+      </Typography>
 
+      <div className="flex items-center justify-center">
+        <div>
+          <Button variant="contained" onClick={subOne}>
+            -
+          </Button>
+        </div>
+        <Typography variant="h6" component="div">
+          {counter}
+        </Typography>
+        <div>
+          <Button variant="contained" onClick={addOne}>
+            +
+          </Button>
+        </div>
+      </div>
 
-  </div>
+      <div className="flex flex-col items-center justify-center">
+        <div style={{ display: mostrarMasProductos ? 'block' : 'none', marginBottom: '10px', marginTop: '10px' }}>
+          <Link to={`/shop`} style={{ textDecoration: 'none', color: 'inherit' }}>
+            <ControlPointIcon style={{ color: 'green', fontSize: '1.5rem', fontWeight: 'bold', marginLeft: '20px' }} />
+          </Link>
+        </div>
+        <div>
+          <Button
+            onClick={onAdd}
+            className="rounded bg-primary w-auto p-2 text-base font-medium uppercase text-white shadow-md hover:shadow-2xl transition duration-300 focus:bg-primary-600 focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary dark:shadow-md dark:hover:shadow-2xl dark:focus:shadow-2xl dark:ring-primary"
+            color="success"
+            style={{ width: "380px",marginTop:'20px' }}
+          >
+            Agregar al carrito
+          </Button>
+        </div>
+      </div>
+    </CardContent>
+  </Card>
 
 
   );
