@@ -131,6 +131,7 @@ function Navbar(props) {
               <Link to="/" style={{ color: "whitesmoke" }}>
                 <div>
                   <img
+                    // eslint-disable-next-line no-undef
                     src={logo}
                     alt="Logo"
                     style={{
