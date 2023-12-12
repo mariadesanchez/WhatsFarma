@@ -38,7 +38,7 @@ const Checkout = () => {
     // CONDICIONADO A QUE YA ESTE EL PAGO REALIZADO
     let order = JSON.parse(localStorage.getItem("order"));
       // Crear el mensaje de WhatsApp
-      const message = `¡Pedido recibido! ID del pedido: ${orderId}`;
+      const message = `¡Pedido recibido! ID del pedido: ${order}`;
 
       // Crear el enlace de WhatsApp con el mensaje codificado
       const encodedMessage = encodeURIComponent(message);
