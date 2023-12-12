@@ -8,6 +8,7 @@ import UserOrders from "../components/pages/userOrders/UserOrders";
 import Favs from "../components/pages/Favs/Favs";
 import Categoria from "../components/pages/categoria/Categoria";
 import CheckoutLink from "../components/pages/checkout/CheckoutLink";
+import Whatsapp from "../components/pages/Whatsapp";
 
 
 export const routes = [{

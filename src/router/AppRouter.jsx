@@ -10,6 +10,7 @@ import ProtectedAdmin from "./ProtectedAdmin";
 import ProtectedUsers from "./ProtectedUsers";
 import Categoria from "../components/pages/categoria/Categoria"
 import CheckoutLink from "../components/pages/checkout/CheckoutLink";
+import Whatsapp from "../components/pages/Whatsapp";
 
 
 const AppRouter = () => {
@@ -30,7 +31,7 @@ const AppRouter = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/categoria" element={<Categoria />} />
           <Route path="/link" element={<CheckoutLink />} />
-          {/* <Route path="/whatsapp" element={<Whatsapp />} /> */}
+          <Route path="/whatsapp" element={<Whatsapp />} />
         </Route>
       </Route>
 
