@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../../context/CartContext";
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
@@ -14,7 +15,7 @@ import {
   serverTimestamp,
   getDoc,
 } from "firebase/firestore";
-import WhatsApp from "../Whatsapp";
+import Whatsapp from "../Whatsapp";
 const Checkout = () => {
   const { cart, getTotalPrice, clearCart } = useContext(CartContext);
   const { user } = useContext(AuthContext);
@@ -57,7 +58,7 @@ const Checkout = () => {
         });
       });
     
-      <WhatsApp order ={order}/>
+      <Whatsapp order ={order}/>
       localStorage.removeItem("order");
       clearCart()
     }

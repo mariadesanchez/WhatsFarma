@@ -3,7 +3,7 @@
 
 import React, { useEffect } from 'react';
 
-const WhatsApp = ({ order }) => {
+const Whatsapp = ({ order }) => {
   useEffect(() => {
     if (order) {
       // Crear el mensaje de WhatsApp
@@ -26,4 +26,4 @@ const WhatsApp = ({ order }) => {
   );
 };
 
-export default WhatsApp;
+export default Whatsapp;
