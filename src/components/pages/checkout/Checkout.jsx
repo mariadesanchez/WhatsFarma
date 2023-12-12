@@ -14,6 +14,7 @@ import {
   serverTimestamp,
   getDoc,
 } from "firebase/firestore";
+import WhatsApp from "../Whatsapp";
 const Checkout = () => {
   const { cart, getTotalPrice, clearCart } = useContext(CartContext);
   const { user } = useContext(AuthContext);
@@ -55,16 +56,8 @@ const Checkout = () => {
           stock: elemento.stock - elemento.quantity,
         });
       });
-        // Crear el mensaje de WhatsApp
-    const message = JSON.stringify(order);
-
-    // Crear el enlace de WhatsApp con el mensaje codificado
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappLink = `https://api.whatsapp.com/send?phone=5492213602683&text=${encodedMessage}`;
-
-    // Abrir el enlace de WhatsApp
-    window.open(whatsappLink, '_blank');
-
+    
+      <WhatsApp order ={order}/>
       localStorage.removeItem("order");
       clearCart()
     }

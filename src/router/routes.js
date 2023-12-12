@@ -54,6 +54,11 @@ export const routes = [{
         id: "link ",
         path: "/link",
         Element: CheckoutLink,
+    },
+    {
+        id: "whatsapp ",
+        path: "/whatsapp",
+        Element: Whatsapp,
     }
 
 ];

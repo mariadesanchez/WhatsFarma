@@ -2,7 +2,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import StoreIcon from '@mui/icons-material/Store';
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import ShopIcon from '@mui/icons-material/Shop';
-import { FavoriteBorder, FindInPage } from '@mui/icons-material';
+import { FavoriteBorder, } from '@mui/icons-material';
 export const menuItems = [
 
 
