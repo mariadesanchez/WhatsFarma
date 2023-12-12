@@ -37,7 +37,7 @@ const Checkout = () => {
     // ACA ES DONDE GUARDAMOS LA ORDEN EN FIREBASE
     // CONDICIONADO A QUE YA ESTE EL PAGO REALIZADO
     let order = JSON.parse(localStorage.getItem("order"));
-      // Crear el mensaje de WhatsApp
+
      
  
     if (paramValue === "approved") {
