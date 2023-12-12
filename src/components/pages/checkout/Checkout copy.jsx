@@ -37,6 +37,9 @@ const Checkout = () => {
     // ACA ES DONDE GUARDAMOS LA ORDEN EN FIREBASE
     // CONDICIONADO A QUE YA ESTE EL PAGO REALIZADO
     let order = JSON.parse(localStorage.getItem("order"));
+      // Crear el mensaje de WhatsApp
+     
+ 
     if (paramValue === "approved") {
       let ordersCollection = collection(db, "orders");
       addDoc(ordersCollection, { ...order, 
@@ -78,8 +81,8 @@ const Checkout = () => {
     });
     try {
       let response = await axios.post(
-        "http://localhost:8080/create_preference",
-        // "https://whatsfarma-c2ydmkdwx-mariadesanchez.vercel.app/create_preference",
+        // "http://localhost:8080/create_preference",
+        "https://whatsfarma-c2ydmkdwx-mariadesanchez.vercel.app/create_preference",
         
     
         
