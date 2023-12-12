@@ -55,10 +55,10 @@ export const routes = [{
         path: "/link",
         Element: CheckoutLink,
     },
-    {
-        id: "whatsapp ",
-        path: "/whatsapp",
-        Element: Whatsapp,
-    }
+    // {
+    //     id: "whatsapp ",
+    //     path: "/whatsapp",
+    //     Element: Whatsapp,
+    // }
 
 ];

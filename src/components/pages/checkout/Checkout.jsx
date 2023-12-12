@@ -15,7 +15,7 @@ import {
   serverTimestamp,
   getDoc,
 } from "firebase/firestore";
-import Whatsapp from "../Whatsapp";
+// import Whatsapp from "../Whatsapp";
 const Checkout = () => {
   const { cart, getTotalPrice, clearCart } = useContext(CartContext);
   const { user } = useContext(AuthContext);
@@ -58,7 +58,7 @@ const Checkout = () => {
         });
       });
     
-      <Whatsapp order ={order}/>
+      // <Whatsapp order ={order}/>
       localStorage.removeItem("order");
       clearCart()
     }
