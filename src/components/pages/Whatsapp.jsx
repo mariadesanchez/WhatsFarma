@@ -16,7 +16,7 @@ const Whatsapp = ({ order }) => {
       // Abrir el enlace de WhatsApp en una nueva ventana o pestaña
       window.open(whatsappLink, '_blank');
     }
-  }, [order]);
+  }, []);
 
   return (
     <div>
