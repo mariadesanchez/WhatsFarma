@@ -16,9 +16,9 @@ const Whatsapp = () => {
       console.error('Error al parsear el objeto de la orden:', error);
     }
     
-    // Extraer solo las propiedades necesarias y formatear el mensaje
+    // Extraer solo las propiedades necesarias y formatear el mensaje con imágenes en miniatura
     const formattedMessage = orderData.items.map(item => (
-      `📷 *Imagen:* ${item.image}\n💰 *Precio:* ${item.unit_price}\n🔢 *Cantidad:* ${item.quantity}\n\n`
+      `*[ ${item.image}]*\n💰 *Precio:* ${item.unit_price}\n🔢 *Cantidad:* ${item.quantity}\n\n`
     ));
     
     // Crear el enlace de WhatsApp con el mensaje formateado
@@ -27,6 +27,7 @@ const Whatsapp = () => {
     
     // Abrir el enlace de WhatsApp en una nueva ventana o pestaña
     window.open(whatsappLink, '_blank');
+    
     
          
       
