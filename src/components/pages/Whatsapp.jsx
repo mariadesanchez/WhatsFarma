@@ -1,7 +1,7 @@
-/* eslint-disable no-unused-vars */
+// Whatsapp.jsx
 import React, { useEffect } from 'react';
 import { getDownloadURL, ref } from 'firebase/storage';
-import { db, storage } from '../../firebaseConfig';
+import { db, storage } from '../../firebaseConfig';  // Ensure correct relative path
 
 const Whatsapp = () => {
   let storedOrderId = localStorage.getItem("order");
@@ -16,7 +16,7 @@ const Whatsapp = () => {
   const sendMessageToWhatsApp = async () => {
     const formattedMessage = await Promise.all(orderData.items.map(async (item) => {
       // Obtener la URL de descarga de Firebase Storage
-      const imageRef = ref(storage, item.image); // Asegúrate de que item.image sea la ruta correcta en tu almacenamiento
+      const imageRef = ref(storage, item.image);  // Ensure that item.image is the correct path in your storage
       const imageUrl = await getDownloadURL(imageRef);
 
       // Formatear el mensaje con la imagen
@@ -34,7 +34,7 @@ const Whatsapp = () => {
   useEffect(() => {
     // Llamar a la función al cargar el componente
     sendMessageToWhatsApp();
-  }, []); // Agrega dependencias si es necesario
+  }, []);  // Agrega dependencias si es necesario
 
   return (
     <div>
