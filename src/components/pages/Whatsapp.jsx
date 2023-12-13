@@ -7,7 +7,7 @@ import React, { useEffect } from 'react';
 //componente para enviar el carrito de compras al whatsapp del vendedor e interactuar
 const Whatsapp = () => {
   
-         \let storedOrderId = localStorage.getItem("order");
+         let storedOrderId = localStorage.getItem("order");
          let orderData = {};
          
          try {
