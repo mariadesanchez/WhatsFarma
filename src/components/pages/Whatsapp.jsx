@@ -2,7 +2,7 @@
 // WhatsApp.jsx
 import {getDocs, collection, query, where} from "firebase/firestore"
 import { useState } from "react"
-import { db } from "../../../firebaseConfig"
+import { db } from "../../firebaseConfig"
 import React, { useEffect } from 'react';
 //componente para enviar el carrito de compras al whatsapp del vendedor e interactuar
 const Whatsapp = () => {
