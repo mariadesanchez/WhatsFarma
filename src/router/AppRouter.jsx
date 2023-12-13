@@ -10,7 +10,7 @@ import ProtectedAdmin from "./ProtectedAdmin";
 import ProtectedUsers from "./ProtectedUsers";
 import Categoria from "../components/pages/categoria/Categoria"
 import CheckoutLink from "../components/pages/checkout/CheckoutLink";
-import Whatsapp from "../components/pages/Whatsapp";
+
 
 
 const AppRouter = () => {
