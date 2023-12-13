@@ -49,8 +49,7 @@ const Checkout = () => {
         date: serverTimestamp() }).then(
         (res) => {
           setOrderId(res.id);
-           // Guardar el orderId en el LocalStorage
-           localStorage.setItem("orderId", res.id);
+        
         }
       );
 
@@ -61,7 +60,7 @@ const Checkout = () => {
       });
     
     
-      localStorage.removeItem("order");
+      // localStorage.removeItem("order");
       clearCart()
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
