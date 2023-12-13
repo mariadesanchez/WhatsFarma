@@ -31,7 +31,7 @@ const AppRouter = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/categoria" element={<Categoria />} />
           <Route path="/link" element={<CheckoutLink />} />
-          <Route path="/whatsapp" element={<Whatsapp />} />
+        
         </Route>
       </Route>
 
