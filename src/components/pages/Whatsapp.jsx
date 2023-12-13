@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // Whatsapp.jsx
 import React, { useEffect } from 'react';
 import { getDownloadURL, ref } from 'firebase/storage';
