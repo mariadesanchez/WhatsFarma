@@ -82,4 +82,8 @@ export const uploadFile = async(file) => {
     await uploadBytes(storageRef, file)
     let url = await getDownloadURL(storageRef)
     return url
-}
+};
+
+
+// Exportar storage
+export { app, storage };
