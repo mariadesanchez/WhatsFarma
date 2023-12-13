@@ -6,7 +6,7 @@ import { db } from "../../firebaseConfig"
 import React, { useEffect } from 'react';
 //componente para enviar el carrito de compras al whatsapp del vendedor e interactuar
 const Whatsapp = () => {
-    const [myOrder, setMyOrder] = useState([])
+  
     let storedOrderId = localStorage.getItem("order");
   
          
