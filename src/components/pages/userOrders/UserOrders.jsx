@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 import { useContext, useEffect } from "react"
 import { useState } from "react"
