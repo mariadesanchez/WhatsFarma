@@ -11,7 +11,7 @@ import ProtectedUsers from "./ProtectedUsers";
 import Categoria from "../components/pages/categoria/Categoria"
 import CheckoutLink from "../components/pages/checkout/CheckoutLink";
 
-//elinminar whatsapp
+
 
 const AppRouter = () => {
   return (
