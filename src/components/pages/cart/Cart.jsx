@@ -1,68 +1,65 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/jsx-no-undef */
-import { useContext,useState, useRef,useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import { CartContext } from "../../../context/CartContext";
 import { useNavigate, Link } from "react-router-dom";
-import { IconButton,Dialog} from "@mui/material";
-// import Dialog from '@mui/material/Dialog';
+import { IconButton, Dialog } from "@mui/material";
 import Button from '@mui/material/Button';
-import ControlPointIcon from '@mui/icons-material/ControlPoint'; // Asegúrate de importar el icono correctamente
-
+import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import { Grid } from '@mui/material';
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import html2canvas from 'html2canvas';
+
 const Cart = () => {
   const { cart, clearCart, deleteById, getTotalPrice, setCapturedScreenshots } = useContext(CartContext);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const navigate = useNavigate();
   const screenshotContainerRef = useRef({});
 
   useEffect(() => {
-    // Asigna el valor de screenshotContainerRef.current después de que el componente se monta
     cart.forEach((product) => {
-      screenshotContainerRef.current[product.id] = document.getElementById(`imagen-${product.id}`);
+      screenshotContainerRef.current[product.id] = React.createRef();
     });
   }, [cart]);
 
-
-  const navigate = useNavigate();
-  // eslint-disable-next-line no-unused-vars
-  let total = getTotalPrice()
   const handleFinalizarCompra = async () => {
     await captureScreenshots();
-    // Agrega aquí la lógica necesaria antes de redirigir
-    navigate('/checkout'); // Redirigir a la ruta '/checkout'
-};
+    navigate('/checkout');
+  };
 
+  const handleOpenDialog = () => {
+    setDialogOpen(true);
+  };
 
+  const handleCloseDialog = () => {
+    setDialogOpen(false);
+  };
 
-const handleOpenDialog = () => {
-  setDialogOpen(true);
-};
+  const captureScreenshot = async (ref, product) => {
+    const element = ref.current;
+    
+    try {
+      const canvas = await html2canvas(element);
+      const screenshotUrl = canvas.toDataURL('image/png');
+      return { screenshotUrl, title: product.title, quantity: product.quantity, unit_price: product.unit_price };
+    } catch (error) {
+      console.error('Error capturing screenshot:', error);
+      return null;
+    }
+  };
 
-const handleCloseDialog = () => {
-  setDialogOpen(false);
-};
-const captureScreenshot = async (element, product) => {
-  try {
-    const canvas = await html2canvas(element);
-    const screenshotUrl = canvas.toDataURL('image/png');
-    return { screenshotUrl, title: product.title, quantity: product.quantity, unit_price: product.unit_price };
-  } catch (error) {
-    console.error('Error capturing screenshot:', error);
-    return null;
-  }
-};
+  const captureScreenshots = async () => {
+    const screenshots = await Promise.all(
+      cart.map(async (product) => {
+        const ref = screenshotContainerRef.current[product.id];
+        return captureScreenshot(ref, product);
+      })
+    );
 
-const captureScreenshots = async () => {
-  const screenshots = await Promise.all(
-    cart.map(async (product) => {
-      const element = screenshotContainerRef.current.querySelector(`#imagen-${product.id}`);
-      return captureScreenshot(element, product);
-    })
-  );
+    const filteredScreenshots = screenshots.filter(Boolean);
+    setCapturedScreenshots(filteredScreenshots);
+  };
 
-  const filteredScreenshots = screenshots.filter(Boolean);
-  setCapturedScreenshots(filteredScreenshots);
-};
 const customDialogStyle = {
   display: 'flex',
   flexDirection: 'column',
