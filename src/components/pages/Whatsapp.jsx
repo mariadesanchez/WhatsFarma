@@ -15,9 +15,11 @@ const Whatsapp = () => {
   }
 
   const sendMessageToWhatsApp = async () => {
+    const bucketName = storage.app.options.storageBucket;
+
     const formattedMessage = await Promise.all(orderData.items.map(async (item) => {
       // Construir la URL directa de la imagen en Firebase Storage
-      const imageUrl = `https://storage.googleapis.com/${storage.bucket}/o/${encodeURIComponent(item.image)}?alt=media`;
+      const imageUrl = `https://storage.googleapis.com/${bucketName}/o/${encodeURIComponent(item.image)}?alt=media`;
 
       // Formatear el mensaje con la imagen
       return `*[Imagen: ${item.image}]*\n💰 *Precio:* ${item.unit_price}\n🔢 *Cantidad:* ${item.quantity}\n${imageUrl}\n\n`;
@@ -45,4 +47,5 @@ const Whatsapp = () => {
 };
 
 export default Whatsapp;
+
 
