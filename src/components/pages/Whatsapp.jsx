@@ -1,10 +1,12 @@
 /* eslint-disable no-unused-vars */
 // Whatsapp.jsx
-import React, { useEffect } from 'react';
-import { db, storage } from '../../firebaseConfig';
-import { ref } from 'firebase/storage';
+import React, { useEffect, useContext } from 'react';
+import { storage } from '../../firebaseConfig';
+import { CartContext } from "../../../context/CartContext";
 
 const Whatsapp = () => {
+  const { capturedScreenshots } = useContext(CartContext);
+
   let storedOrderId = localStorage.getItem("order");
   let orderData = {};
 
@@ -17,12 +19,16 @@ const Whatsapp = () => {
   const sendMessageToWhatsApp = async () => {
     const bucketName = storage.app.options.storageBucket;
 
-    const formattedMessage = await Promise.all(orderData.items.map(async (item) => {
+    const formattedMessage = await Promise.all(orderData.items.map(async (item, index) => {
       // Construir la URL directa de la imagen en Firebase Storage
       const imageUrl = `https://storage.googleapis.com/${bucketName}/o/${encodeURIComponent(item.image)}?alt=media`;
 
-      // Formatear el mensaje con la imagen
-      return `*[Imagen: ${item.image}]*\n💰 *Precio:* ${item.unit_price}\n🔢 *Cantidad:* ${item.quantity}\n${imageUrl}\n\n`;
+      // Agregar la captura de pantalla correspondiente al mensaje
+      const screenshotUrl = capturedScreenshots[index];
+      const screenshotMessage = screenshotUrl ? `*[Captura de pantalla]*\n${screenshotUrl}\n\n` : '';
+
+      // Formatear el mensaje con la imagen y la captura de pantalla
+      return `*[Imagen: ${item.image}]*\n💰 *Precio:* ${item.unit_price}\n🔢 *Cantidad:* ${item.quantity}\n${imageUrl}\n\n${screenshotMessage}`;
     }));
 
     // Crear el enlace de WhatsApp con el mensaje formateado
@@ -47,5 +53,3 @@ const Whatsapp = () => {
 };
 
 export default Whatsapp;
-
-

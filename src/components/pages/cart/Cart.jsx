@@ -11,14 +11,15 @@ import ControlPointIcon from '@mui/icons-material/ControlPoint'; // Asegúrate d
 import { Grid } from '@mui/material';
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 const Cart = () => {
-  const { cart, clearCart, deleteById, getTotalPrice } = useContext(CartContext);
+  const { cart, clearCart, deleteById, getTotalPrice,setCapturedScreenshots } = useContext(CartContext);
   const [dialogOpen, setDialogOpen] = useState(false);
 
 
   const navigate = useNavigate();
   // eslint-disable-next-line no-unused-vars
   let total = getTotalPrice()
-  const handleFinalizarCompra = () => {
+  const handleFinalizarCompra = async () => {
+    await captureScreenshots();
     // Agrega aquí la lógica necesaria antes de redirigir
     navigate('/checkout'); // Redirigir a la ruta '/checkout'
 };
@@ -31,6 +32,28 @@ const handleOpenDialog = () => {
 
 const handleCloseDialog = () => {
   setDialogOpen(false);
+};
+const captureScreenshot = async (element, product) => {
+  try {
+    const canvas = await html2canvas(element);
+    const screenshotUrl = canvas.toDataURL('image/png');
+    return { screenshotUrl, title: product.title, quantity: product.quantity, unit_price: product.unit_price };
+  } catch (error) {
+    console.error('Error capturing screenshot:', error);
+    return null;
+  }
+};
+
+const captureScreenshots = async () => {
+  const screenshots = await Promise.all(
+    cart.map(async (product) => {
+      const element = screenshotContainerRef.current.querySelector(`#imagen-${product.id}`);
+      return captureScreenshot(element, product);
+    })
+  );
+
+  const filteredScreenshots = screenshots.filter(Boolean);
+  setCapturedScreenshots(filteredScreenshots);
 };
 const customDialogStyle = {
   display: 'flex',
