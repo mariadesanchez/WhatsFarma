@@ -1,145 +1,197 @@
-/* eslint-disable no-unused-vars */
-import React, { useContext, useState, useRef } from "react";
+/* eslint-disable no-undef */
+/* eslint-disable react/jsx-no-undef */
+import { useContext,useState } from "react";
 import { CartContext } from "../../../context/CartContext";
 import { useNavigate, Link } from "react-router-dom";
-import { IconButton, Dialog } from "@mui/material";
+import { IconButton,Dialog} from "@mui/material";
+// import Dialog from '@mui/material/Dialog';
 import Button from '@mui/material/Button';
-import ControlPointIcon from '@mui/icons-material/ControlPoint';
+import ControlPointIcon from '@mui/icons-material/ControlPoint'; // Asegúrate de importar el icono correctamente
+
 import { Grid } from '@mui/material';
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import html2canvas from 'html2canvas';
-
 const Cart = () => {
   const { cart, clearCart, deleteById, getTotalPrice } = useContext(CartContext);
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [capturedScreenshots, setCapturedScreenshots] = useState([]);
-  const screenshotContainerRef = useRef(null);
+
+
   const navigate = useNavigate();
+  // eslint-disable-next-line no-unused-vars
+  let total = getTotalPrice()
+  const handleFinalizarCompra = () => {
+    // Agrega aquí la lógica necesaria antes de redirigir
+    navigate('/checkout'); // Redirigir a la ruta '/checkout'
+};
 
-  const handleOpenDialog = () => {
-    setDialogOpen(true);
-  };
 
-  const handleCloseDialog = () => {
-    setDialogOpen(false);
-  };
 
-  const captureScreenshot = async (element, product) => {
-    try {
-      const canvas = await html2canvas(element);
-      const screenshotUrl = canvas.toDataURL('image/png');
-      return { screenshotUrl, title: product.title, quantity: product.quantity, unit_price: product.unit_price };
-    } catch (error) {
-      console.error("Error capturing screenshot:", error);
-      return null;
-    }
-  };
+const handleOpenDialog = () => {
+  setDialogOpen(true);
+};
 
-  const captureScreenshots = async () => {
-    const screenshots = await Promise.all(cart.map(async (product) => {
-      const element = screenshotContainerRef.current.querySelector(`#imagen-${product.id}`);
-      return captureScreenshot(element, product);
-    }));
+const handleCloseDialog = () => {
+  setDialogOpen(false);
+};
+const customDialogStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  backgroundColor: '#fff',
+  width: '400px',
+  borderRadius: '10px',
+  padding: '20px',
+  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+};
 
-    return screenshots.filter(Boolean); // Filtra resultados nulos
-  };
+const customButtonContainerStyle = {
+  display: 'flex',
+  flexDirection: 'row', // Los botones se colocarán uno al lado del otro
+  justifyContent: 'center', // Para centrar los botones horizontalmente
+  marginTop: '10px', // Espacio entre el párrafo y los botones
+};
 
-  const buildWhatsAppMessage = (capturedScreenshots) => {
-    let message = '¡Hola! Quiero realizar una compra:\n';
-
-    capturedScreenshots.forEach((product) => {
-      message += `\n${product.title} - ${product.quantity} unidad - $${product.unit_price * product.quantity}`;
-    });
-
-    message += `\n\nTotal: $${getTotalPrice()}`;
-
-    return message;
-  };
-
-  const handleFinalizarCompra = async () => {
-    const screenshots = await captureScreenshots();
-    setCapturedScreenshots(screenshots);
-
-    const message = buildWhatsAppMessage(screenshots);
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappLink = `https://api.whatsapp.com/send?phone=5492213602683&text=${encodedMessage}`;
-
-    window.open(whatsappLink, '_blank');
-
-    navigate('/checkout');
-  };
-
+const customButtonStyle = {
+  width: '100px',
+  margin: '0 10px', // Espacio entre los botones
+};
   return (
-    <>
-      <div id='card' className="block rounded-lg w-100 md:w-1/2 lg:w-1/3 mx-auto mx-4 bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
-        {cart.map((product) => (
-          <div key={product.id} className="flex md:flex-row">
-            <div id={`imagen-${product.id}`} className="w-1/3 md:w-full text-center flex justify-center items-center">
-              <img
-                width="30%"
-                height="auto"
-                style={{ maxWidth: '100%', maxHeight: '100%' }}
-                className="rounded-lg object-cover"
-                src={product.image}
-                alt=""
-              />
-            </div>
-            {/* Resto del contenido del producto */}
-          </div>
-        ))}
-        {/* Resto del contenido del carrito */}
-      </div>
-      {/* Botones y cuadro de diálogo */}
-      <div style={{
-        marginTop: '5px',
-        padding: '10px',
-        backgroundColor: 'white',
-        width: '100%',
-        height: 'auto',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}>
-        <Grid container spacing={2} justifyContent="center">
-          <Grid item xs={12} md={6} lg={4}>
-            {cart.length > 0 ?
-              <>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  fullWidth
-                  onClick={handleFinalizarCompra}
-                  style={{ height: '40px', width: '180px', marginTop: '10px', marginBottom: '10px', marginRight: '20px' }}
-                >
-                  Finalizar compra
-                </Button>
-                <Button
-                  variant="contained"
-                  style={{ backgroundColor: 'red', color: 'white', height: '40px', width: '180px', marginTop: '10px', marginBottom: '10px' }}
-                  fullWidth
-                  onClick={handleOpenDialog}
-                >
+    <><div id='card' style={{ marginTop: '20px',paddingTop:'20px' }} className="block rounded-lg w-100 md:w-1/2 lg:w-1/3 mx-auto mx-4 bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+   
+      {cart.map((product) => (
+       <>
+       <div key={product.id} className="flex md:flex-row">
+         <div id='imagen' className="w-1/3 md:w-full text-center flex justify-center items-center">
+           <img
+             width="30%"
+             height="auto"
+             style={{ maxWidth: '100%', maxHeight: '100%' }} // Agregar un tamaño máximo
+             className="rounded-lg object-cover"
+             src={product.image}
+             alt=""
+           />
+         </div>
+     
+         <div id='descripcion' className="w-1/3 md:w-full mb-2 font-medium leading-tight text-neutral-800 dark:text-neutral-50 text-center flex flex-col justify-center">
+           <h7 className="font-medium">{product.title}</h7>
+           <h7 className="font-medium">${product.unit_price}</h7>
+           <h7 className="font-medium">{product.quantity} unidad</h7>
+           <h7 className="font-medium" style={{ color: 'green' }}>${product.unit_price * product.quantity}</h7>
+         </div>
+     
+         <div id='puntuacion' className="w-1/3 md:w-full mb-2 font-medium leading-tight text-neutral-800 dark:text-neutral-50 text-center flex justify-center items-center">
+           <IconButton onClick={() => deleteById(product.id)}>
+             <DeleteForeverIcon color="primary" />
+           </IconButton>
+         </div>
+       </div>
+     
+       <div
+         style={{
+           width: '100%',
+           height: '1.2px',
+           background: 'gray',
+         }}
+       />
+     </>
+     
+      ))}
+
+
+   
+    </div>
+
+
+    <div style={{
+  marginTop: '5px',
+  padding: '10px',
+  backgroundColor: 'white',
+  width: '100%',
+  height: 'auto',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center', // Centrar verticalmente los botones
+}}>
+  <Grid container spacing={2} justifyContent="center">
+    <Grid item xs={12} md={6} lg={4}>
+
+      {cart.length >0 ?
+      <><Button
+                variant="contained"
+                color="primary"
+                fullWidth
+                onClick={handleFinalizarCompra}
+                style={{ height: '40px', width: '180px', marginTop: '10px', marginBottom: '10px', marginRight: '20px' }}
+              >
+                Finalizar compra
+              </Button><Button
+                variant="contained"
+                style={{ backgroundColor: 'red', color: 'white', height: '40px', width: '180px', marginTop: '10px', marginBottom: '10px' }}
+                fullWidth
+                onClick={handleOpenDialog}
+              >
                   Limpiar carrito
                 </Button>
                 <Link to={`/shop`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                  <ControlPointIcon style={{ color: 'green', fontSize: '1.5rem', fontWeight: 'bold', marginLeft: '20px' }} />
+
+                <ControlPointIcon style={{ color: 'green', fontSize: '1.5rem', fontWeight: 'bold', marginLeft: '20px' }} />
                 </Link>
-              </> :
-              <p style={{ color: 'black', fontWeight: 'bold', fontSize: '18px' }}>
+                </>:
+                <p style={{ color: 'black', fontWeight: 'bold', fontSize: '18px' }}>
                 No Tienes Productos En El Carrito
                 <Link to={`/shop`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                  <ControlPointIcon style={{ color: 'green', fontSize: '1.5rem', fontWeight: 'bold', marginLeft: '20px' }} />
+
+              <ControlPointIcon style={{ color: 'green', fontSize: '1.5rem', fontWeight: 'bold', marginLeft: '20px' }} />
                 </Link>
+              
               </p>
-            }
-            <Dialog open={dialogOpen} onClose={handleCloseDialog}>
-              {/* Contenido del cuadro de diálogo */}
-            </Dialog>
-          </Grid>
-        </Grid>
+              
+                }
+
+      {/* Cuadro de diálogo de confirmación */}
+      <Dialog open={dialogOpen} onClose={handleCloseDialog}>
+      <div style={customDialogStyle}>
+        <p>¿Estás seguro de que deseas limpiar el carrito?</p>
+        <div style={customButtonContainerStyle}>
+          <Button
+            onClick={handleCloseDialog}
+            color="primary"
+            style={customButtonStyle}
+          >
+            Cancelar
+          </Button>
+          <Button
+            onClick={() => {
+              handleCloseDialog(); // Cierra el cuadro de diálogo
+              clearCart(); // Ejecuta la lógica para limpiar el carrito
+            }}
+            color="primary"
+            style={customButtonStyle}
+          >
+            Aceptar
+          </Button>
+        </div>
+
       </div>
-    </>
-  );
+
+      </Dialog>
+    </Grid>
+  </Grid>
+</div>
+
+
+
+      
+      </>
+
+
+
+    );
+
+    
+   
+
+
+
 };
 
 export default Cart;
