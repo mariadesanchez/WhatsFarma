@@ -5,6 +5,7 @@ export const CartContext = createContext();
 
 const CartContextComponent = ({ children }) => {
   const [cart, setCart] = useState( JSON.parse(localStorage.getItem("cart")) || []);
+  const [capturedScreenshots, setCapturedScreenshots] = useState([]);
 
   const addToCart = (product)=>{
     let existe = cart.some( e => e.id === product.id) 
@@ -34,6 +35,7 @@ const CartContextComponent = ({ children }) => {
   const clearCart = ()=>{
     setCart( [] )
     localStorage.removeItem("cart")
+    setCapturedScreenshots([]);
   }
 
   const deleteById = (id)=>{
@@ -55,7 +57,9 @@ const CartContextComponent = ({ children }) => {
         getQuantityById,
         clearCart,
         deleteById,
-        getTotalPrice
+        getTotalPrice,
+        capturedScreenshots, 
+        setCapturedScreenshots
     }
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
 };

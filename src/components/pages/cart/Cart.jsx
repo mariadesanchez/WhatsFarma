@@ -1,65 +1,37 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/jsx-no-undef */
-import React, { useContext, useState, useEffect, useRef } from "react";
+import { useContext,useState } from "react";
 import { CartContext } from "../../../context/CartContext";
 import { useNavigate, Link } from "react-router-dom";
-import { IconButton, Dialog } from "@mui/material";
+import { IconButton,Dialog} from "@mui/material";
+// import Dialog from '@mui/material/Dialog';
 import Button from '@mui/material/Button';
-import ControlPointIcon from '@mui/icons-material/ControlPoint';
+import ControlPointIcon from '@mui/icons-material/ControlPoint'; // Asegúrate de importar el icono correctamente
+
 import { Grid } from '@mui/material';
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import html2canvas from 'html2canvas';
-
 const Cart = () => {
-  const { cart, clearCart, deleteById, getTotalPrice, setCapturedScreenshots } = useContext(CartContext);
+  const { cart, clearCart, deleteById, getTotalPrice } = useContext(CartContext);
   const [dialogOpen, setDialogOpen] = useState(false);
+
+
   const navigate = useNavigate();
-  const screenshotContainerRef = useRef({});
+  // eslint-disable-next-line no-unused-vars
+  let total = getTotalPrice()
+  const handleFinalizarCompra = () => {
+    // Agrega aquí la lógica necesaria antes de redirigir
+    navigate('/checkout'); // Redirigir a la ruta '/checkout'
+};
 
-  useEffect(() => {
-    cart.forEach((product) => {
-      screenshotContainerRef.current[product.id] = React.createRef();
-    });
-  }, [cart]);
 
-  const handleFinalizarCompra = async () => {
-    await captureScreenshots();
-    navigate('/checkout');
-  };
 
-  const handleOpenDialog = () => {
-    setDialogOpen(true);
-  };
+const handleOpenDialog = () => {
+  setDialogOpen(true);
+};
 
-  const handleCloseDialog = () => {
-    setDialogOpen(false);
-  };
-
-  const captureScreenshot = async (ref, product) => {
-    const element = ref.current;
-    
-    try {
-      const canvas = await html2canvas(element);
-      const screenshotUrl = canvas.toDataURL('image/png');
-      return { screenshotUrl, title: product.title, quantity: product.quantity, unit_price: product.unit_price };
-    } catch (error) {
-      console.error('Error capturing screenshot:', error);
-      return null;
-    }
-  };
-
-  const captureScreenshots = async () => {
-    const screenshots = await Promise.all(
-      cart.map(async (product) => {
-        const ref = screenshotContainerRef.current[product.id];
-        return captureScreenshot(ref, product);
-      })
-    );
-
-    const filteredScreenshots = screenshots.filter(Boolean);
-    setCapturedScreenshots(filteredScreenshots);
-  };
-
+const handleCloseDialog = () => {
+  setDialogOpen(false);
+};
 const customDialogStyle = {
   display: 'flex',
   flexDirection: 'column',
@@ -88,17 +60,16 @@ const customButtonStyle = {
       {cart.map((product) => (
        <>
        <div key={product.id} className="flex md:flex-row">
-       <div id={`imagen-${product.id}`} className="w-1/3 md:w-full text-center flex justify-center items-center" ref={screenshotContainerRef.current[product.id]}>
-  <img
-    width="30%"
-    height="auto"
-    style={{ maxWidth: '100%', maxHeight: '100%' }}
-    className="rounded-lg object-cover"
-    src={product.image}
-    alt=""
-  />
-</div>
-
+         <div id='imagen' className="w-1/3 md:w-full text-center flex justify-center items-center">
+           <img
+             width="30%"
+             height="auto"
+             style={{ maxWidth: '100%', maxHeight: '100%' }} // Agregar un tamaño máximo
+             className="rounded-lg object-cover"
+             src={product.image}
+             alt=""
+           />
+         </div>
      
          <div id='descripcion' className="w-1/3 md:w-full mb-2 font-medium leading-tight text-neutral-800 dark:text-neutral-50 text-center flex flex-col justify-center">
            <h7 className="font-medium">{product.title}</h7>
