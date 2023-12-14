@@ -88,16 +88,17 @@ const customButtonStyle = {
       {cart.map((product) => (
        <>
        <div key={product.id} className="flex md:flex-row">
-         <div id='imagen' className="w-1/3 md:w-full text-center flex justify-center items-center">
-           <img
-             width="30%"
-             height="auto"
-             style={{ maxWidth: '100%', maxHeight: '100%' }} // Agregar un tamaño máximo
-             className="rounded-lg object-cover"
-             src={product.image}
-             alt=""
-           />
-         </div>
+       <div id={`imagen-${product.id}`} className="w-1/3 md:w-full text-center flex justify-center items-center" ref={screenshotContainerRef.current[product.id]}>
+  <img
+    width="30%"
+    height="auto"
+    style={{ maxWidth: '100%', maxHeight: '100%' }}
+    className="rounded-lg object-cover"
+    src={product.image}
+    alt=""
+  />
+</div>
+
      
          <div id='descripcion' className="w-1/3 md:w-full mb-2 font-medium leading-tight text-neutral-800 dark:text-neutral-50 text-center flex flex-col justify-center">
            <h7 className="font-medium">{product.title}</h7>
