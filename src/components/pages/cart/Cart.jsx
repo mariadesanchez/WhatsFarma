@@ -11,9 +11,16 @@ import ControlPointIcon from '@mui/icons-material/ControlPoint'; // Asegúrate d
 import { Grid } from '@mui/material';
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 const Cart = () => {
-  const { cart, clearCart, deleteById, getTotalPrice,setCapturedScreenshots } = useContext(CartContext);
+  const { cart, clearCart, deleteById, getTotalPrice, setCapturedScreenshots } = useContext(CartContext);
   const [dialogOpen, setDialogOpen] = useState(false);
-  const screenshotContainerRef = useRef(null);
+  const screenshotContainerRef = useRef({});
+
+  useEffect(() => {
+    // Asigna el valor de screenshotContainerRef.current después de que el componente se monta
+    cart.forEach((product) => {
+      screenshotContainerRef.current[product.id] = document.getElementById(`imagen-${product.id}`);
+    });
+  }, [cart]);
 
 
   const navigate = useNavigate();
