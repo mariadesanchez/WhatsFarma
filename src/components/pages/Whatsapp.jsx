@@ -2,7 +2,7 @@
 // Whatsapp.jsx
 import React, { useEffect, useContext } from 'react';
 import { storage } from '../../firebaseConfig';
-import { CartContext } from "../../../context/CartContext";
+import { CartContext } from "../../context/CartContext";
 
 const Whatsapp = () => {
   const { capturedScreenshots } = useContext(CartContext);
