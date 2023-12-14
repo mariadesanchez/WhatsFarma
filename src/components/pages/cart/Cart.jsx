@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/jsx-no-undef */
-import { useContext,useState } from "react";
+import { useContext,useState, useRef } from "react";
 import { CartContext } from "../../../context/CartContext";
 import { useNavigate, Link } from "react-router-dom";
 import { IconButton,Dialog} from "@mui/material";
@@ -13,6 +13,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 const Cart = () => {
   const { cart, clearCart, deleteById, getTotalPrice,setCapturedScreenshots } = useContext(CartContext);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const screenshotContainerRef = useRef(null);
 
 
   const navigate = useNavigate();
