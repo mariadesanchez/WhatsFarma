@@ -28,7 +28,7 @@ const Whatsapp = () => {
       const cameraEmoji = '📷';
 
       // Formatear el mensaje con el enlace a la imagen y el título del producto
-      return `*[Producto: ${item.title}]*\n*[${cameraEmoji} Ver imagen](${imageUrl})*\n💰 *Precio:* ${item.unit_price}\n🔢 *Cantidad:* ${item.quantity}\n\n`;
+      return `*${item.title}*\n*${cameraEmoji} [Ver imagen](${imageUrl})*\n💰 *Precio:* ${item.unit_price}\n🔢 *Cantidad:* ${item.quantity}\n\n`;
     }));
 
     // Crear el enlace de WhatsApp con el mensaje formateado
@@ -53,3 +53,4 @@ const Whatsapp = () => {
 };
 
 export default Whatsapp;
+
