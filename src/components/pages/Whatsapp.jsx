@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import { getDownloadURL, ref } from 'firebase/storage';
@@ -28,36 +27,8 @@ const Whatsapp = () => {
       // Emoji de cámara para el enlace de la imagen
       const cameraEmoji = '📷';
 
-      // Estilos en línea para el mensaje
-      const messageStyle = {
-        padding: '10px',
-        backgroundColor: '#f0f0f0',
-        border: '1px solid #ccc',
-        borderRadius: '5px',
-        margin: '10px 0',
-      };
-
-      const linkStyle = {
-        color: '#0073e6',
-        textDecoration: 'none',
-        fontWeight: 'bold',
-      };
-
       // Formatear el mensaje con el enlace a la imagen y el título del producto
-      return (
-        <div style={messageStyle}>
-          <p>
-            <strong>Producto:</strong> {item.title}<br />
-            <span role="img" aria-label="camera">
-              {cameraEmoji}
-            </span> <a href={imageUrl} style={linkStyle} target="_blank" rel="noopener noreferrer">
-              Ver imagen
-            </a><br />
-            <strong>Precio:</strong> {item.unit_price}<br />
-            <strong>Cantidad:</strong> {item.quantity}
-          </p>
-        </div>
-      );
+      return `*[Producto: ${item.title}]*\n*[${cameraEmoji} Ver imagen](${imageUrl})*\n💰 *Precio:* ${item.unit_price}\n🔢 *Cantidad:* ${item.quantity}\n\n`;
     }));
 
     // Crear el enlace de WhatsApp con el mensaje formateado
