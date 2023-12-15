@@ -28,7 +28,7 @@ const WhatsappImg = () => {
 
       {/* Widget de WhatsApp */}
       <WhatsAppWidget
-        phoneNumber="123456789" // Reemplaza con tu número de teléfono de WhatsApp
+        phoneNumber="5492213602683" // Reemplaza con tu número de teléfono de WhatsApp
         text="Hola, estoy interesado en este producto"
       />
     </div>
