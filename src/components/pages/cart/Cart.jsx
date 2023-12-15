@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 /* eslint-disable react/jsx-no-undef */
-import { useContext,useState } from "react";
+import React, { useContext, useState, useRef } from "react";
+import html2canvas from "html2canvas";
 import { CartContext } from "../../../context/CartContext";
 import { useNavigate, Link } from "react-router-dom";
 import { IconButton,Dialog} from "@mui/material";
@@ -11,17 +13,25 @@ import ControlPointIcon from '@mui/icons-material/ControlPoint'; // Asegúrate d
 import { Grid } from '@mui/material';
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 const Cart = () => {
-  const { cart, clearCart, deleteById, getTotalPrice } = useContext(CartContext);
+  const { cart, clearCart, deleteById, getTotalPrice, setCartScreenshot } = useContext(CartContext);
   const [dialogOpen, setDialogOpen] = useState(false);
-
+  const containerRef = useRef(null);
 
   const navigate = useNavigate();
   // eslint-disable-next-line no-unused-vars
   let total = getTotalPrice()
-  const handleFinalizarCompra = () => {
+
+  const handleFinalizarCompra = async () => {
+    const container = containerRef.current;
+
+    // Usar html2canvas para capturar el contenido del carrito en una imagen
+    const screenshot = await html2canvas(container);
+
+    // Guardar la imagen en el CartContext
+    setCartScreenshot(screenshot);
     // Agrega aquí la lógica necesaria antes de redirigir
     navigate('/checkout'); // Redirigir a la ruta '/checkout'
-};
+  };
 
 
 
@@ -59,7 +69,7 @@ const customButtonStyle = {
    
       {cart.map((product) => (
        <>
-       <div key={product.id} className="flex md:flex-row">
+        <div key={product.id} ref={containerRef} className="flex md:flex-row">
          <div id='imagen' className="w-1/3 md:w-full text-center flex justify-center items-center">
            <img
              width="30%"

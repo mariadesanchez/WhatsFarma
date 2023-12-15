@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-no-undef */
 import { createContext, useState } from "react";
 
@@ -5,7 +6,7 @@ export const CartContext = createContext();
 
 const CartContextComponent = ({ children }) => {
   const [cart, setCart] = useState( JSON.parse(localStorage.getItem("cart")) || []);
-  const [capturedScreenshots, setCapturedScreenshots] = useState([]);
+  const [cartScreenshot, setCartScreenshot] = useState([]);
 
   const addToCart = (product)=>{
     let existe = cart.some( e => e.id === product.id) 
@@ -35,7 +36,7 @@ const CartContextComponent = ({ children }) => {
   const clearCart = ()=>{
     setCart( [] )
     localStorage.removeItem("cart")
-    setCapturedScreenshots([]);
+    setCartScreenshot([]);
   }
 
   const deleteById = (id)=>{
@@ -58,8 +59,8 @@ const CartContextComponent = ({ children }) => {
         clearCart,
         deleteById,
         getTotalPrice,
-        capturedScreenshots, 
-        setCapturedScreenshots
+        setCartScreenshot, 
+        cartScreenshot
     }
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
 };
