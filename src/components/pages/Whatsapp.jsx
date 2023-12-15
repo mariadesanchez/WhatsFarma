@@ -1,8 +1,8 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable no-unused-vars */
-// Whatsapp.jsx
 import React, { useEffect } from 'react';
 import { getDownloadURL, ref } from 'firebase/storage';
-import { db, storage } from '../../firebaseConfig';  // Ensure correct relative path
+import { db, storage } from '../../firebaseConfig';  // Asegúrate de tener la ruta correcta
 
 const Whatsapp = () => {
   let storedOrderId = localStorage.getItem("order");
@@ -14,22 +14,58 @@ const Whatsapp = () => {
     console.error('Error al parsear el objeto de la orden:', error);
   }
 
+  const openImageLink = async (imageUrl) => {
+    // Abrir el enlace de la imagen en una nueva ventana o pestaña con dimensiones específicas
+    window.open(imageUrl, '_blank', 'width=500,height=600');
+  };
+
   const sendMessageToWhatsApp = async () => {
     const formattedMessage = await Promise.all(orderData.items.map(async (item) => {
       // Obtener la URL de descarga de Firebase Storage
-      const imageRef = ref(storage, item.image);  // Ensure that item.image is the correct path in your storage
+      const imageRef = ref(storage, item.image);
       const imageUrl = await getDownloadURL(imageRef);
 
-      // Formatear el mensaje con la imagen
-      return `*[Imagen: ${item.image}]*\n💰 *Precio:* ${item.unit_price}\n🔢 *Cantidad:* ${item.quantity}\n${imageUrl}\n\n`;
+      // Emoji de cámara para el enlace de la imagen
+      const cameraEmoji = '📷';
+
+      // Estilos en línea para el mensaje
+      const messageStyle = {
+        padding: '10px',
+        backgroundColor: '#f0f0f0',
+        border: '1px solid #ccc',
+        borderRadius: '5px',
+        margin: '10px 0',
+      };
+
+      const linkStyle = {
+        color: '#0073e6',
+        textDecoration: 'none',
+        fontWeight: 'bold',
+      };
+
+      // Formatear el mensaje con el enlace a la imagen y el título del producto
+      return (
+        <div style={messageStyle}>
+          <p>
+            <strong>Producto:</strong> {item.title}<br />
+            <span role="img" aria-label="camera">
+              {cameraEmoji}
+            </span> <a href={imageUrl} style={linkStyle} target="_blank" rel="noopener noreferrer">
+              Ver imagen
+            </a><br />
+            <strong>Precio:</strong> {item.unit_price}<br />
+            <strong>Cantidad:</strong> {item.quantity}
+          </p>
+        </div>
+      );
     }));
 
     // Crear el enlace de WhatsApp con el mensaje formateado
     const encodedMessage = encodeURIComponent(`*Detalles del Pedido:*\n\n${formattedMessage.join('')}`);
     const whatsappLink = `https://api.whatsapp.com/send?phone=5492213602683&text=${encodedMessage}`;
 
-    // Abrir el enlace de WhatsApp en una nueva ventana o pestaña
-    window.open(whatsappLink, '_blank');
+    // Abrir el enlace de WhatsApp en una nueva ventana o pestaña con dimensiones específicas
+    window.open(whatsappLink, '_blank', 'width=500,height=600');
   };
 
   useEffect(() => {
@@ -46,7 +82,3 @@ const Whatsapp = () => {
 };
 
 export default Whatsapp;
-
-
-
-
