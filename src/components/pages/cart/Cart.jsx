@@ -10,7 +10,7 @@ import ControlPointIcon from '@mui/icons-material/ControlPoint'; // Asegúrate d
 
 import { Grid } from '@mui/material';
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import WhatsappImg from '../WhatsappImg'
+
 const Cart = () => {
   const { cart, clearCart, deleteById, getTotalPrice } = useContext(CartContext);
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -57,7 +57,7 @@ const customButtonStyle = {
 };
   return (
     <><div id='card' style={{ marginTop: '20px',paddingTop:'20px' }} className="block rounded-lg w-100 md:w-1/2 lg:w-1/3 mx-auto mx-4 bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
-   <WhatsappImg/>
+
       {cart.map((product) => (
        <>
        <div key={product.id} className="flex md:flex-row">
