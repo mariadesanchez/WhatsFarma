@@ -16,6 +16,8 @@ const Whatsapp = () => {
 
   // ...
 
+// ...
+
 const sendMessageToWhatsApp = async () => {
     const formattedMessage = await Promise.all(orderData.items.map(async (item) => {
       // Obtener la URL de descarga de Firebase Storage
@@ -26,7 +28,7 @@ const sendMessageToWhatsApp = async () => {
       const publicImageUrl = await sendImageToServer(imageUrl);
   
       // Formatear el mensaje con la imagen pública
-      return `*[Imagen: ${item.image}]*\n💰 *Precio:* ${item.unit_price}\n🔢 *Cantidad:* ${item.quantity}\n${publicImageUrl}\n\n`;
+      return `*[Imagen: ${item.image}]*\n💰 *Precio:* ${item.unit_price}\n🔢 *Cantidad:* ${item.quantity}\n![Imagen](${publicImageUrl})\n\n`;
     }));
   
     // Crear el enlace de WhatsApp con el mensaje formateado
@@ -37,10 +39,13 @@ const sendMessageToWhatsApp = async () => {
     window.open(whatsappLink, '_blank');
   };
   
+  // ...
+  
+  
   // Función para enviar la imagen al servidor para hacerla pública
   const sendImageToServer = async (imageUrl) => {
     try {
-      const response = await fetch('https://backend-l.vercel.app/upload', {
+      const response = await fetch('https://vercel.com/mariadesanchez/backend-l/upload', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
