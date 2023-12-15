@@ -1,11 +1,10 @@
 /* eslint-disable no-unused-vars */
-// Whatsapp.jsx
 import React, { useEffect } from 'react';
 import { getDownloadURL, ref } from 'firebase/storage';
-import { db, storage } from '../../firebaseConfig';  // Ensure correct relative path
+import { storage } from '../../firebaseConfig';
 
 const Whatsapp = () => {
-  let storedOrderId = localStorage.getItem("order");
+  let storedOrderId = localStorage.getItem('order');
   let orderData = {};
 
   try {
@@ -15,27 +14,32 @@ const Whatsapp = () => {
   }
 
   const sendMessageToWhatsApp = async () => {
-    const formattedMessage = await Promise.all(orderData.items.map(async (item) => {
-      // Obtener la URL de descarga de Firebase Storage
-      const imageRef = ref(storage, item.image);  // Ensure that item.image is the correct path in your storage
-      const imageUrl = await getDownloadURL(imageRef);
+    try {
+      const formattedMessage = await Promise.all(orderData.items.map(async (item) => {
+        // Obtener la URL de descarga de Firebase Storage
+        const imageRef = ref(storage, item.image);
+        const imageUrl = await getDownloadURL(imageRef);
 
-      // Formatear el mensaje con la imagen
-      return `*[Imagen: ${item.image}]*\n💰 *Precio:* ${item.unit_price}\n🔢 *Cantidad:* ${item.quantity}\n${imageUrl}\n\n`;
-    }));
+        // Formatear el mensaje con la URL de la imagen
+        return `*[Imagen: ${item.image}]*\n💰 *Precio:* ${item.unit_price}\n🔢 *Cantidad:* ${item.quantity}\n${imageUrl}\n\n`;
+      }));
 
-    // Crear el enlace de WhatsApp con el mensaje formateado
-    const encodedMessage = encodeURIComponent(`*Detalles del Pedido:*\n\n${formattedMessage.join('')}`);
-    const whatsappLink = `https://api.whatsapp.com/send?phone=5492213602683&text=${encodedMessage}`;
+      // Crear el enlace de WhatsApp con el mensaje formateado
+      const encodedMessage = encodeURIComponent(`*Detalles del Pedido:*\n\n${formattedMessage.join('')}`);
+      const whatsappLink = `https://api.whatsapp.com/send?phone=5492213602683&text=${encodedMessage}`;
 
-    // Abrir el enlace de WhatsApp en una nueva ventana o pestaña
-    window.open(whatsappLink, '_blank');
+      // Abrir el enlace de WhatsApp en una nueva ventana o pestaña
+      window.open(whatsappLink, '_blank');
+    } catch (error) {
+      console.error('Error al enviar el mensaje de WhatsApp:', error);
+    }
   };
 
   useEffect(() => {
-    // Llamar a la función al cargar el componente
+    // Llamar a la función al cargar el componente o en respuesta a cambios específicos
     sendMessageToWhatsApp();
-  }, []);  // Agrega dependencias si es necesario
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [orderData]);  // Agrega las dependencias necesarias
 
   return (
     <div>
@@ -46,5 +50,6 @@ const Whatsapp = () => {
 };
 
 export default Whatsapp;
+
 
 
