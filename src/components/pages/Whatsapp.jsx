@@ -28,7 +28,7 @@ const Whatsapp = () => {
       const cameraEmoji = '📷';
 
       // Texto del enlace amigable
-      const linkText = 'Link';
+      const linkText = 'Link de Enlace';
 
       // Formatear el mensaje con el enlace a la imagen y el título del producto
       return `*${item.title}*\n*${cameraEmoji} [${linkText}](${imageUrl})*\n💰 *Precio:* ${item.unit_price}\n🔢 *Cantidad:* ${item.quantity}\n\n`;
