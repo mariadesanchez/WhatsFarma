@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import { getDownloadURL, ref } from 'firebase/storage';
-import { db, storage } from '../../firebaseConfig';
+import { storage } from '../../firebaseConfig';
 
 const Whatsapp = () => {
   let storedOrderId = localStorage.getItem("order");
@@ -13,13 +13,8 @@ const Whatsapp = () => {
     console.error('Error al parsear el objeto de la orden:', error);
   }
 
-  const openImageLink = async (imageUrl) => {
-    // Abrir el enlace de la imagen en una nueva ventana o pestaña con dimensiones específicas
-    window.open(imageUrl, '_blank', 'width=500,height=600');
-  };
-
   const sendMessageToWhatsApp = async () => {
-    const formattedMessage = await Promise.all(orderData.items.map(async (item) => {
+    const formattedMessage = (await Promise.all(orderData.items.map(async (item) => {
       // Obtener la URL de descarga de Firebase Storage
       const imageRef = ref(storage, item.image);
       const imageUrl = await getDownloadURL(imageRef);
@@ -31,30 +26,11 @@ const Whatsapp = () => {
       const linkText = 'Link de Enlace';
 
       // Formatear el mensaje con el enlace a la imagen y el título del producto
-      return (
-        <div key={item.id}>
-          <p>
-            <strong>{item.title}</strong>
-            <br />
-            <span role="img" aria-label="camera">
-              {cameraEmoji}
-            </span>{" "}
-            <a href={imageUrl} target="_blank" rel="noopener noreferrer">
-              {linkText}
-            </a>
-            <br />
-            💰 <strong>Precio:</strong> {item.unit_price}
-            <br />
-            🔢 <strong>Cantidad:</strong> {item.quantity}
-          </p>
-        </div>
-      );
-    }));
+      return `*${item.title}*\n*${cameraEmoji} [${linkText}](${imageUrl})*\n💰 *Precio:* ${item.unit_price}\n🔢 *Cantidad:* ${item.quantity}\n\n`;
+    }))).join('');
 
     // Crear el enlace de WhatsApp con el mensaje formateado
-    const encodedMessage = encodeURIComponent(
-      `*Detalles del Pedido:*\n\n${formattedMessage.join('')}`
-    );
+    const encodedMessage = encodeURIComponent(`*Detalles del Pedido:*\n\n${formattedMessage}`);
     const whatsappLink = `https://api.whatsapp.com/send?phone=5492213602683&text=${encodedMessage}`;
 
     // Abrir el enlace de WhatsApp en una nueva ventana o pestaña con dimensiones específicas
