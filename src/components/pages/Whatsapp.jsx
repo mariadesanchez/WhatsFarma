@@ -9,7 +9,7 @@ const Whatsapp = () => {
   ];
 
   const enviarWhatsApp = () => {
-    const numeroWhatsApp = '123456789'; // Reemplaza con el número de teléfono al que quieres enviar el mensaje
+    const numeroWhatsApp = '5492213602683'; // Reemplaza con el número de teléfono al que quieres enviar el mensaje
     const mensajeCodificado = encodeURIComponent(enlaces.join('\n'));
     const url = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${mensajeCodificado}`;
     window.open(url, '_blank');
