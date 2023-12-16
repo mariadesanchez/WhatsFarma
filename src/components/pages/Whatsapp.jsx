@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import { getDownloadURL, ref } from 'firebase/storage';
-import { db, storage } from '../../firebaseConfig';  // Asegúrate de tener la ruta correcta
+import { db, storage } from '../../firebaseConfig';
 
 const Whatsapp = () => {
   let storedOrderId = localStorage.getItem("order");
@@ -31,11 +31,30 @@ const Whatsapp = () => {
       const linkText = 'Link de Enlace';
 
       // Formatear el mensaje con el enlace a la imagen y el título del producto
-      return `*${item.title}*\n*${cameraEmoji} [${linkText}](${imageUrl})*\n💰 *Precio:* ${item.unit_price}\n🔢 *Cantidad:* ${item.quantity}\n\n`;
+      return (
+        <div key={item.id}>
+          <p>
+            <strong>{item.title}</strong>
+            <br />
+            <span role="img" aria-label="camera">
+              {cameraEmoji}
+            </span>{" "}
+            <a href={imageUrl} target="_blank" rel="noopener noreferrer">
+              {linkText}
+            </a>
+            <br />
+            💰 <strong>Precio:</strong> {item.unit_price}
+            <br />
+            🔢 <strong>Cantidad:</strong> {item.quantity}
+          </p>
+        </div>
+      );
     }));
 
     // Crear el enlace de WhatsApp con el mensaje formateado
-    const encodedMessage = encodeURIComponent(`*Detalles del Pedido:*\n\n${formattedMessage.join('')}`);
+    const encodedMessage = encodeURIComponent(
+      `*Detalles del Pedido:*\n\n${formattedMessage.join('')}`
+    );
     const whatsappLink = `https://api.whatsapp.com/send?phone=5492213602683&text=${encodedMessage}`;
 
     // Abrir el enlace de WhatsApp en una nueva ventana o pestaña con dimensiones específicas
@@ -45,7 +64,7 @@ const Whatsapp = () => {
   useEffect(() => {
     // Llamar a la función al cargar el componente
     sendMessageToWhatsApp();
-  }, []);  // Agrega dependencias si es necesario
+  }, []); // Agrega dependencias si es necesario
 
   return (
     <div>
@@ -56,3 +75,4 @@ const Whatsapp = () => {
 };
 
 export default Whatsapp;
+
