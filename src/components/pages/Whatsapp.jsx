@@ -26,11 +26,13 @@ const Whatsapp = () => {
       const linkText = 'Link de Enlace';
 
       // Formatear el mensaje con el enlace a la imagen y el título del producto
-      return `*${item.title}*\n*${cameraEmoji} ${linkText}\n💰 *Precio:* ${item.unit_price}\n🔢 *Cantidad:* ${item.quantity}\n${imageUrl}\n\n`;
+      return `*${item.title}*\n*${cameraEmoji} ${linkText}\n💰 *Precio:* ${item.unit_price}\n🔢 *Cantidad:* ${item.quantity}\n\n`;
     }))).join('');
 
+    const urlInstructions = "Para ver las imágenes, por favor, visita los siguientes enlaces:";
+
     // Crear el enlace de WhatsApp con el mensaje formateado
-    const encodedMessage = encodeURIComponent(`*Detalles del Pedido:*\n\n${formattedMessage}`);
+    const encodedMessage = encodeURIComponent(`*Detalles del Pedido:*\n\n${formattedMessage}\n${urlInstructions}`);
     const whatsappLink = `https://api.whatsapp.com/send?phone=5492213602683&text=${encodedMessage}`;
 
     // Abrir el enlace de WhatsApp en una nueva ventana o pestaña con dimensiones específicas
