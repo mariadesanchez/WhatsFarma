@@ -26,7 +26,7 @@ const Whatsapp = () => {
       const linkText = 'Link de Enlace';
 
       // Formatear el mensaje con el enlace a la imagen y el título del producto
-      return `*${item.title}*\n*${cameraEmoji} [${linkText}](${imageUrl})\n💰 *Precio:* ${item.unit_price}\n🔢 *Cantidad:* ${item.quantity}\n\n${linkText}\n\n`;
+      return `*${item.title}*\n*${cameraEmoji} ${linkText}\n💰 *Precio:* ${item.unit_price}\n🔢 *Cantidad:* ${item.quantity}\n${imageUrl}\n\n`;
     }))).join('');
 
     // Crear el enlace de WhatsApp con el mensaje formateado
