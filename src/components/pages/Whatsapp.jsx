@@ -21,7 +21,7 @@ const Whatsapp = () => {
       const imageUrl = await getDownloadURL(imageRef);
 
       // Formatear el mensaje con la imagen
-      return `*[Imagen: ${item.image}]*\n💰 *Precio:* ${item.unit_price}\n🔢 *Cantidad:* ${item.quantity}\n${imageUrl}\n\n`;
+      return `*[Imagen: ${item.image}]*\n💰 *Precio:* ${item.unit_price}\n🔢 *Cantidad:* ${item.quantity}\n\n`;
     }));
 
     // Crear el enlace de WhatsApp con el mensaje formateado
