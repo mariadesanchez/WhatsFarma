@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 import { getDownloadURL, ref } from 'firebase/storage';
 import { db, storage } from '../../firebaseConfig';  // Ensure correct relative path
-
+import ShortUrl from 'short-url';
 const Whatsapp = () => {
   let storedOrderId = localStorage.getItem("order");
   let orderData = {};
@@ -13,9 +13,9 @@ const Whatsapp = () => {
   } catch (error) {
     console.error('Error al parsear el objeto de la orden:', error);
   }
-
   const shortenUrl = async (longUrl) => {
     try {
+      // eslint-disable-next-line no-undef
       const shortUrl = await ShortUrl(longUrl);
       return shortUrl;
     } catch (error) {
@@ -23,7 +23,6 @@ const Whatsapp = () => {
       return longUrl; // En caso de error, retorna la URL original
     }
   };
-
   const sendMessageToWhatsApp = async () => {
     const formattedMessage = await Promise.all(orderData.items.map(async (item) => {
       // Obtener la URL de descarga de Firebase Storage
@@ -36,6 +35,14 @@ const Whatsapp = () => {
       // Formatear el mensaje con la imagen abreviada
       return `*Ver:* ${shortImageUrl}*\n💰 *Precio:* ${item.unit_price}*\n🔢 *Cantidad:* ${item.quantity}\n\n`;
     }));
+
+    // Crear el enlace de WhatsApp con el mensaje formateado
+    const encodedMessage = encodeURIComponent(`*Detalles del Pedido:*\n\n${formattedMessage.join('')}`);
+    const whatsappLink = `https://api.whatsapp.com/send?phone=5492213602683&text=${encodedMessage}`;
+
+    // Abrir el enlace de WhatsApp en una nueva ventana o pestaña
+    window.open(whatsappLink, '_blank');
+  };
 
   useEffect(() => {
     // Llamar a la función al cargar el componente
