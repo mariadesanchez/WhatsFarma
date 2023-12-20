@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 import { getDownloadURL, ref } from 'firebase/storage';
 import { db, storage } from '../../firebaseConfig';  // Ensure correct relative path
-
+import shortid from 'shortid';
 const Whatsapp = () => {
   let storedOrderId = localStorage.getItem("order");
   let orderData = {};
@@ -14,11 +14,12 @@ const Whatsapp = () => {
     console.error('Error al parsear el objeto de la orden:', error);
   }
 
- // Función simple para acortar la URL
- const shortenUrl = (longUrl) => {
-    // Puedes implementar tu lógica de acortamiento aquí
-    // Por ejemplo, podrías tomar los primeros caracteres o generar un ID único corto
-    return longUrl.slice(0, 10); // Este es un ejemplo simple, ajusta según tus necesidades
+   // Función para acortar la URL utilizando shortid
+   const shortenUrl = (longUrl) => {
+    // Generar un ID único corto con shortid
+    const shortId = shortid.generate();
+    // Tomar los primeros 8 caracteres del ID como componente acortado
+    return `${shortId.slice(0, 8)}`;
   };
 
   const sendMessageToWhatsApp = async () => {
@@ -27,7 +28,7 @@ const Whatsapp = () => {
       const imageRef = ref(storage, item.image);
       const imageUrl = await getDownloadURL(imageRef);
 
-      // Acortar la URL de la imagen de manera simple
+      // Acortar la URL de la imagen utilizando shortid
       const shortImageUrl = shortenUrl(imageUrl);
 
       // Formatear el mensaje con la imagen abreviada
