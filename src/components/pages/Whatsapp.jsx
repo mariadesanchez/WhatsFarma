@@ -2,8 +2,7 @@
 // Whatsapp.jsx
 import React, { useEffect } from 'react';
 import { getDownloadURL, ref } from 'firebase/storage';
-import { db, storage } from '../../firebaseConfig';
-import ShortUrl from 'short-url';
+import { db, storage } from '../../firebaseConfig';  // Ensure correct relative path
 
 const Whatsapp = () => {
   let storedOrderId = localStorage.getItem("order");
@@ -38,18 +37,10 @@ const Whatsapp = () => {
       return `*Ver:* ${shortImageUrl}*\n💰 *Precio:* ${item.unit_price}*\n🔢 *Cantidad:* ${item.quantity}\n\n`;
     }));
 
-    // Crear el enlace de WhatsApp con el mensaje formateado
-    const encodedMessage = encodeURIComponent(`*Detalles del Pedido:*\n\n${formattedMessage.join('')}`);
-    const whatsappLink = `https://api.whatsapp.com/send?phone=5492213602683&text=${encodedMessage}`;
-
-    // Abrir el enlace de WhatsApp en una nueva ventana o pestaña
-    window.open(whatsappLink, '_blank');
-  };
-
   useEffect(() => {
     // Llamar a la función al cargar el componente
     sendMessageToWhatsApp();
-  }, []);
+  }, []);  // Agrega dependencias si es necesario
 
   return (
     <div>
@@ -60,3 +51,4 @@ const Whatsapp = () => {
 };
 
 export default Whatsapp;
+
