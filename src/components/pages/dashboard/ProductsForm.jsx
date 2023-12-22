@@ -31,7 +31,7 @@ const ProductsForm = ({
     setIsLoading(true);
     let url = await uploadFile(file);
     setUrl(url)
-    
+   
 
     if (productSelected) {
       setProductSelected({ ...productSelected, image: url });

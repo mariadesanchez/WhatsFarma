@@ -25,6 +25,7 @@ const CategoriasForm = ({
     setIsLoading(true);
     let url = await uploadFile(file);
     setUrl(url)
+    //aca yo tendria que acortar la url
     
 
     if (categoriaSelected) {

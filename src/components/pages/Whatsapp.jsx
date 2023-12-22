@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 import { getDownloadURL, ref } from 'firebase/storage';
 import { db, storage } from '../../firebaseConfig';  // Ensure correct relative path
-import shortid from 'shortid';
+
 const Whatsapp = () => {
   let storedOrderId = localStorage.getItem("order");
   let orderData = {};
@@ -14,25 +14,14 @@ const Whatsapp = () => {
     console.error('Error al parsear el objeto de la orden:', error);
   }
 
-   // Función para acortar la URL utilizando shortid
-   const shortenUrl = (longUrl) => {
-    // Generar un ID único corto con shortid
-    const shortId = shortid.generate();
-    // Tomar los primeros 8 caracteres del ID como componente acortado
-    return `${shortId.slice(0, 8)}`;
-  };
-
   const sendMessageToWhatsApp = async () => {
     const formattedMessage = await Promise.all(orderData.items.map(async (item) => {
       // Obtener la URL de descarga de Firebase Storage
-      const imageRef = ref(storage, item.image);
+      const imageRef = ref(storage, item.image);  // Ensure that item.image is the correct path in your storage
       const imageUrl = await getDownloadURL(imageRef);
 
-      // Acortar la URL de la imagen utilizando shortid
-      const shortImageUrl = shortenUrl(imageUrl);
-
-      // Formatear el mensaje con la imagen abreviada
-      return `*Ver:* ${shortImageUrl}*\n💰 *Precio:* ${item.unit_price}*\n🔢 *Cantidad:* ${item.quantity}\n\n`;
+      // Formatear el mensaje con la imagen
+      return `*[Imagen: ${item.image}]*\n💰 *Precio:* ${item.unit_price}\n🔢 *Cantidad:* ${item.quantity}\n${imageUrl}\n\n`;
     }));
 
     // Crear el enlace de WhatsApp con el mensaje formateado

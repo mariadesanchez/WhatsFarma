@@ -92,10 +92,6 @@ const Checkout = () => {
         
         "https://backend-l.vercel.app/create_preference",
         
-    
-        
-        
-     
         {
           items: newArray,
           shipment_cost: shipmentCost,
