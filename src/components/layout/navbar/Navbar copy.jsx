@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -10,7 +11,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
-
+import Avatar from '@mui/material/Avatar';
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { useContext, useState } from "react";
@@ -19,16 +20,33 @@ import { menuItems } from "../../../router/navigation";
 import { logout } from "../../../firebaseConfig";
 import { AuthContext } from "../../../context/AuthContext";
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import logo from '../../../../src/images/logo.png';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { CartContext } from "../../../context/CartContext";
+
 const drawerWidth = 200;
 
 function Navbar(props) {
-
+  const { cart, getTotalPrice} = useContext(CartContext);
   const { logoutContext, user } = useContext(AuthContext);
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
   const navigate = useNavigate();
   const rolAdmin = import.meta.env.VITE_ROL_ADMIN
+  const countStyles = {
+    background: 'red', // Fondo rojo
+    color: 'white', // Texto blanco
+    width: '25px', // Ancho
+    height: '25px', // Altura
+    borderRadius: '50%', // Forma de círculo
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  };
 
+  const cartIconStyles = {
+    fontSize: '30px', // Tamaño del icono, puedes ajustar el valor según tu preferencia
+  };
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -87,40 +105,80 @@ function Navbar(props) {
       </List>
     </div>
   );
-
+ 
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        sx={{
-          width: "100%",
-          height:'100px'
-        }}
-      >
-        <Toolbar
-          sx={{ gap: "20px", display: "flex", justifyContent: "space-between" }}
+    <CssBaseline />
+    <AppBar
+          position="fixed"
+          sx={{
+            width: "100%",
+            height: '100px',
+          }}
         >
-          <Link to="/" style={{ color: "whitesmoke" }}>
-      
-         <div>
-    
-    </div>
-          </Link>
-          <IconButton
-            color="secondary.primary"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
+         
+          <Toolbar
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
           >
-            <MenuIcon color="secondary.primary" />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-      <Box component="nav" aria-label="mailbox folders">
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <Link to="/" style={{ color: "whitesmoke" }}>
+                <div>
+                  <img
+                    // eslint-disable-next-line no-undef
+                    src={logo}
+                    alt="Logo"
+                    style={{
+                      maxHeight: '80px',
+                      maxWidth: 'auto',
+                    }}
+                  />
+                </div>
+              </Link>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
+              <IconButton
+                color="secondary.primary"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+              >
+                <MenuIcon color="secondary.primary" />
+              </IconButton>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',marginTop:'10px' }}>
+
+              <div id='count' style={countStyles}>
+              {cart.length}
+           
+              </div>
+              <div id='cart'>
+              <Link to={`/cart`} style={{ textDecoration: 'none', color: 'inherit' }}>
+
+              <IconButton
+                color="secondary.primary"
+                aria-label="carrito"
+              >
+                <ShoppingCartIcon  style={cartIconStyles}/>
+              </IconButton>
+            
+              </Link>
+              <div>
+              <p style={{ color: 'white', fontWeight: 'bold' }}>${getTotalPrice()}</p>
+
+              </div>
+              </div>
+              </div>
+
+            </div>
+          </Toolbar>
+        </AppBar>
+    <Box component="nav" aria-label="mailbox folders">
         <Drawer
           container={container}
           variant="temporary"
@@ -155,8 +213,8 @@ function Navbar(props) {
         <Toolbar />
 
         <Outlet />
-      </Box>
-    </Box>
+  </Box>
+  </Box>
   );
 }
 

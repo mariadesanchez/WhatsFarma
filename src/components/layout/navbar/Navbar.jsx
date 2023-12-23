@@ -119,8 +119,7 @@ function Navbar(props) {
             height: '100px',
           }}
         >
-         
-         <Toolbar
+       <Toolbar
   sx={{
     display: 'flex',
     justifyContent: 'space-between',
@@ -158,9 +157,26 @@ function Navbar(props) {
     >
       <MenuIcon color="secondary.primary" />
     </IconButton>
-    {/* Resto del código... */}
+
+    {/* Resto del código */}
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '10px' }}>
+      <div id='count' style={countStyles}>
+        {cart.length}
+      </div>
+      <div id='cart'>
+        <Link to={`/cart`} style={{ textDecoration: 'none', color: 'inherit' }}>
+          <IconButton color="secondary.primary" aria-label="carrito">
+            <ShoppingCartIcon style={cartIconStyles} />
+          </IconButton>
+        </Link>
+        <div>
+          <p style={{ color: 'white', fontWeight: 'bold' }}>${getTotalPrice()}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </Toolbar>
+
         </AppBar>
     <Box component="nav" aria-label="mailbox folders">
         <Drawer
