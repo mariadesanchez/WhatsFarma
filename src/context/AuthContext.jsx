@@ -7,7 +7,7 @@ import { usecontextGlobal } from '../context/GlobalContext'
 export const AuthContext = createContext();
 
 const AuthContextComponent = ({ children }) => {
-  const { productState ,productDispatch} = usecontextGlobal();
+  const { productState} = usecontextGlobal();
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("userInfo")) || {}
   );
