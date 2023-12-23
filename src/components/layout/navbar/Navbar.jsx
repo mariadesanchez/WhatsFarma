@@ -12,7 +12,6 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Avatar from '@mui/material/Avatar';
-
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { useContext, useState } from "react";
@@ -121,10 +120,7 @@ function Navbar(props) {
           }}
         >
          
-
-
-
-<Toolbar
+         <Toolbar
   sx={{
     display: 'flex',
     justifyContent: 'space-between',
@@ -165,7 +161,6 @@ function Navbar(props) {
     {/* Resto del código... */}
   </div>
 </Toolbar>
-
         </AppBar>
     <Box component="nav" aria-label="mailbox folders">
         <Drawer
