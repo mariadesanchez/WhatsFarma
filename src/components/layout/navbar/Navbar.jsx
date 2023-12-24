@@ -127,6 +127,7 @@ function Navbar(props) {
                 {getInitials(user.email)}
               </Avatar>
             )}
+            {<p>{user.email}</p>}
             <Link to="/" style={{ color: 'whitesmoke' }}>
               <div>
                 <img
