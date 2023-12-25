@@ -1,9 +1,8 @@
-/* eslint-disable react/jsx-no-undef */
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../../context/CartContext";
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import axios from "axios";
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, Box } from "@mui/material";
 import { AuthContext } from "../../../context/AuthContext";
 import { Link, useLocation } from "react-router-dom";
 import { db } from "../../../firebaseConfig";
@@ -15,11 +14,11 @@ import {
   serverTimestamp,
   getDoc,
 } from "firebase/firestore";
+import Swal from 'sweetalert2';
 
 const Checkout = () => {
   const { cart, getTotalPrice, clearCart } = useContext(CartContext);
   const { user } = useContext(AuthContext);
-  
   initMercadoPago(import.meta.env.VITE_PUBLICKEY, {
     locale: "es-AR",
   });
@@ -29,27 +28,19 @@ const Checkout = () => {
     phone: "",
   });
   const [orderId, setOrderId] = useState(null);
-  const [shipmentCost, setShipmentCost] = useState(0)
+  const [shipmentCost, setShipmentCost] = useState(0);
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const paramValue = queryParams.get("status"); // approved --- reject
 
   useEffect(() => {
-    // ACA ES DONDE GUARDAMOS LA ORDEN EN FIREBASE
-    // CONDICIONADO A QUE YA ESTE EL PAGO REALIZADO
     let order = JSON.parse(localStorage.getItem("order"));
-
-     
- 
     if (paramValue === "approved") {
       let ordersCollection = collection(db, "orders");
-      
-      addDoc(ordersCollection, { ...order, 
-        date: serverTimestamp() }).then(
+      addDoc(ordersCollection, { ...order, date: serverTimestamp() }).then(
         (res) => {
           setOrderId(res.id);
-        
         }
       );
 
@@ -58,22 +49,19 @@ const Checkout = () => {
           stock: elemento.stock - elemento.quantity,
         });
       });
-    
-    
-      // localStorage.removeItem("order");
-      clearCart()
+
+      localStorage.removeItem("order");
+      clearCart();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [paramValue]);
 
-  useEffect(()=>{
-    let shipmentCollection = collection(db, "shipment")
-    let shipmentDoc = doc(shipmentCollection, "8jLICZNG3Y8O9Y3YpOmp")
-    getDoc(shipmentDoc).then(res => {
-      setShipmentCost(res.data().cost)
-    })
-  }, [])
-  
+  useEffect(() => {
+    let shipmentCollection = collection(db, "shipment");
+    let shipmentDoc = doc(shipmentCollection, "8jLICZNG3Y8O9Y3YpOmp");
+    getDoc(shipmentDoc).then((res) => {
+      setShipmentCost(res.data().cost);
+    });
+  }, []);
 
   let total = getTotalPrice();
 
@@ -87,11 +75,7 @@ const Checkout = () => {
     });
     try {
       let response = await axios.post(
-        // "http://localhost:8080/create_preference",
-        
-        
         "https://backend-l.vercel.app/create_preference",
-        
         {
           items: newArray,
           shipment_cost: shipmentCost,
@@ -111,13 +95,21 @@ const Checkout = () => {
       phone: userData.phone,
       items: cart,
       subTotal: total,
-      total: total + shipmentCost ,
+      total: total + shipmentCost,
       email: user.email,
     };
     localStorage.setItem("order", JSON.stringify(order));
     const id = await createPreference();
     if (id) {
       setPreferenceId(id);
+
+      // Mostrar SweetAlert con mensaje de éxito
+      Swal.fire({
+        icon: 'success',
+        title: 'El pago se realizó con éxito 😊',
+        showConfirmButton: false,
+        timer: 2000,
+      });
     }
   };
 
@@ -126,35 +118,52 @@ const Checkout = () => {
   };
 
   return (
-    <div>
-      {
-        !orderId ? <>
-      <TextField
-      name="cp"
-      variant="outlined"
-      label="codigo postal"
-      onChange={handleChange}
-      />
-      <TextField
-      name="phone"
-      variant="outlined"
-      label="Telefono"
-      onChange={handleChange}
-      />
-      <Button onClick={handleBuy}>Seleccione metodo de pago</Button> 
-      </>: <>
-        <h4>El pago se realizo con exito</h4>
-        <h4>Su numero de compra es {orderId}</h4>
-        <Link to="/shop">Seguir comprando</Link>
-      </>
-    }
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+      }}
+    >
+      {!orderId ? (
+        <>
+          <TextField
+            name="cp"
+            variant="outlined"
+            label="Código Postal"
+            onChange={handleChange}
+            margin="normal"
+          />
+          <TextField
+            name="phone"
+            variant="outlined"
+            label="Teléfono"
+            onChange={handleChange}
+            margin="normal"
+          />
+          <Button onClick={handleBuy} variant="contained" color="primary" style={{ marginTop: '16px' }}>
+            Seleccione método de pago
+          </Button>
+        </>
+      ) : (
+        <>
+          <h4>El pago se realizó con éxito 😊</h4>
+          <h4>Número de Pedido: {orderId}</h4>
+          <Link to="/shop">
+            <Button variant="contained" color="primary" style={{ marginTop: '16px' }}>
+              Seguir comprando
+            </Button>
+          </Link>
+        </>
+      )}
 
       {preferenceId && (
-        <Wallet initialization={{ preferenceId, redirectMode: "self" }} />
+        <Wallet initialization={{ preferenceId, redirectMode: 'self' }} />
       )}
-    </div>
+    </Box>
   );
 };
 
 export default Checkout;
-
