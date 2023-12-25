@@ -32,7 +32,7 @@ function Navbar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
   const navigate = useNavigate();
-  const rolAdmin = import.meta.env.VITE_ROL_ADMIN
+  const rolAdmin = import.meta.env.VITE_ROL_ADMIN;
   const countStyles = {
     background: 'red',
     color: 'white',
@@ -108,7 +108,7 @@ function Navbar(props) {
       </List>
     </div>
   );
- 
+
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
@@ -131,7 +131,7 @@ function Navbar(props) {
         >
           <div style={{ display: "flex", alignItems: "center" }}>
             {/* Avatar component with user initials */}
-            <Avatar sx={{ bgcolor: 'secondary.main', marginRight: '10px' }}>
+            <Avatar sx={{ bgcolor: 'secondary.main', color: 'secondary.contrastText', marginRight: '10px' }}>
               {userInitials}
             </Avatar>
 
