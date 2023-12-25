@@ -130,10 +130,7 @@ function Navbar(props) {
           }}
         >
           <div style={{ display: "flex", alignItems: "center" }}>
-            {/* Avatar component with user initials */}
-            <Avatar sx={{ bgcolor: 'secondary.main', color: 'secondary.contrastText', marginRight: '10px' }}>
-              {userInitials}
-            </Avatar>
+          
 
             <Link to="/" style={{ color: "whitesmoke" }}>
               <div>
@@ -149,6 +146,10 @@ function Navbar(props) {
             </Link>
           </div>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
+              {/* Avatar component with user initials */}
+              <Avatar sx={{ bgcolor: 'secondary.main', color: 'secondary.contrastText', marginRight: '10px' }}>
+              {userInitials}
+            </Avatar>
             <IconButton
               color="secondary.primary"
               aria-label="open drawer"
