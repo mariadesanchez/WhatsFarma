@@ -6,6 +6,9 @@ import { Button, TextField } from "@mui/material";
 import { AuthContext } from "../../../context/AuthContext";
 import { Link, useLocation } from "react-router-dom";
 import { db } from "../../../firebaseConfig";
+// eslint-disable-next-line no-unused-vars
+import Swal from 'sweetalert2';
+
 import {
   addDoc,
   collection,
@@ -118,32 +121,40 @@ const Checkout = () => {
 
   return (
     <div>
-      {
-        !orderId ? <>
-      <TextField
-      name="cp"
-      variant="outlined"
-      label="codigo postal"
-      onChange={handleChange}
-      />
-      <TextField
-      name="phone"
-      variant="outlined"
-      label="Telefono"
-      onChange={handleChange}
-      />
-      <Button onClick={handleBuy}>Seleccione metodo de pago</Button> 
-      </>: <>
-        <h4>El pago se realizo con exito</h4>
-        <h4>Su numero de compra es {orderId}</h4>
-        <Link to="/shop">Seguir comprando</Link>
+    {!orderId ? (
+      <>
+        <TextField
+          name="cp"
+          variant="outlined"
+          label="Código Postal"
+          onChange={handleChange}
+        />
+        <TextField
+          name="phone"
+          variant="outlined"
+          label="Teléfono"
+          onChange={handleChange}
+        />
+        <Button onClick={handleBuy} variant="contained" color="primary">
+          Seleccione método de pago
+        </Button>
       </>
-    }
-
-      {preferenceId && (
-        <Wallet initialization={{ preferenceId, redirectMode: "self" }} />
-      )}
-    </div>
+    ) : (
+      <>
+        <h4>El pago se realizó con éxito 😊</h4>
+        <h4>Su número de compra es {orderId}</h4>
+        <Link to="/shop">
+          <Button variant="contained" color="primary">
+            Seguir comprando
+          </Button>
+        </Link>
+      </>
+    )}
+  
+    {preferenceId && (
+      <Wallet initialization={{ preferenceId, redirectMode: 'self' }} />
+    )}
+  </div>
   );
 };
 
