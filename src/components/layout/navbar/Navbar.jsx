@@ -11,8 +11,8 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
+// import Avatar from '@mui/material/Avatar';
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import Avatar from '@mui/material/Avatar';
 import "./Navbar.css";
 import { useContext, useState } from "react";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -32,22 +32,21 @@ function Navbar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
   const navigate = useNavigate();
-  const rolAdmin = import.meta.env.VITE_ROL_ADMIN;
+  const rolAdmin = import.meta.env.VITE_ROL_ADMIN
   const countStyles = {
-    background: 'red',
-    color: 'white',
-    width: '25px',
-    height: '25px',
-    borderRadius: '50%',
+    background: 'red', // Fondo rojo
+    color: 'white', // Texto blanco
+    width: '25px', // Ancho
+    height: '25px', // Altura
+    borderRadius: '50%', // Forma de círculo
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
   };
 
   const cartIconStyles = {
-    fontSize: '30px',
+    fontSize: '30px', // Tamaño del icono, puedes ajustar el valor según tu preferencia
   };
-
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -57,9 +56,6 @@ function Navbar(props) {
     logoutContext();
     navigate("/login");
   };
-
-  // Extract first two initials from the user's email
-  const userInitials = user.email.slice(0, 2).toUpperCase();
 
   const drawer = (
     <div>
@@ -81,26 +77,27 @@ function Navbar(props) {
           );
         })}
 
-        {user.rol === rolAdmin &&
-          <Link to={"/dashboard"}>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <DashboardIcon sx={{ color: "whitesmoke" }} />
-                </ListItemIcon>
-                <ListItemText primary={"Dashboard"} sx={{ color: "whitesmoke" }} />
-              </ListItemButton>
-            </ListItem>
-          </Link>
-        }
+{
+  user.rol === rolAdmin &&
+        <Link to={"/dashboard"}>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <DashboardIcon sx={{ color: "whitesmoke" }} />
+              </ListItemIcon>
+              <ListItemText primary={"Dashboard"} sx={{ color: "whitesmoke" }} />
+            </ListItemButton>
+          </ListItem>
+        </Link>
 
+}
         <ListItem disablePadding>
           <ListItemButton onClick={handleLogout}>
             <ListItemIcon>
               <LogoutIcon sx={{ color: "whitesmoke" }} />
             </ListItemIcon>
             <ListItemText
-              primary={"Cerrar sesión"}
+              primary={"Cerrar sesion"}
               sx={{ color: "whitesmoke" }}
             />
           </ListItemButton>
@@ -108,78 +105,80 @@ function Navbar(props) {
       </List>
     </div>
   );
-
+ 
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        sx={{
-          width: "100%",
-          height: '100px',
-        }}
-      >
-        <Toolbar
+    <CssBaseline />
+    <AppBar
+          position="fixed"
           sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
+            width: "100%",
+            height: '100px',
           }}
         >
-          <div style={{ display: "flex", alignItems: "center" }}>
-          
+         
+          <Toolbar
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <Link to="/" style={{ color: "whitesmoke" }}>
+                <div>
+                  <img
+                    // eslint-disable-next-line no-undef
+                    src={logo}
+                    alt="Logo"
+                    style={{
+                      maxHeight: '80px',
+                      maxWidth: 'auto',
+                    }}
+                  />
+                </div>
+              </Link>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
+              <IconButton
+                color="secondary.primary"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+              >
+                <MenuIcon color="secondary.primary" />
+              </IconButton>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',marginTop:'10px' }}>
 
-            <Link to="/" style={{ color: "whitesmoke" }}>
-              <div>
-                <img
-                  src={logo}
-                  alt="Logo"
-                  style={{
-                    maxHeight: '80px',
-                    maxWidth: 'auto',
-                  }}
-                />
-              </div>
-            </Link>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
-              {/* Avatar component with user initials */}
-              <Avatar sx={{ bgcolor: 'secondary.main', color: 'secondary.contrastText', marginRight: '10px' }}>
-              {userInitials}
-            </Avatar>
-            <IconButton
-              color="secondary.primary"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-            >
-              <MenuIcon color="secondary.primary" />
-            </IconButton>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',marginTop:'10px' }}>
               <div id='count' style={countStyles}>
-                {cart.length}
+              {cart.length}
+           
               </div>
               <div id='cart'>
-                <Link to={`/cart`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                  <IconButton
-                    color="secondary.primary"
-                    aria-label="carrito"
-                  >
-                    <ShoppingCartIcon  style={cartIconStyles}/>
-                  </IconButton>
-                  <div>
-                    <p style={{ color: 'white', fontWeight: 'bold' }}>${getTotalPrice()}</p>
-                  </div>
-                </Link>
+              <Link to={`/cart`} style={{ textDecoration: 'none', color: 'inherit' }}>
+
+              <IconButton
+                color="secondary.primary"
+                aria-label="carrito"
+              >
+                <ShoppingCartIcon  style={cartIconStyles}/>
+              </IconButton>
+            
+              </Link>
+              <div>
+              <p style={{ color: 'white', fontWeight: 'bold' }}>${getTotalPrice()}</p>
+
               </div>
+              </div>
+              </div>
+
             </div>
-          </div>
-        </Toolbar>
-      </AppBar>
-      <Box component="nav" aria-label="mailbox folders">
+          </Toolbar>
+        </AppBar>
+    <Box component="nav" aria-label="mailbox folders">
         <Drawer
           container={container}
           variant="temporary"
@@ -212,9 +211,10 @@ function Navbar(props) {
         }}
       >
         <Toolbar />
+
         <Outlet />
-      </Box>
-    </Box>
+  </Box>
+  </Box>
   );
 }
 

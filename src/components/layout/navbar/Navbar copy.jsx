@@ -11,7 +11,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
-import Avatar from '@mui/material/Avatar';
+// import Avatar from '@mui/material/Avatar';
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { useContext, useState } from "react";
