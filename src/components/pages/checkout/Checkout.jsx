@@ -112,7 +112,7 @@ const Checkout = () => {
   return (
     <div>
       {
-        !orderId ? <>
+        !orderId && <>
       <TextField
       name="cp"
       variant="outlined"
@@ -126,11 +126,12 @@ const Checkout = () => {
       onChange={handleChange}
       />
       <Button onClick={handleBuy}>Seleccione metodo de pago</Button> 
-      </>: <>
-        <h4>El pago se realizo con exito!!!</h4>
-        <h4>Su numero de compra es {orderId}</h4>
-        <Link to="/shop">Seguir comprando</Link>
       </>
+      // : <>
+      //   <h4>El pago se realizo con exito</h4>
+      //   <h4>Su numero de compra es {orderId}</h4>
+      //   <Link to="/shop">Seguir comprando</Link>
+      // </>
     }
 
       {preferenceId && (
