@@ -9,7 +9,7 @@ import Dashboard from "../components/pages/dashboard/Dashboard";
 import ProtectedAdmin from "./ProtectedAdmin";
 import ProtectedUsers from "./ProtectedUsers";
 import Categoria from "../components/pages/categoria/Categoria"
-import CheckoutLink from "../components/pages/checkout/CheckoutLink";
+// import CheckoutLink from "../components/pages/checkout/CheckoutLink";
 
 
 
@@ -30,7 +30,7 @@ const AppRouter = () => {
         <Route element={<Navbar />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/categoria" element={<Categoria />} />
-          <Route path="/link" element={<CheckoutLink />} />
+          {/* <Route path="/link" element={<CheckoutLink />} /> */}
         
         </Route>
       </Route>
