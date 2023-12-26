@@ -1,15 +1,9 @@
-/* eslint-disable no-undef */
 import Cart from "../components/pages/cart/Cart";
-// import Checkout from "../components/pages/checkout/CheckoutStyle";
+import Checkout from "../components/pages/checkout/Checkout";
 import Home from "../components/pages/home/Home";
 import ItemDetail from "../components/pages/itemDetail/ItemDetail";
 import ItemListContainer from "../components/pages/itemlist/ItemListContainer";
 import UserOrders from "../components/pages/userOrders/UserOrders";
-import Favs from "../components/pages/Favs/Favs";
-import Categoria from "../components/pages/categoria/Categoria";
-// import CheckoutLink from "../components/pages/checkout/CheckoutLink";
-import Whatsapp from "../components/pages/Whatsapp";
-
 
 export const routes = [{
         id: "home",
@@ -41,25 +35,5 @@ export const routes = [{
         path: "/user-orders",
         Element: UserOrders,
     },
-    {
-        id: "favoritos",
-        path: "/favoritos",
-        Element: Favs,
-    },
-    {
-        id: "categoria",
-        path: "/categoria",
-        Element: Categoria,
-    },
-    // {
-    //     id: "link ",
-    //     path: "/link",
-    //     Element: CheckoutLink,
-    // },
-    {
-        id: "whatsapp ",
-        path: "/whatsapp",
-        Element: Whatsapp,
-    }
 
 ];
