@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-undef */
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../../context/CartContext";
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
@@ -15,11 +14,9 @@ import {
   serverTimestamp,
   getDoc,
 } from "firebase/firestore";
-
 const Checkout = () => {
   const { cart, getTotalPrice, clearCart } = useContext(CartContext);
   const { user } = useContext(AuthContext);
-  
   initMercadoPago(import.meta.env.VITE_PUBLICKEY, {
     locale: "es-AR",
   });
@@ -39,17 +36,11 @@ const Checkout = () => {
     // ACA ES DONDE GUARDAMOS LA ORDEN EN FIREBASE
     // CONDICIONADO A QUE YA ESTE EL PAGO REALIZADO
     let order = JSON.parse(localStorage.getItem("order"));
-
-     
- 
     if (paramValue === "approved") {
       let ordersCollection = collection(db, "orders");
-      
-      addDoc(ordersCollection, { ...order, 
-        date: serverTimestamp() }).then(
+      addDoc(ordersCollection, { ...order, date: serverTimestamp() }).then(
         (res) => {
           setOrderId(res.id);
-        
         }
       );
 
@@ -58,17 +49,15 @@ const Checkout = () => {
           stock: elemento.stock - elemento.quantity,
         });
       });
-    
-    
+
       localStorage.removeItem("order");
       clearCart()
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [paramValue]);
 
   useEffect(()=>{
     let shipmentCollection = collection(db, "shipment")
-    let shipmentDoc = doc(shipmentCollection, "8jLICZNG3Y8O9Y3YpOmp")
+    let shipmentDoc = doc(shipmentCollection, "HxMuNKLUglVoHjAyosML")
     getDoc(shipmentDoc).then(res => {
       setShipmentCost(res.data().cost)
     })
@@ -87,11 +76,7 @@ const Checkout = () => {
     });
     try {
       let response = await axios.post(
-        // "http://localhost:8080/create_preference",
-        
-        
-        "https://backend-l.vercel.app/create_preference",
-        
+        "https://backend-hogar.vercel.app/create_preference",
         {
           items: newArray,
           shipment_cost: shipmentCost,
@@ -110,7 +95,6 @@ const Checkout = () => {
       cp: userData.cp,
       phone: userData.phone,
       items: cart,
-      subTotal: total,
       total: total + shipmentCost ,
       email: user.email,
     };
@@ -157,4 +141,3 @@ const Checkout = () => {
 };
 
 export default Checkout;
-
