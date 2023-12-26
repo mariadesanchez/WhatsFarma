@@ -127,7 +127,7 @@ const Checkout = () => {
       />
       <Button onClick={handleBuy}>Seleccione metodo de pago</Button> 
       </>: <>
-        <h4>El pago se realizo con exito</h4>
+        <h4>El pago se realizo con exito!!!</h4>
         <h4>Su numero de compra es {orderId}</h4>
         <Link to="/shop">Seguir comprando</Link>
       </>
